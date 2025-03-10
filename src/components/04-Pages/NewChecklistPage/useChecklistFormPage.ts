@@ -70,6 +70,7 @@ export const useChecklistFormPage = () => {
       id: getId(),
       text: "",
       score: 1,
+      extra: false,
     };
     updatedSections[sectionIndex].questions.push(newQuestion);
     setSections(updatedSections);
@@ -80,11 +81,13 @@ export const useChecklistFormPage = () => {
     sectionIndex: number,
     questionIndex: number,
     text: string,
-    score: number
+    score: number,
+    extra?: boolean
   ) => {
     const updatedSections = [...sections];
     updatedSections[sectionIndex].questions[questionIndex].text = text;
     updatedSections[sectionIndex].questions[questionIndex].score = score;
+    updatedSections[sectionIndex].questions[questionIndex].extra = extra ?? false;
     setSections(updatedSections);
   };
 

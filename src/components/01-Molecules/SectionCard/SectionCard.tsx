@@ -36,21 +36,26 @@ export const SectionCard: FC<SectionCardProps> = ({
           <Caption>No questions in this section</Caption>
         </div>
       ) : (
-        <ul className="space-y-2 max-h-[300px] overflow-y-auto pr-2 scrollbar-thin scrollbar-thumb-base-300">
+        <ul className="space-y-2 overflow-y-auto pr-2 scrollbar-thin scrollbar-thumb-base-300">
           {section.questions.map((question, questionIndex) => (
             <li
               key={question.id}
-              className="flex justify-between items-start p-3 bg-base-200 rounded-lg"
+              className={`flex justify-between items-center rounded-lg p-3 bg-base-200 shadow-sm cursor-pointer hover:shadow-md font-medium ${
+                question.extra ? "border-l-4 border-accent" : "pl-4"
+              }`}
             >
-              <div className="flex gap-2">
+              <div className="flex gap-2 items-center">
                 <span className="font-medium text-sm">
                   {sectionIndex + 1}.{questionIndex + 1}.
                 </span>
                 <span className="text-sm">{question.text}</span>
+                {question.extra && (
+                  <span className="badge badge-xs badge-accent ml-1">
+                    Extra
+                  </span>
+                )}
               </div>
-              <span className="badge badge-sm badge-warning badge-dash whitespace-nowrap">
-                {question.score} pts
-              </span>
+              <span className="whitespace-nowrap">{question.score} pts</span>
             </li>
           ))}
         </ul>

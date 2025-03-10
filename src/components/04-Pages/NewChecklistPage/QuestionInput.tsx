@@ -13,7 +13,8 @@ type Props = {
     sectionIndex: number,
     questionIndex: number,
     name: string,
-    score: number
+    score: number,
+    extra?: boolean
   ) => void;
   removeQuestion: (sectionIndex: number, questionIndex: number) => void;
 };
@@ -56,7 +57,8 @@ export const QuetionInput: FC<Props> = ({
               sectionIndex,
               questionIndex,
               e.target.value,
-              question.score
+              question.score,
+              question.extra
             )
           }
           ref={(el) => {
@@ -79,13 +81,33 @@ export const QuetionInput: FC<Props> = ({
               sectionIndex,
               questionIndex,
               question.text,
-              parseInt(e.target.value) || 1
+              parseInt(e.target.value) || 1,
+              question.extra
             )
           }
         />
       </FormControl>
     </div>
-    <div className="text-right -mt-6">
+    <div className="flex justify-between items-center -mt-6">
+      <div className="form-control">
+        <label className="label cursor-pointer flex items-center">
+          <input
+            type="checkbox"
+            className="checkbox checkbox-xs checkbox-warning rounded-sm"
+            checked={question.extra || false}
+            onChange={(e) =>
+              updateQuestion(
+                sectionIndex,
+                questionIndex,
+                question.text,
+                question.score,
+                e.target.checked
+              )
+            }
+          />
+          <span className="label-text text-xs">Extra</span>
+        </label>
+      </div>
       <button
         type="button"
         className="btn btn-xs btn-warning relative z-10"

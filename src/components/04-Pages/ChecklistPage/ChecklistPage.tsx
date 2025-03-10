@@ -71,6 +71,7 @@ export const ChecklistPage: FC = () => {
 
   const totalQuestions = getSectionsQuestionCount(checklist.sections);
   const totalScore = getSectionsPoints(checklist.sections);
+  const extraTotalScore = getSectionsPoints(checklist.sections, "extra");
 
   return (
     <Page className="flex flex-col">
@@ -88,6 +89,11 @@ export const ChecklistPage: FC = () => {
             <span className="badge badge-sm badge-warning">
               {totalScore} points
             </span>
+            {extraTotalScore > 0 && (
+              <span className="badge badge-sm badge-accent">
+                {extraTotalScore} extra points
+              </span>
+            )}
           </div>
         </div>
         <div className="flex gap-2 justify-between w-full md:w-auto">
