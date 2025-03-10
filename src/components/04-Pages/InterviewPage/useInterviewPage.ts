@@ -1,15 +1,15 @@
-import { useCallback, useEffect, useMemo, useState } from "react";
-import { Section } from "../../../types";
 import { useStore } from "@nanostores/react";
+import { useCallback, useEffect, useMemo, useState } from "react";
 import { useLocation, useParams } from "wouter";
+import { useConfirmModal } from "../../../components/00-Atoms/Modal";
+import { INTERVIEW_LIST } from "../../../routes";
+import { $checklistsStore } from "../../../stores/checklistStore";
 import {
   $interviewsStore,
   deleteInterview,
   updateInterview,
 } from "../../../stores/interviewsStore";
-import { $checklistsStore } from "../../../stores/checklistStore";
-import { INTERVIEW_LIST } from "../../../routes";
-import { useConfirmModal } from "../../../components/00-Atoms/Modal";
+import { Section } from "../../../types";
 
 export const useInterviewPage = () => {
   const { id } = useParams<{ id: string }>();
@@ -29,6 +29,7 @@ export const useInterviewPage = () => {
   const [sections, setSections] = useState<Section[]>([]);
   const [summary, setSummary] = useState("");
   const [score, setScore] = useState(0);
+  const [extraScore, setExtraScore] = useState(0);
   const [totalPossibleScore, setTotalPossibleScore] = useState(0);
 
   useEffect(() => {
@@ -37,18 +38,26 @@ export const useInterviewPage = () => {
       setSummary(interview.summary || "");
 
       let currentScore = 0;
+      let currentExtraScore = 0;
       let possibleScore = 0;
 
       interview.sections.forEach((section) => {
         section.questions.forEach((question) => {
-          possibleScore += question.score;
-          if (question.checked) {
-            currentScore += question.score;
+          // Only count non-extra questions in the possible score
+          if (!question.extra) {
+            possibleScore += question.score;
+            if (question.checked) {
+              currentScore += question.score;
+            }
+          } else if (question.checked) {
+            // Track extra points separately
+            currentExtraScore += question.score;
           }
         });
       });
 
       setScore(currentScore);
+      setExtraScore(currentExtraScore);
       setTotalPossibleScore(possibleScore);
     }
   }, [interview]);
@@ -97,21 +106,28 @@ export const useInterviewPage = () => {
 
     // Recalculate score
     let newScore = 0;
+    let newExtraScore = 0;
+
     newSections.forEach((section) => {
       section.questions.forEach((question) => {
         if (question.checked) {
-          newScore += question.score;
+          if (!question.extra) {
+            newScore += question.score;
+          } else {
+            newExtraScore += question.score;
+          }
         }
       });
     });
 
     setScore(newScore);
+    setExtraScore(newExtraScore);
 
     // Update the interview in the store
     const updatedInterview = {
       ...interview,
       sections: newSections,
-      score: newScore,
+      score: newScore + newExtraScore, // Total score includes extra points
       updatedAt: new Date().toISOString(),
     };
 
@@ -135,6 +151,8 @@ export const useInterviewPage = () => {
     sections,
     summary,
     score,
+    extraScore,
+    totalScore: score + extraScore,
     totalPossibleScore,
     handleSummaryChange,
     handleCheckQuestion,

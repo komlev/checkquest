@@ -3,6 +3,7 @@ export interface Question {
   text: string;
   score: number;
   checked?: boolean;
+  extra?: boolean;
 }
 
 export interface Section {

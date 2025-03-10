@@ -16,6 +16,8 @@ import { useInterviewPage } from "./useInterviewPage";
 export const InterviewPage: FC = () => {
   const {
     score,
+    extraScore,
+    totalScore,
     sections,
     summary,
     checklist,
@@ -112,23 +114,23 @@ export const InterviewPage: FC = () => {
                 role="group"
                 aria-label="Interview statistics"
               >
-                <div className="stat py-0 pl-0">
+                <div className="stat py-0 pl-0 pr-2">
                   <div className="stat-title">Score</div>
                   <Score
                     className="stat-value text-warning"
-                    value={score}
+                    value={totalScore}
                     maxValue={totalPossibleScore}
                   />
                   <div className="stat-desc">
-                    out of {totalPossibleScore} points
+                    {score} + {extraScore} extra = {totalScore} points
                   </div>
                 </div>
-                <div className="stat py-0 pr-0">
+                <div className="stat py-0 pr-0 pl-2">
                   <div className="stat-title">Estimated level</div>
                   <div className="stat-desc">
                     <SkillLevel
                       className="stat-value text-secondary"
-                      score={score}
+                      score={totalScore}
                       maxPoints={totalPossibleScore}
                     />
                   </div>
@@ -138,14 +140,14 @@ export const InterviewPage: FC = () => {
                 <div className="flex justify-between mb-1">
                   <span id="progress-label">Progress</span>
                   <Score
-                    value={score}
+                    value={totalScore}
                     maxValue={totalPossibleScore}
                     asPercentage
                   />
                 </div>
                 <progress
-                  className="progress progress-accent w-full"
-                  value={score}
+                  className="progress progress-secondary w-full"
+                  value={totalScore}
                   max={totalPossibleScore}
                   aria-labelledby="progress-label"
                 ></progress>
