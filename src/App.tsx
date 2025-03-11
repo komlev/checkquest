@@ -3,7 +3,6 @@ import { FC, useEffect } from "react";
 import { themeChange } from "theme-change";
 import { Route, Router, Switch } from "wouter";
 import { useHashLocation } from "wouter/use-hash-location";
-import { Caption } from "./components/00-Atoms/Typography";
 import { Header } from "./components/02-Organisms/Header/Header";
 import { Notifications } from "./components/02-Organisms/Notifications/Notifications";
 import { ChecklistListPage } from "./components/04-Pages/ChecklistListPage/ChecklistListPage";
@@ -34,29 +33,27 @@ export const App: FC = () => {
 
   return (
     <Router hook={useHashLocation}>
-      <main className="text-base-content">
-        <div className="min-h-screen flex flex-col">
-          <Header />
-          <Notifications />
-          <div className="flex-grow px-2">
-            <Switch>
-              <Route path={ROOT} component={Dashboard} />
-              <Route path={CHECKLIST_LIST} component={ChecklistListPage} />
-              <Route path={CHECKLIST_NEW} component={NewChecklistPage} />
-              <Route path={CHECKLIST_PAGE} component={ChecklistPage} />
-              <Route path={CHECKLIST_EDIT} component={NewChecklistPage} />
-              <Route path={INTERVIEW_LIST} component={InterviewListPage} />
-              <Route path={INTERVIEW_NEW} component={NewInterviewPage} />
-              <Route path={INTERVIEW_PAGE} component={InterviewPage} />
-              <Route component={NotFoundPage} />
-            </Switch>
-          </div>
-        </div>
+      <div className="min-h-screen flex flex-col text-base-content">
+        <Header />
+        <Notifications />
+        <main className="flex-grow px-2">
+          <Switch>
+            <Route path={ROOT} component={Dashboard} />
+            <Route path={CHECKLIST_LIST} component={ChecklistListPage} />
+            <Route path={CHECKLIST_NEW} component={NewChecklistPage} />
+            <Route path={CHECKLIST_PAGE} component={ChecklistPage} />
+            <Route path={CHECKLIST_EDIT} component={NewChecklistPage} />
+            <Route path={INTERVIEW_LIST} component={InterviewListPage} />
+            <Route path={INTERVIEW_NEW} component={NewInterviewPage} />
+            <Route path={INTERVIEW_PAGE} component={InterviewPage} />
+            <Route component={NotFoundPage} />
+          </Switch>
+        </main>
         <footer
-          className="footer footer-center py-4 bg-base-300"
+          className="footer footer-center py-4 bg-neutral"
           role="contentinfo"
         >
-          <Caption className="flex font-medium">
+          <div className="flex font-medium text-neutral-content">
             CheckQuest by{" "}
             <a
               className="link"
@@ -67,9 +64,9 @@ export const App: FC = () => {
             >
               komlev
             </a>
-          </Caption>
+          </div>
         </footer>
-      </main>
+      </div>
     </Router>
   );
 };
