@@ -21,6 +21,7 @@ export const useChecklistFormPage = () => {
 
   // Add a ref to track the latest question input
   const lastInput = useRef<HTMLInputElement | null>(null);
+  const [selectedSection, setSelectedSection] = useState(-1);
 
   // Load existing checklist data if in edit mode
   useEffect(() => {
@@ -34,7 +35,8 @@ export const useChecklistFormPage = () => {
     }
   }, [isEditMode, params?.id]);
 
-  const focusOnLastInput = () => {
+  const focusOnLastInput = (sectionIndex: number) => {
+    setSelectedSection(sectionIndex);
     setTimeout(() => {
       if (lastInput.current) {
         lastInput.current.focus();
@@ -48,8 +50,9 @@ export const useChecklistFormPage = () => {
       title: "",
       questions: [],
     };
+    const sectionIndex = sections.length;
     setSections([...sections, newSection]);
-    focusOnLastInput();
+    focusOnLastInput(sectionIndex);
   };
 
   const updateSection = (index: number, title: string) => {
@@ -74,7 +77,7 @@ export const useChecklistFormPage = () => {
     };
     updatedSections[sectionIndex].questions.push(newQuestion);
     setSections(updatedSections);
-    focusOnLastInput();
+    focusOnLastInput(sectionIndex);
   };
 
   const updateQuestion = (
@@ -87,7 +90,8 @@ export const useChecklistFormPage = () => {
     const updatedSections = [...sections];
     updatedSections[sectionIndex].questions[questionIndex].text = text;
     updatedSections[sectionIndex].questions[questionIndex].score = score;
-    updatedSections[sectionIndex].questions[questionIndex].extra = extra ?? false;
+    updatedSections[sectionIndex].questions[questionIndex].extra =
+      extra ?? false;
     setSections(updatedSections);
   };
 
@@ -164,6 +168,7 @@ export const useChecklistFormPage = () => {
     errors,
     name,
     description,
+    selectedSection,
     handleSubmit,
     addSection,
     updateSection,

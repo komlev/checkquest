@@ -19,6 +19,7 @@ export const NewChecklistPage: FC = () => {
     errors,
     isEditMode,
     lastInput,
+    selectedSection,
     name,
     sections,
     addQuestion,
@@ -69,6 +70,7 @@ export const NewChecklistPage: FC = () => {
                       sectionIndex={sectionIndex}
                       sectionsLength={sections.length}
                       lastInput={lastInput}
+                      selectedSection={selectedSection}
                     />
                   ))}
                 </div>

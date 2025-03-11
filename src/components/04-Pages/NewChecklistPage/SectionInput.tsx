@@ -19,6 +19,7 @@ type Props = {
   ) => void;
   sectionsLength: number;
   lastInput: RefObject<HTMLInputElement | null>;
+  selectedSection: number;
   removeQuestion: (sectionIndex: number, questionIndex: number) => void;
 };
 
@@ -29,6 +30,7 @@ export const SectionInput: FC<Props> = ({
   updateSection,
   removeSection,
   lastInput,
+  selectedSection,
   sectionsLength,
   removeQuestion,
   updateQuestion,
@@ -60,7 +62,9 @@ export const SectionInput: FC<Props> = ({
             }}
             ref={(el) => {
               if (
-                sectionIndex === sectionsLength - 1 &&
+                (sectionIndex === selectedSection ||
+                  (selectedSection === -1 &&
+                    sectionIndex === sectionsLength - 1)) &&
                 section.questions.length === 0
               ) {
                 lastInput.current = el;
