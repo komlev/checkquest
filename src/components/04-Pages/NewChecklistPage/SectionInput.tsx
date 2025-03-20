@@ -45,13 +45,13 @@ export const SectionInput: FC<Props> = ({
         <FormControl
           label={getQuestionLabel(sectionIndex, undefined, "Section Name")}
           className="w-1/2"
-          required
         >
           <input
             type="text"
             className="input w-full"
             placeholder="Section title"
             required
+            aria-required="true"
             value={section.title}
             onChange={(e) => updateSection(sectionIndex, e.target.value)}
             onKeyDownCapture={(e) => {

@@ -43,9 +43,10 @@ export const ImportChecklistModal: FC<Props> = ({ isOpen, onClose }) => {
       isOpen={isOpen}
       onClose={onClose}
     >
-      <FormControl label="Checklist string" required>
+      <FormControl label="Checklist string">
         <textarea
           required
+          aria-required="true"
           value={value}
           onChange={(e) => {
             setValue(e.target.value);

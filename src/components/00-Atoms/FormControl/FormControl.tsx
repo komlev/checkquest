@@ -27,7 +27,6 @@ export const FormControl: FC<Props> = ({
   <fieldset
     {...props}
     className={clsx("fieldset", props.className)}
-    aria-required={required}
     aria-invalid={!!error}
   >
     <legend className={clsx("fieldset-legend text-start", labelClassname)}>

@@ -3,6 +3,7 @@ import { Section } from "../../../types";
 import { getQuestionLabel, getSectionPoints } from "../../../utils/checklist";
 import { Line } from "../../00-Atoms/Line/Line";
 import { Caption } from "../../00-Atoms/Typography/Typography";
+import clsx from "clsx";
 
 interface SectionCardProps {
   section: Section;
@@ -39,9 +40,10 @@ export const SectionCard: FC<SectionCardProps> = ({
           {section.questions.map((question, questionIndex) => (
             <li
               key={question.id}
-              className={`flex justify-between items-center rounded-lg p-3 bg-base-200 shadow-sm cursor-pointer hover:shadow-md font-medium gap-1 ${
+              className={clsx(
+                "flex justify-between items-center rounded-lg p-3 bg-base-200 shadow-sm cursor-pointer hover:shadow-md font-medium gap-1",
                 question.extra ? "border-l-4 border-accent" : "pl-4"
-              }`}
+              )}
             >
               <div className="flex gap-2 items-center">
                 <span className="font-medium text-sm">

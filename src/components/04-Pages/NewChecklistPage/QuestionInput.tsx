@@ -45,7 +45,6 @@ export const QuetionInput: FC<Props> = ({
       <FormControl
         className="w-full"
         label={`Question ${getQuestionLabel(sectionIndex, questionIndex)}`}
-        required
       >
         <input
           type="text"
@@ -53,6 +52,7 @@ export const QuetionInput: FC<Props> = ({
           placeholder="Question"
           value={question.text}
           required
+          aria-required="true"
           onKeyDownCapture={(e) => {
             if (e.key === "Enter") {
               e.preventDefault();
