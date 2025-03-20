@@ -33,10 +33,12 @@ export const NewInterviewForm: FC<Props> = ({
             ["sm:grid-cols-2"]: isPage,
           })}
         >
-          <FormControl label="Interview Name" error={errors.name} required>
+          <FormControl id="name" label="Interview Name" error={errors.name}>
             <input
+              id="name"
               type="text"
               required
+              aria-required="true"
               className={clsx("input w-full", errors.name && "input-error")}
               placeholder="Name"
               value={value.name}
@@ -46,9 +48,15 @@ export const NewInterviewForm: FC<Props> = ({
               }}
             />
           </FormControl>
-          <FormControl label="Checklist" error={errors.checklist} required>
+          <FormControl
+            id="checklist"
+            label="Checklist"
+            error={errors.checklist}
+          >
             <select
+              id="checklist"
               required
+              aria-required="true"
               className={clsx(
                 "select select-bordered w-full",
                 errors.checklist && "select-error"
@@ -70,12 +78,17 @@ export const NewInterviewForm: FC<Props> = ({
         </div>
         <div className="card-actions justify-end flex sm:flex-row flex-col-reverse">
           <button
+            id="cancel-new-interview-btn"
             onClick={onClose}
             className="btn btn-outline w-full sm:w-auto"
           >
             Cancel
           </button>
-          <button type="submit" className="btn btn-primary w-full sm:w-auto">
+          <button
+            id="submit-new-interview-btn"
+            type="submit"
+            className="btn btn-primary w-full sm:w-auto"
+          >
             Start Interview
           </button>
         </div>

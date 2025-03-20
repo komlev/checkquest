@@ -7,16 +7,16 @@ import {
   $checklistsStore,
   deleteChecklist,
 } from "../../../stores/checklistStore";
+import { Checklist } from "../../../types";
 import { getSectionsQuestionCount } from "../../../utils/checklist";
 import { EditIcon } from "../../00-Atoms/Icons/EditIcon";
 import { StartIcon } from "../../00-Atoms/Icons/StartIcon";
 import { TrashIcon } from "../../00-Atoms/Icons/TrashIcon";
 import { Search } from "../../01-Molecules/Search/Search";
+import { ConfirmModal } from "../ConfirmModal/ConfirmModal";
+import { useConfirmModal } from "../ConfirmModal/useConfirmModal";
 import { NewInterviewModal } from "../NewInterviewForm/NewInterviewModal";
 import { useNewInterviewModal } from "../NewInterviewForm/useNewInterviewModal";
-import { useConfirmModal } from "../ConfirmModal/useConfirmModal";
-import { ConfirmModal } from "../ConfirmModal/ConfirmModal";
-import { Checklist } from "../../../types";
 
 const $search = atom("");
 const $filtered = computed([$checklistsStore, $search], (list, search) =>
@@ -72,13 +72,15 @@ export const ChecklistList = () => {
           </li>
           {checklists.map((checklist) => (
             <li key={checklist.id} className="list-row">
-              <div
-                aria-hidden="true"
-                role="presentation"
-                className="text-4xl font-black uppercase text-warning"
-              >
-                {checklist.name?.[0]}
-              </div>
+              <Link className="focusable" to={getChecklistPage(checklist.id)}>
+                <div
+                  aria-hidden="true"
+                  role="presentation"
+                  className="text-4xl font-black uppercase text-warning"
+                >
+                  {checklist.name?.[0]}
+                </div>
+              </Link>
               <div>
                 <div className="font-medium">
                   <Link

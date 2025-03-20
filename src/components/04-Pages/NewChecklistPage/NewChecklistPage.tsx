@@ -90,12 +90,7 @@ export const NewChecklistPage: FC = () => {
           </div>
           <div className="card card-sm shadow-lg h-fit sticky top-2">
             <div className="card-body flex flex-col gap-2">
-              <FormControl
-                id="name"
-                label="Checklist name"
-                error={errors.name}
-                required
-              >
+              <FormControl id="name" label="Checklist name" error={errors.name}>
                 <input
                   id="name"
                   type="text"
@@ -103,6 +98,7 @@ export const NewChecklistPage: FC = () => {
                   placeholder="Name"
                   value={name}
                   required
+                  aria-required="true"
                   onChange={(e) => setName(e.target.value)}
                 />
               </FormControl>

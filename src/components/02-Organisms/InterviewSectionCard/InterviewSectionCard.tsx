@@ -3,6 +3,7 @@ import { Section } from "../../../types";
 import { getQuestionLabel } from "../../../utils/checklist";
 import { Line } from "../../00-Atoms/Line/Line";
 import { Heading2, Subtitle } from "../../00-Atoms/Typography";
+import clsx from "clsx";
 
 interface InterviewSectionCardProps {
   section: Section;
@@ -42,11 +43,16 @@ export const InterviewSectionCard: FC<InterviewSectionCardProps> = ({
     <div className="mb-8 card shadow-md">
       <div className="card-body">
         <div className="flex justify-between items-start gap-2">
-          <Heading2 className="text-xl font-bold mb-4">
+          <Heading2
+            id={`section-name-${sectionIndex}`}
+            className="text-xl font-bold mb-4"
+          >
             {getQuestionLabel(sectionIndex, undefined, section.title)}
           </Heading2>
           <div className="flex flex-col items-end gap-2">
             <input
+              id={`full-section-checkbox-${sectionIndex}`}
+              aria-label={`Select full ${section.title} section`}
               type="checkbox"
               className="checkbox checkbox-warning"
               checked={allChecked}
@@ -73,19 +79,23 @@ export const InterviewSectionCard: FC<InterviewSectionCardProps> = ({
             {section.questions.map((question, questionIndex) => (
               <li
                 key={question.id}
-                className={`flex justify-between items-center rounded-lg p-3 bg-base-200 shadow-sm cursor-pointer hover:shadow-md font-medium ${
-                  question.extra ? "border-l-4 border-accent" : ""
-                }`}
+                className={clsx(
+                  "flex justify-between items-center rounded-lg p-3 bg-base-200 shadow-sm cursor-pointer hover:shadow-md font-medium",
+                  question.extra && "border-l-4 border-accent"
+                )}
                 onClick={() =>
                   onCheckQuestion(questionIndex, !question.checked)
                 }
               >
                 <div className="flex gap-3 items-center">
                   <input
+                    id={`question-checkbox-${sectionIndex}-${questionIndex}`}
+                    aria-label={question.text}
                     type="checkbox"
-                    className={`checkbox ${
+                    className={clsx(
+                      `checkbox`,
                       question.extra ? "checkbox-accent" : "checkbox-warning"
-                    }`}
+                    )}
                     checked={question.checked || false}
                     onChange={(e) =>
                       onCheckQuestion(questionIndex, e.target.checked)
