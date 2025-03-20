@@ -16,6 +16,7 @@ export const EmptyHero: FC = () => {
     <Hero
       title={hasChecklists ? "No interviews yet" : "No checklists yet"}
       button={hasChecklists ? "Create an interview" : "Add a checklist"}
+      buttonId={hasChecklists ? "add-interview-btn" : "add-checklist-btn"}
       location={hasChecklists ? undefined : CHECKLIST_NEW}
       onClick={hasChecklists ? onOpen : undefined}
     >

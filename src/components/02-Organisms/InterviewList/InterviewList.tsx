@@ -15,10 +15,11 @@ import {
 import { Interview } from "../../../types";
 import { getSectionsPoints } from "../../../utils/checklist";
 import { TrashIcon } from "../../00-Atoms/Icons/TrashIcon";
-import { ConfirmModal, useConfirmModal } from "../../00-Atoms/Modal";
 import { Score } from "../../00-Atoms/Score/Score";
 import { SkillLevel } from "../../00-Atoms/SkillLevel/SkillLevel";
 import { Search } from "../../01-Molecules/Search/Search";
+import { ConfirmModal } from "../ConfirmModal/ConfirmModal";
+import { useConfirmModal } from "../ConfirmModal/useConfirmModal";
 
 const $search = atom("");
 const $filtered = computed([$interviewsStore, $search], (list, search) =>
@@ -57,6 +58,7 @@ export const InterviewList: FC = () => {
   return (
     <div className="flex flex-col gap-2">
       <Search
+        id="interview-search"
         containerClassname="w-full md:w-60"
         value={search}
         onChange={(e) => {
@@ -127,6 +129,7 @@ export const InterviewList: FC = () => {
                 </div>
               </div>
               <button
+                id={`delete-interview-btn-${interview.id}`}
                 className="btn btn-square btn-ghost"
                 onClick={() => handleDelete(interview)}
                 aria-label="Delete Interview"

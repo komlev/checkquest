@@ -1,7 +1,6 @@
 import { useStore } from "@nanostores/react";
 import { useCallback, useEffect, useMemo, useState } from "react";
 import { useLocation, useParams } from "wouter";
-import { useConfirmModal } from "../../../components/00-Atoms/Modal";
 import { INTERVIEW_LIST } from "../../../routes";
 import { $checklistsStore } from "../../../stores/checklistStore";
 import {
@@ -10,6 +9,7 @@ import {
   updateInterview,
 } from "../../../stores/interviewsStore";
 import { Section } from "../../../types";
+import { useConfirmModal } from "../../02-Organisms/ConfirmModal/useConfirmModal";
 
 export const useInterviewPage = () => {
   const { id } = useParams<{ id: string }>();

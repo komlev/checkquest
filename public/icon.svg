@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" xmlns:bx="https://boxy-svg.com">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
   <defs>
-    <linearGradient id="gradient-0" bx:pinned="true">
-      <stop offset="0.079" style="stop-color: rgb(255, 228, 0);"/>
-      <stop offset="0.429" style="stop-color: rgb(0, 177, 255);"/>
-      <stop offset="0.679" style="stop-color: rgb(3, 255, 213);"/>
-      <stop offset="0.996" style="stop-color: rgb(255, 213, 3);"/>
+    <linearGradient id="gradient-0">
+      <stop offset="0.079" style="stop-color: rgb(0, 211, 187);"/>
+      <stop offset="0.411" style="stop-color: rgb(252, 183, 0);"/>
+      <stop offset="0.679" style="stop-color: rgb(252, 183, 0);"/>
+      <stop offset="0.896" style="stop-color: rgb(0, 211, 187);"/>
     </linearGradient>
-    <linearGradient id="gradient-2" bx:pinned="true">
-      <stop offset="0.408" style="stop-color: rgb(0, 254, 232);"/>
+    <linearGradient id="gradient-2">
+      <stop offset="0.408" style="stop-color: rgb(252, 183, 0);"/>
     </linearGradient>
     <linearGradient gradientUnits="userSpaceOnUse" x1="303.044" y1="30.535" x2="303.044" y2="538.61" id="gradient-0-1" href="#gradient-0" gradientTransform="matrix(0.756417, -0.654089, 0.680229, 0.786648, -141.326233, 262.625674)"/>
   </defs>

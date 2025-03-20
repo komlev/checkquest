@@ -23,7 +23,11 @@ export const Dashboard: FC = () => {
     <Page className="flex flex-col">
       <Toolstrip>
         <Heading1>Recent interviews</Heading1>
-        <button onClick={onOpen} className="btn btn-sm btn-primary">
+        <button
+          id="add-interview-btn"
+          onClick={onOpen}
+          className="btn btn-sm btn-primary"
+        >
           New Interview
         </button>
       </Toolstrip>

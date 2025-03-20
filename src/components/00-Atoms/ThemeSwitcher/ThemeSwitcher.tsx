@@ -23,7 +23,7 @@ export const ThemeSwitcher = () => {
       {/* this hidden checkbox controls the state */}
       <input
         type="checkbox"
-        className="theme-controller"
+        className="theme-controller focusable"
         value="light"
         checked={isdark}
         onChange={() => setIsdark(!isdark)}

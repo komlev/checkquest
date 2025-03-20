@@ -1,5 +1,6 @@
 import { FC, RefObject } from "react";
 import { Section } from "../../../types";
+import { getQuestionLabel } from "../../../utils/checklist";
 import { FormControl } from "../../00-Atoms/FormControl/FormControl";
 import { TrashIcon } from "../../00-Atoms/Icons/TrashIcon";
 import { Line } from "../../00-Atoms/Line/Line";
@@ -26,12 +27,12 @@ type Props = {
 export const SectionInput: FC<Props> = ({
   section,
   sectionIndex,
-  addQuestion,
-  updateSection,
-  removeSection,
   lastInput,
   selectedSection,
   sectionsLength,
+  addQuestion,
+  updateSection,
+  removeSection,
   removeQuestion,
   updateQuestion,
 }) => (
@@ -42,7 +43,7 @@ export const SectionInput: FC<Props> = ({
     <div className="card-body">
       <div className="flex justify-between items-start">
         <FormControl
-          label={`${sectionIndex + 1}. Section Name`}
+          label={getQuestionLabel(sectionIndex, undefined, "Section Name")}
           className="w-1/2"
           required
         >

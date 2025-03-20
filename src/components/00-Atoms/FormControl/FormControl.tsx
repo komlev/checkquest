@@ -17,6 +17,7 @@ type Props = DetailedHTMLProps<
 };
 
 export const FormControl: FC<Props> = ({
+  id,
   label,
   error,
   required,
@@ -29,9 +30,12 @@ export const FormControl: FC<Props> = ({
     aria-required={required}
     aria-invalid={!!error}
   >
-    <legend className={clsx("fieldset-legend text-start", labelClassname)}>{label}</legend>
+    <legend className={clsx("fieldset-legend text-start", labelClassname)}>
+      {label}
+    </legend>
     {props.children}
     <label
+      htmlFor={id}
       className={clsx(
         "label text-error transition-opacity",
         !error && "opacity-0"

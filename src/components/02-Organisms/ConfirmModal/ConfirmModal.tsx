@@ -1,5 +1,5 @@
 import { FC } from "react";
-import { Modal } from "./Modal";
+import { Modal } from "../../00-Atoms/Modal";
 
 interface ConfirmModalProps {
   isOpen: boolean;
@@ -36,12 +36,14 @@ export const ConfirmModal: FC<ConfirmModalProps> = ({
       footer={
         <div className="flex justify-end sm:flex-row flex-col-reverse gap-2 w-full">
           <button
+            id="modal-cancel-btn"
             className="btn btn-outline w-full sm:w-auto"
             onClick={onClose}
           >
             {cancelText}
           </button>
           <button
+            id="modal-confirm-btn"
             aria-keyshortcuts={isOpen ? "enter" : undefined}
             className="btn btn-primary w-full sm:w-auto"
             onClick={handleConfirm}

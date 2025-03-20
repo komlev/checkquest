@@ -23,22 +23,36 @@ export const Breadcrumbs = () => {
     <div className="breadcrumbs text-sm p-1">
       <ul>
         <li>
-          <Link to={ROOT}>Home</Link>
+          <Link className="focusable" to={ROOT}>
+            Home
+          </Link>
         </li>
         {isChecklist && (
           <li>
-            <Link to={CHECKLIST_LIST}>Checklists</Link>
+            <Link className="focusable" to={CHECKLIST_LIST}>
+              Checklists
+            </Link>
           </li>
         )}
         {isInterviews && (
           <li>
-            <Link to={INTERVIEW_LIST}>Interviews</Link>
+            <Link className="focusable" to={INTERVIEW_LIST}>
+              Interviews
+            </Link>
           </li>
         )}
         {id && !isNew && (
           <li>
-            {isChecklist && <Link to={getChecklistPage(id)}>List</Link>}
-            {isInterviews && <Link to={getInterviewPage(id)}>Interview</Link>}
+            {isChecklist && (
+              <Link className="focusable" to={getChecklistPage(id)}>
+                List
+              </Link>
+            )}
+            {isInterviews && (
+              <Link className="focusable" to={getInterviewPage(id)}>
+                Interview
+              </Link>
+            )}
           </li>
         )}
         {isNew && (

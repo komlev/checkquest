@@ -1,7 +1,8 @@
 import { FC, useMemo } from "react";
+import { Section } from "../../../types";
+import { getQuestionLabel } from "../../../utils/checklist";
 import { Line } from "../../00-Atoms/Line/Line";
 import { Heading2, Subtitle } from "../../00-Atoms/Typography";
-import { Section } from "../../../types";
 
 interface InterviewSectionCardProps {
   section: Section;
@@ -42,7 +43,7 @@ export const InterviewSectionCard: FC<InterviewSectionCardProps> = ({
       <div className="card-body">
         <div className="flex justify-between items-start gap-2">
           <Heading2 className="text-xl font-bold mb-4">
-            {sectionIndex + 1}. {section.title}
+            {getQuestionLabel(sectionIndex, undefined, section.title)}
           </Heading2>
           <div className="flex flex-col items-end gap-2">
             <input
@@ -94,7 +95,11 @@ export const InterviewSectionCard: FC<InterviewSectionCardProps> = ({
                     onClick={(e) => e.stopPropagation()}
                   />
                   <span>
-                    {sectionIndex + 1}.{questionIndex + 1}. {question.text}
+                    {getQuestionLabel(
+                      sectionIndex,
+                      questionIndex,
+                      question.text
+                    )}
                     {question.extra && (
                       <span className="badge badge-xs badge-accent ml-2">
                         Extra

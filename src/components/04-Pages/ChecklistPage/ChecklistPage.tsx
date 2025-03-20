@@ -15,11 +15,12 @@ import { ClipboardIcon } from "../../00-Atoms/Icons/ClipboardIcon";
 import { EditIcon } from "../../00-Atoms/Icons/EditIcon";
 import { TrashIcon } from "../../00-Atoms/Icons/TrashIcon";
 import { Line } from "../../00-Atoms/Line/Line";
-import { ConfirmModal, useConfirmModal } from "../../00-Atoms/Modal";
 import { Toolstrip } from "../../00-Atoms/Tooltstrip/Toolstip";
 import { Caption, Heading1 } from "../../00-Atoms/Typography";
 import { Page } from "../../01-Molecules/Page/Page";
 import { ChecklistGrid } from "../../02-Organisms/ChecklistGrid/ChecklistGrid";
+import { ConfirmModal } from "../../02-Organisms/ConfirmModal/ConfirmModal";
+import { useConfirmModal } from "../../02-Organisms/ConfirmModal/useConfirmModal";
 import { NewInterviewModal } from "../../02-Organisms/NewInterviewForm/NewInterviewModal";
 import { useNewInterviewModal } from "../../02-Organisms/NewInterviewForm/useNewInterviewModal";
 import { NotFoundPage } from "../NotFoundPage/NotFoundPage";
@@ -97,11 +98,16 @@ export const ChecklistPage: FC = () => {
           </div>
         </div>
         <div className="flex gap-2 justify-between w-full md:w-auto">
-          <button onClick={onOpen} className="btn btn-sm btn-primary">
+          <button
+            id="add-interview-btn"
+            onClick={onOpen}
+            className="btn btn-sm btn-primary"
+          >
             Start Interview
           </button>
           <div className="flex gap-2">
             <button
+              id="copy-checklist-btn"
               className="btn btn-sm btn-square"
               onClick={handleCopy}
               title="Export Checklist"
@@ -115,6 +121,7 @@ export const ChecklistPage: FC = () => {
               />
             </button>
             <Link
+              id="edit-checklist-btn"
               to={getEditChecklistPage(id)}
               className="btn btn-sm btn-square"
               title="Edit Checklist"
@@ -128,6 +135,7 @@ export const ChecklistPage: FC = () => {
               />
             </Link>
             <button
+              id="delete-checklist-btn"
               className="btn btn-error btn-sm btn-outline btn-square"
               onClick={handleDelete}
               title="Delete Checklist"
