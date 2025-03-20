@@ -40,7 +40,7 @@ export const SectionCard: FC<SectionCardProps> = ({
           {section.questions.map((question, questionIndex) => (
             <li
               key={question.id}
-              className={`flex justify-between items-center rounded-lg p-3 bg-base-200 shadow-sm cursor-pointer hover:shadow-md font-medium ${
+              className={`flex justify-between items-center rounded-lg p-3 bg-base-200 shadow-sm cursor-pointer hover:shadow-md font-medium gap-1 ${
                 question.extra ? "border-l-4 border-accent" : "pl-4"
               }`}
             >
