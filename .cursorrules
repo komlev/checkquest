@@ -71,12 +71,12 @@ Prompt:
 Design an application for interview management where interviewer can create checklists and conduct interviews filling those checklists.
 
 The app should:
-Allow users to create knowledge bases for conducting interviews. And conduct interviews agains that knowledge base with checklist and scoring functionality. Also to see list of interviews.
+Allow users to create checklists for conducting interviews. And conduct interviews agains that checklist with checklist and scoring functionality. Also to see list of interviews.
 
 User Interface:
 Main route is a dashboard with list of interviews. A button to create a new interview.
-A route to see knowledge bases list with ability to create a new knowledge base.
-Knowledge base page is a page with sections and each section contains list of checklist questions.
+A route to see checklists list with ability to create a new checklist.
+checklist page is a page with sections and each section contains list of checklist questions.
 Each question has a score.
 
 Interview page is a page with name, summary field, and list of sections with questions.
