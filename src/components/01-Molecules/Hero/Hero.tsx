@@ -9,6 +9,7 @@ type Props = Omit<
 > & {
   title: string;
   children: ReactNode;
+  buttonId?: string;
   button: string;
   location?: string;
   onClick?: () => void;
@@ -19,29 +20,37 @@ export const Hero: FC<Props> = ({
   children,
   location,
   onClick,
+  buttonId,
   button,
   ...props
-}) => (
-  <div {...props} className={clsx("hero card shadow-md", props.className)}>
-    <div className="hero-content py-10 text-center">
-      <div className="max-w-md">
-        <Heading1 className="text-5xl">{title}</Heading1>
-        <Subtitle className="py-4">{children}</Subtitle>
-        {button && (
-          <>
-            {location && (
-              <Link to={location} className="btn btn-primary mt-2">
-                {button}
-              </Link>
-            )}
-            {onClick && (
-              <button onClick={onClick} className="btn btn-primary mt-2">
-                {button}
-              </button>
-            )}
-          </>
-        )}
+}) => {
+  const id = `hero-${buttonId}`;
+  return (
+    <div {...props} className={clsx("hero card shadow-md", props.className)}>
+      <div className="hero-content py-10 text-center">
+        <div className="max-w-md">
+          <Heading1 className="text-5xl">{title}</Heading1>
+          <Subtitle className="py-4">{children}</Subtitle>
+          {button && (
+            <>
+              {location && (
+                <Link id={id} to={location} className="btn btn-primary mt-2">
+                  {button}
+                </Link>
+              )}
+              {onClick && (
+                <button
+                  id={id}
+                  onClick={onClick}
+                  className="btn btn-primary mt-2"
+                >
+                  {button}
+                </button>
+              )}
+            </>
+          )}
+        </div>
       </div>
     </div>
-  </div>
-);
+  );
+};

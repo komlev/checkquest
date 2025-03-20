@@ -52,6 +52,7 @@ export const Modal: FC<ModalProps> = ({
       <div className="modal-box">
         <form method="dialog">
           <button
+            id="modal-close-btn"
             className="btn btn-xs btn-ghost absolute right-2 top-2"
             onClick={onClose}
             aria-label="Close modal"

@@ -23,6 +23,7 @@ import {
   INTERVIEW_PAGE,
   ROOT,
 } from "./routes";
+import { GithubIcon } from "./components/00-Atoms/Icons/GithubIcon";
 
 export const App: FC = () => {
   startKeyUX(window, [hotkeyKeyUX([])]);
@@ -56,13 +57,22 @@ export const App: FC = () => {
           <div className="flex font-medium text-neutral-content">
             CheckQuest by{" "}
             <a
-              className="link"
+              className="link focusable"
               target="_blank"
               href="https://komlev.me"
               rel="noopener noreferrer"
               aria-label="Visit komlev's website"
             >
               komlev
+            </a>
+            <a
+              target="_blank"
+              className="focusable"
+              href="https://github.com/komlev/checkquest"
+              title="Github link"
+              aria-label="Github link"
+            >
+              <GithubIcon />
             </a>
           </div>
         </footer>

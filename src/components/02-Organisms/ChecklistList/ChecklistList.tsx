@@ -11,10 +11,12 @@ import { getSectionsQuestionCount } from "../../../utils/checklist";
 import { EditIcon } from "../../00-Atoms/Icons/EditIcon";
 import { StartIcon } from "../../00-Atoms/Icons/StartIcon";
 import { TrashIcon } from "../../00-Atoms/Icons/TrashIcon";
-import { ConfirmModal, useConfirmModal } from "../../00-Atoms/Modal";
 import { Search } from "../../01-Molecules/Search/Search";
 import { NewInterviewModal } from "../NewInterviewForm/NewInterviewModal";
 import { useNewInterviewModal } from "../NewInterviewForm/useNewInterviewModal";
+import { useConfirmModal } from "../ConfirmModal/useConfirmModal";
+import { ConfirmModal } from "../ConfirmModal/ConfirmModal";
+import { Checklist } from "../../../types";
 
 const $search = atom("");
 const $filtered = computed([$checklistsStore, $search], (list, search) =>
@@ -46,9 +48,15 @@ export const ChecklistList = () => {
     });
   };
 
+  const onStartClick = (checklist: Checklist) => {
+    setChecklistParam(checklist.id);
+    onOpen();
+  };
+
   return (
     <div className="flex flex-col gap-2">
       <Search
+        id="checklist-search"
         value={search}
         containerClassname="w-full md:w-60"
         onChange={(e) => {
@@ -62,78 +70,77 @@ export const ChecklistList = () => {
               ? "Available checklists"
               : "No checklists available"}
           </li>
-          {checklists.map((checklist) => {
-            return (
-              <li key={checklist.id} className="list-row">
-                <div
-                  aria-hidden="true"
-                  role="presentation"
-                  className="text-4xl font-black uppercase text-warning"
-                >
-                  {checklist.name?.[0]}
-                </div>
-                <div>
-                  <div className="font-medium">
-                    <Link to={getChecklistPage(checklist.id)}>
-                      {checklist.name}
-                    </Link>
-                  </div>
-                  <div className="text-xs uppercase font-semibold opacity-60 flex gap-1">
-                    {checklist.description && (
-                      <div>{checklist.description}</div>
-                    )}
-                    <div>
-                      {getSectionsQuestionCount(checklist.sections)} questions
-                    </div>
-                  </div>
-                </div>
-                <div className="flex gap-1">
-                  <button
-                    title="Start interview"
-                    aria-label="Start interview"
-                    className="btn btn-square btn-ghost"
-                    onClick={() => {
-                      setChecklistParam(checklist.id);
-                      onOpen();
-                    }}
-                  >
-                    <StartIcon
-                      className="fill-current"
-                      width={12}
-                      aria-hidden="true"
-                      role="presentation"
-                    />
-                  </button>
+          {checklists.map((checklist) => (
+            <li key={checklist.id} className="list-row">
+              <div
+                aria-hidden="true"
+                role="presentation"
+                className="text-4xl font-black uppercase text-warning"
+              >
+                {checklist.name?.[0]}
+              </div>
+              <div>
+                <div className="font-medium">
                   <Link
-                    to={getEditChecklistPage(checklist.id)}
-                    className="btn btn-square btn-ghost"
-                    title="Edit Checklist"
-                    aria-label="Edit Checklist"
+                    className="focusable"
+                    to={getChecklistPage(checklist.id)}
                   >
-                    <EditIcon
-                      className="fill-current"
-                      width={16}
-                      aria-hidden="true"
-                      role="presentation"
-                    />
+                    {checklist.name}
                   </Link>
-                  <button
-                    className="btn btn-square btn-ghost"
-                    onClick={() => handleDelete(checklist.id)}
-                    title="Delete Checklist"
-                    aria-label="Delete Checklist"
-                  >
-                    <TrashIcon
-                      className="fill-current text-error"
-                      width={16}
-                      aria-hidden="true"
-                      role="presentation"
-                    />
-                  </button>
                 </div>
-              </li>
-            );
-          })}
+                <div className="text-xs uppercase font-semibold opacity-60 flex gap-1">
+                  {checklist.description && <div>{checklist.description}</div>}
+                  <div>
+                    {getSectionsQuestionCount(checklist.sections)} questions
+                  </div>
+                </div>
+              </div>
+              <div className="flex gap-1">
+                <button
+                  id={`start-interview-btn-${checklist.id}`}
+                  title="Start interview"
+                  aria-label="Start interview"
+                  className="btn btn-square btn-ghost"
+                  onClick={() => onStartClick(checklist)}
+                >
+                  <StartIcon
+                    className="fill-current"
+                    width={12}
+                    aria-hidden="true"
+                    role="presentation"
+                  />
+                </button>
+                <Link
+                  id={`edit-checklist-btn-${checklist.id}`}
+                  to={getEditChecklistPage(checklist.id)}
+                  className="btn btn-square btn-ghost"
+                  title="Edit Checklist"
+                  aria-label="Edit Checklist"
+                >
+                  <EditIcon
+                    className="fill-current"
+                    width={16}
+                    aria-hidden="true"
+                    role="presentation"
+                  />
+                </Link>
+                <button
+                  id={`delete-checklist-btn-${checklist.id}`}
+                  className="btn btn-square btn-ghost"
+                  onClick={() => handleDelete(checklist.id)}
+                  title="Delete Checklist"
+                  aria-label="Delete Checklist"
+                >
+                  <TrashIcon
+                    className="fill-current text-error"
+                    width={16}
+                    aria-hidden="true"
+                    role="presentation"
+                  />
+                </button>
+              </div>
+            </li>
+          ))}
         </ul>
         <NewInterviewModal
           isOpen={isOpen}

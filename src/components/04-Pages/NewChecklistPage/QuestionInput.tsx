@@ -1,6 +1,8 @@
 import { FC, RefObject } from "react";
 import { Question, Section } from "../../../types";
 import { FormControl } from "../../00-Atoms/FormControl/FormControl";
+import clsx from "clsx";
+import { getQuestionLabel } from "../../../utils/checklist";
 
 type Props = {
   section: Section;
@@ -31,12 +33,18 @@ export const QuetionInput: FC<Props> = ({
 }) => (
   <div
     key={question.id}
-    className="flex flex-col gap-1 bg-base-200 shadow-xs p-2 rounded-lg border border-warning/50"
+    className={clsx(
+      "flex flex-col gap-1 bg-base-200 shadow-xs p-2 rounded-lg border",
+      {
+        "border-warning/50": !question.extra,
+        "border-accent/50": question.extra,
+      }
+    )}
   >
     <div className="flex gap-2">
       <FormControl
         className="w-full"
-        label={`Question ${sectionIndex + 1}.${questionIndex + 1}`}
+        label={`Question ${getQuestionLabel(sectionIndex, questionIndex)}`}
         required
       >
         <input
@@ -93,7 +101,10 @@ export const QuetionInput: FC<Props> = ({
         <label className="label cursor-pointer flex items-center">
           <input
             type="checkbox"
-            className="checkbox checkbox-xs checkbox-warning rounded-sm"
+            className={clsx("checkbox checkbox-xs rounded-sm", {
+              "checkbox-warning": !question.extra,
+              "checkbox-accent": question.extra,
+            })}
             checked={question.extra || false}
             onChange={(e) =>
               updateQuestion(
@@ -110,7 +121,7 @@ export const QuetionInput: FC<Props> = ({
       </div>
       <button
         type="button"
-        className="btn btn-xs btn-warning relative z-10"
+        className="btn btn-xs relative z-10 btn-warning"
         onClick={() => removeQuestion(sectionIndex, questionIndex)}
       >
         Remove Question

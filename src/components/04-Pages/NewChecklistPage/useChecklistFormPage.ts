@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from "react";
+import { useLayoutEffect, useRef, useState } from "react";
 import { useLocation, useParams } from "wouter";
 import { getChecklistPage } from "../../../routes";
 import {
@@ -24,7 +24,7 @@ export const useChecklistFormPage = () => {
   const [selectedSection, setSelectedSection] = useState(-1);
 
   // Load existing checklist data if in edit mode
-  useEffect(() => {
+  useLayoutEffect(() => {
     if (isEditMode && params?.id) {
       const existingChecklist = getChecklist(params.id);
       if (existingChecklist) {

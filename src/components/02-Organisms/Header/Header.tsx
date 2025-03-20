@@ -13,7 +13,7 @@ export const Header = () => (
     <Container className="flex justify-between items-center">
       <Link
         to={ROOT}
-        className="font-black text-2xl flex gap-2 items-center w-fit rounded-sm"
+        className="font-black text-2xl flex gap-2 items-center w-fit rounded-sm focusable"
         aria-label="CheckQuest Home"
       >
         <CheckIcon
@@ -30,6 +30,7 @@ export const Header = () => (
         <ul className="flex gap-2">
           <li>
             <Link
+              id="interviews-link"
               to={INTERVIEW_LIST}
               className="btn btn-sm btn-accent btn-dash"
             >
@@ -38,6 +39,7 @@ export const Header = () => (
           </li>
           <li>
             <Link
+              id="checklists-link"
               to={CHECKLIST_LIST}
               className="btn btn-sm btn-warning btn-dash"
             >

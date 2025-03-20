@@ -48,9 +48,9 @@ export const Heading4: FC<HeadingProps> = ({ children, ...props }) => (
 );
 
 export const Subtitle: FC<HeadingProps> = ({ children, className = "" }) => (
-  <p className={clsx("text-lg font-medium text-base-content/80", className)}>
+  <div className={clsx("text-lg font-medium text-base-content/80", className)}>
     {children}
-  </p>
+  </div>
 );
 
 export const Body: FC<TextProps> = ({ children, className = "" }) => (

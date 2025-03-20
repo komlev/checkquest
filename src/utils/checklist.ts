@@ -20,3 +20,20 @@ export const getSectionPoints = (section: Section, type: COUNT = "all") =>
       );
     })
     .reduce((total, q) => total + q.score, 0);
+
+export const getQuestionLabel = (
+  sectionIndex: number,
+  questionIndex?: number,
+  questionName?: string
+) => {
+  let result = `${sectionIndex + 1}`;
+  if (questionIndex !== undefined) {
+    result += `.${questionIndex + 1}`;
+  }
+
+  if (questionName !== undefined) {
+    result += `. ${questionName}`;
+  }
+
+  return result;
+};

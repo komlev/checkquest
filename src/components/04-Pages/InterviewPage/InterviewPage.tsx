@@ -3,12 +3,12 @@ import { Link } from "wouter";
 import { INTERVIEW_LIST } from "../../../routes";
 import { TrashIcon } from "../../00-Atoms/Icons/TrashIcon";
 import { Line } from "../../00-Atoms/Line/Line";
-import { ConfirmModal } from "../../00-Atoms/Modal";
 import { Score } from "../../00-Atoms/Score/Score";
 import { SkillLevel } from "../../00-Atoms/SkillLevel/SkillLevel";
 import { Toolstrip } from "../../00-Atoms/Tooltstrip/Toolstip";
 import { Caption, Heading1, Subtitle } from "../../00-Atoms/Typography";
 import { Page } from "../../01-Molecules/Page/Page";
+import { ConfirmModal } from "../../02-Organisms/ConfirmModal/ConfirmModal";
 import { InterviewSectionCard } from "../../02-Organisms/InterviewSectionCard/InterviewSectionCard";
 import { NotFoundPage } from "../NotFoundPage/NotFoundPage";
 import { useInterviewPage } from "./useInterviewPage";
@@ -45,6 +45,7 @@ export const InterviewPage: FC = () => {
           </Caption>
         </div>
         <button
+          id="delete-interview-btn"
           className="btn btn-sm btn-error btn-outline btn-square"
           onClick={handleDelete}
           title="Delete Interview"
@@ -152,7 +153,11 @@ export const InterviewPage: FC = () => {
                   aria-labelledby="progress-label"
                 ></progress>
               </div>
-              <Link to={INTERVIEW_LIST} className="btn btn-primary">
+              <Link
+                id="complete-interview"
+                to={INTERVIEW_LIST}
+                className="btn btn-primary"
+              >
                 Complete
               </Link>
             </div>

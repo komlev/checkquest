@@ -1,6 +1,7 @@
 import { FC } from "react";
 import { Section } from "../../../types";
-import { getSectionPoints } from "../../../utils/checklist";
+import { getQuestionLabel, getSectionPoints } from "../../../utils/checklist";
+import { Line } from "../../00-Atoms/Line/Line";
 import { Caption } from "../../00-Atoms/Typography/Typography";
 
 interface SectionCardProps {
@@ -15,26 +16,24 @@ export const SectionCard: FC<SectionCardProps> = ({
 }) => (
   <div className="card card-border border-base-300 bg-base-100 shadow-sm hover:shadow-md transition-all">
     <div className="card-body">
-      <div className="flex flex-col">
-        <div className="flex justify-between items-start">
-          <div>
-            <span className="m-0 font-black text-2xl leading-none">
-              {section.title}
-            </span>
-            <div className="text-xs text-base-content/50">
-              {section.questions.length} questions
-            </div>
-          </div>
-          <span className="badge badge-sm badge-warning whitespace-nowrap">
-            {getSectionPoints(section)} pts
+      <div className="flex justify-between items-start">
+        <div>
+          <span className="m-0 font-black text-2xl leading-none">
+            {section.title}
           </span>
+          <div className="text-xs text-base-content/50">
+            {section.questions.length} questions
+          </div>
         </div>
+        <span className="badge badge-sm badge-warning whitespace-nowrap">
+          {getSectionPoints(section)} pts
+        </span>
       </div>
-      <hr className="border-t border-base-300" />
+      <Line className="my-0" />
       {section.questions.length === 0 ? (
-        <div className="text-center py-2">
-          <Caption>No questions in this section</Caption>
-        </div>
+        <Caption className="text-center py-2">
+          No questions in this section
+        </Caption>
       ) : (
         <ul className="space-y-2 overflow-y-auto pr-2 scrollbar-thin scrollbar-thumb-base-300">
           {section.questions.map((question, questionIndex) => (
@@ -46,7 +45,7 @@ export const SectionCard: FC<SectionCardProps> = ({
             >
               <div className="flex gap-2 items-center">
                 <span className="font-medium text-sm">
-                  {sectionIndex + 1}.{questionIndex + 1}.
+                  {getQuestionLabel(sectionIndex, questionIndex)}
                 </span>
                 <span className="text-sm">{question.text}</span>
                 {question.extra && (
