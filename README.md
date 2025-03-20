@@ -50,8 +50,8 @@ Application is available at: https://checkquest.komlev.me/
 
 ## Usage
 
-The flow is pretty straighforward. There is a checklists section, an interviews section.
-First you add a checklist with sections/questions and you assign a score to each questions. There might be "extra" questions which are not required but they add bonus points.
+The flow is pretty straighforward. There is a checklists section and an interviews section.
+First you add a checklist with sections/questions and you assign a score to each question. There might be "extra" questions which are not required but they add bonus points.
 After checklist creation you can start an interview and check all the necessary questions.
 All data is stored locally in the browser.
 
