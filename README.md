@@ -30,7 +30,7 @@ Application is available at: https://checkquest.komlev.me/
 1. Clone the repository
 
    ```bash
-   git clone https://github.com/yourusername/checkquest.git
+   git clone https://github.com/komlev/checkquest.git
    cd checkquest
    ```
 
