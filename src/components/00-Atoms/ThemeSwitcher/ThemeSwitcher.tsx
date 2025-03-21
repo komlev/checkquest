@@ -23,7 +23,7 @@ export const ThemeSwitcher = () => {
       {/* this hidden checkbox controls the state */}
       <input
         type="checkbox"
-        className="theme-controller focusable"
+        className="theme-controller focusable-neutral"
         value="light"
         checked={isdark}
         onChange={() => setIsdark(!isdark)}
@@ -32,7 +32,7 @@ export const ThemeSwitcher = () => {
       />
       {/* sun icon */}
       <svg
-        className="swap-off h-6 w-6 fill-current"
+        className="swap-off h-6 w-6 text-neutral-content fill-current"
         xmlns="http://www.w3.org/2000/svg"
         viewBox="0 0 24 24"
         aria-hidden="true"
@@ -44,7 +44,7 @@ export const ThemeSwitcher = () => {
 
       {/* moon icon */}
       <svg
-        className="swap-on h-6 w-6 fill-current"
+        className="swap-on h-6 w-6 text-neutral-content fill-current"
         xmlns="http://www.w3.org/2000/svg"
         viewBox="0 0 24 24"
         aria-hidden="true"

@@ -3,8 +3,8 @@ import { FC, useEffect } from "react";
 import { themeChange } from "theme-change";
 import { Route, Router, Switch } from "wouter";
 import { useHashLocation } from "wouter/use-hash-location";
-import { GithubIcon } from "./components/00-Atoms/Icons/GithubIcon";
-import { ErrorBoundary } from "./components/02-Organisms/ErrorBoundary/ErrorBoundary";
+import { ErrorBoundaryPage } from "./components/02-Organisms/ErrorBoundaryPage/ErrorBoundaryPage";
+import { Footer } from "./components/02-Organisms/Footer/Footer";
 import { Header } from "./components/02-Organisms/Header/Header";
 import { Notifications } from "./components/02-Organisms/Notifications/Notifications";
 import { ChecklistListPage } from "./components/04-Pages/ChecklistListPage/ChecklistListPage";
@@ -39,7 +39,7 @@ export const App: FC = () => {
         <Header />
         <Notifications />
         <main className="flex-grow px-2">
-          <ErrorBoundary>
+          <ErrorBoundaryPage>
             <Switch>
               <Route path={ROOT} component={Dashboard} />
               <Route path={CHECKLIST_LIST} component={ChecklistListPage} />
@@ -51,34 +51,9 @@ export const App: FC = () => {
               <Route path={INTERVIEW_PAGE} component={InterviewPage} />
               <Route component={NotFoundPage} />
             </Switch>
-          </ErrorBoundary>
+          </ErrorBoundaryPage>
         </main>
-        <footer
-          className="footer footer-center py-4 bg-neutral"
-          role="contentinfo"
-        >
-          <div className="flex font-medium text-neutral-content">
-            CheckQuest by{" "}
-            <a
-              className="link focusable"
-              target="_blank"
-              href="https://komlev.me"
-              rel="noopener noreferrer"
-              aria-label="Visit komlev's website"
-            >
-              komlev
-            </a>
-            <a
-              target="_blank"
-              className="focusable"
-              href="https://github.com/komlev/checkquest"
-              title="Github link"
-              aria-label="Github link"
-            >
-              <GithubIcon />
-            </a>
-          </div>
-        </footer>
+        <Footer />
       </div>
     </Router>
   );

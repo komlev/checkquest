@@ -1,6 +1,6 @@
 import { FC } from "react";
 import { Modal } from "../../00-Atoms/Modal";
-import { NewInterviewForm } from "./NewInterviewForm";
+import { NewInterviewForm } from "../NewInterviewForm/NewInterviewForm";
 import { useLocation } from "wouter";
 import { Interview } from "../../../types";
 import { addInterview } from "../../../stores/interviewsStore";
@@ -12,11 +12,7 @@ type Props = {
   checklistParam?: string;
 };
 
-export const NewInterviewModal: FC<Props> = ({
-  isOpen,
-  onClose,
-  checklistParam,
-}) => {
+const NewInterviewModal: FC<Props> = ({ isOpen, onClose, checklistParam }) => {
   const [, setLocation] = useLocation();
 
   const onCreate = (interview: Interview) => {
@@ -34,3 +30,5 @@ export const NewInterviewModal: FC<Props> = ({
     </Modal>
   );
 };
+
+export default NewInterviewModal;

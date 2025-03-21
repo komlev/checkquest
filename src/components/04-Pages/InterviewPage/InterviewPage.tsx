@@ -8,7 +8,7 @@ import { SkillLevel } from "../../00-Atoms/SkillLevel/SkillLevel";
 import { Toolstrip } from "../../00-Atoms/Tooltstrip/Toolstip";
 import { Caption, Heading1, Subtitle } from "../../00-Atoms/Typography";
 import { Page } from "../../01-Molecules/Page/Page";
-import { ConfirmModal } from "../../02-Organisms/ConfirmModal/ConfirmModal";
+import { ConfirmModal } from "../../02-Organisms/ConfirmModal";
 import { InterviewSectionCard } from "../../02-Organisms/InterviewSectionCard/InterviewSectionCard";
 import { NotFoundPage } from "../NotFoundPage/NotFoundPage";
 import { useInterviewPage } from "./useInterviewPage";
@@ -26,7 +26,7 @@ export const InterviewPage: FC = () => {
     confirmModal,
     handleSummaryChange,
     handleCheckQuestion,
-    handleDelete,
+    handleDelete: onDelete,
   } = useInterviewPage();
 
   if (!interview) {
@@ -47,7 +47,7 @@ export const InterviewPage: FC = () => {
         <button
           id="delete-interview-btn"
           className="btn btn-sm btn-error btn-outline btn-square"
-          onClick={handleDelete}
+          onClick={onDelete}
           title="Delete Interview"
           aria-label="Delete Interview"
         >

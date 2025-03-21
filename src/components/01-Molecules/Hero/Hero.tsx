@@ -26,7 +26,7 @@ export const Hero: FC<Props> = ({
 }) => {
   const id = `hero-${buttonId}`;
   return (
-    <div {...props} className={clsx("hero card shadow-md", props.className)}>
+    <div {...props} className={clsx("hero card shadow-md bg-base-100", props.className)}>
       <div className="hero-content py-10 text-center">
         <div className="max-w-md">
           <Heading1 className="text-5xl">{title}</Heading1>

@@ -7,7 +7,7 @@ import { Heading1 } from "../../00-Atoms/Typography";
 import { Page } from "../../01-Molecules/Page/Page";
 import { EmptyHero } from "../../02-Organisms/EmptyHero/EmptyHero";
 import { InterviewList } from "../../02-Organisms/InterviewList/InterviewList";
-import { NewInterviewModal } from "../../02-Organisms/NewInterviewForm/NewInterviewModal";
+import { NewInterviewModal } from "../../02-Organisms/NewInterviewModal";
 import { useNewInterviewModal } from "../../02-Organisms/NewInterviewForm/useNewInterviewModal";
 
 export const InterviewListPage: FC = () => {
