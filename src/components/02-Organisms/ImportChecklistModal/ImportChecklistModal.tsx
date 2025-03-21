@@ -11,7 +11,7 @@ type Props = {
   onClose: () => void;
 };
 
-export const ImportChecklistModal: FC<Props> = ({ isOpen, onClose }) => {
+const ImportChecklistModal: FC<Props> = ({ isOpen, onClose }) => {
   const [value, setValue] = useState("");
   const [, setLocation] = useLocation();
 
@@ -58,3 +58,5 @@ export const ImportChecklistModal: FC<Props> = ({ isOpen, onClose }) => {
     </Modal>
   );
 };
+
+export default ImportChecklistModal;

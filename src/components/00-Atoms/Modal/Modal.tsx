@@ -11,7 +11,7 @@ interface ModalProps {
   className?: string;
 }
 
-export const Modal: FC<ModalProps> = ({
+const Modal: FC<ModalProps> = ({
   isOpen,
   onClose,
   title,
@@ -52,6 +52,7 @@ export const Modal: FC<ModalProps> = ({
       <div className="modal-box">
         <form method="dialog">
           <button
+            type="button"
             id="modal-close-btn"
             className="btn btn-xs btn-ghost absolute right-2 top-2"
             onClick={onClose}
@@ -69,3 +70,5 @@ export const Modal: FC<ModalProps> = ({
     </dialog>
   );
 };
+
+export default Modal;

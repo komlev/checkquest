@@ -1,12 +1,8 @@
 import { FC } from "react";
 import { Link, useLocation, useParams } from "wouter";
+import { useCopyChecklist } from "../../../hooks/useCopyChecklist";
 import { CHECKLIST_LIST, getEditChecklistPage } from "../../../routes";
-import {
-  deleteChecklist,
-  exportChecklist,
-  getChecklist,
-} from "../../../stores/checklistStore";
-import { addNotification } from "../../../stores/notificationsStore";
+import { deleteChecklist, getChecklist } from "../../../stores/checklistStore";
 import {
   getSectionsPoints,
   getSectionsQuestionCount,
@@ -19,10 +15,10 @@ import { Toolstrip } from "../../00-Atoms/Tooltstrip/Toolstip";
 import { Caption, Heading1 } from "../../00-Atoms/Typography";
 import { Page } from "../../01-Molecules/Page/Page";
 import { ChecklistGrid } from "../../02-Organisms/ChecklistGrid/ChecklistGrid";
-import { ConfirmModal } from "../../02-Organisms/ConfirmModal/ConfirmModal";
+import { ConfirmModal } from "../../02-Organisms/ConfirmModal";
 import { useConfirmModal } from "../../02-Organisms/ConfirmModal/useConfirmModal";
-import { NewInterviewModal } from "../../02-Organisms/NewInterviewForm/NewInterviewModal";
 import { useNewInterviewModal } from "../../02-Organisms/NewInterviewForm/useNewInterviewModal";
+import { NewInterviewModal } from "../../02-Organisms/NewInterviewModal";
 import { NotFoundPage } from "../NotFoundPage/NotFoundPage";
 
 export const ChecklistPage: FC = () => {
@@ -41,11 +37,13 @@ export const ChecklistPage: FC = () => {
     cancelText,
   } = useConfirmModal();
 
+  const { onCopy } = useCopyChecklist();
+
   if (!checklist) {
     return <NotFoundPage />;
   }
 
-  const handleDelete = () => {
+  const onDelete = () => {
     onConfirmOpen({
       title: "Delete Checklist",
       message: "Are you sure you want to delete this checklist?",
@@ -54,20 +52,6 @@ export const ChecklistPage: FC = () => {
         setLocation(CHECKLIST_LIST);
       },
     });
-  };
-
-  const handleCopy = async () => {
-    const content = exportChecklist(checklist.id);
-    if (content) {
-      try {
-        await navigator.clipboard.writeText(content);
-        addNotification("Copied to clipboard");
-        return;
-      } catch (_err) {
-        //
-      }
-    }
-    addNotification("Export failed", "error");
   };
 
   const totalQuestions = getSectionsQuestionCount(checklist.sections);
@@ -109,7 +93,7 @@ export const ChecklistPage: FC = () => {
             <button
               id="copy-checklist-btn"
               className="btn btn-sm btn-square"
-              onClick={handleCopy}
+              onClick={() => onCopy(checklist)}
               title="Export Checklist"
               aria-label="Export Checklist"
             >
@@ -137,7 +121,7 @@ export const ChecklistPage: FC = () => {
             <button
               id="delete-checklist-btn"
               className="btn btn-error btn-sm btn-outline btn-square"
-              onClick={handleDelete}
+              onClick={onDelete}
               title="Delete Checklist"
               aria-label="Delete Checklist"
             >

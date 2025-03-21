@@ -3,7 +3,7 @@ import { FC } from "react";
 import { CHECKLIST_NEW } from "../../../routes";
 import { $checklistsStore } from "../../../stores/checklistStore";
 import { Hero } from "../../01-Molecules/Hero/Hero";
-import { NewInterviewModal } from "../NewInterviewForm/NewInterviewModal";
+import { NewInterviewModal } from "../NewInterviewModal";
 import { useNewInterviewModal } from "../NewInterviewForm/useNewInterviewModal";
 
 export const EmptyHero: FC = () => {
@@ -20,6 +20,7 @@ export const EmptyHero: FC = () => {
       location={hasChecklists ? undefined : CHECKLIST_NEW}
       onClick={hasChecklists ? onOpen : undefined}
     >
+      <img className="w-full" src="/landing.svg" alt="Checklist image" />
       {hasChecklists
         ? "Start by creating your first interview"
         : "Start by creating or importing checklists"}

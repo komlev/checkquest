@@ -19,7 +19,7 @@ export const NewChecklistPage: FC = () => {
     name,
     sections,
     addQuestion,
-    addSection,
+    addSection: onAddSection,
     handleSubmit,
     updateQuestion,
     removeQuestion,
@@ -31,7 +31,7 @@ export const NewChecklistPage: FC = () => {
   } = useChecklistFormPage();
 
   const sectionsLength = sections.length;
-  const onCancelClick = () => {
+  const onCancel = () => {
     setLocation(CHECKLIST_LIST);
   };
 
@@ -51,7 +51,7 @@ export const NewChecklistPage: FC = () => {
                   <button
                     type="button"
                     className="btn btn-primary"
-                    onClick={addSection}
+                    onClick={onAddSection}
                   >
                     Add Section
                   </button>
@@ -80,7 +80,7 @@ export const NewChecklistPage: FC = () => {
                   <button
                     type="button"
                     className="btn btn-sm btn-primary"
-                    onClick={addSection}
+                    onClick={onAddSection}
                   >
                     Add Section
                   </button>
@@ -88,7 +88,7 @@ export const NewChecklistPage: FC = () => {
               </div>
             )}
           </div>
-          <div className="card card-sm shadow-lg h-fit sticky top-2">
+          <div className="card card-sm shadow-lg h-fit sticky top-2 bg-base-100">
             <div className="card-body flex flex-col gap-2">
               <FormControl id="name" label="Checklist name" error={errors.name}>
                 <input
@@ -126,7 +126,7 @@ export const NewChecklistPage: FC = () => {
                   id="cancel-btn"
                   type="button"
                   className="btn btn-outline w-full"
-                  onClick={onCancelClick}
+                  onClick={onCancel}
                 >
                   Cancel
                 </button>

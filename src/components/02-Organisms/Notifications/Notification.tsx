@@ -34,9 +34,7 @@ export const Notification: FC<Props> = ({ notification }) => {
         title="Close notification"
         aria-label="Close notification"
         className="btn btn-xs btn-ghost"
-        onClick={() => {
-          removeNotification(notification.id);
-        }}
+        onClick={() => removeNotification(notification.id)}
       >
         ✕
       </button>

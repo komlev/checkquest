@@ -13,10 +13,12 @@ import { EditIcon } from "../../00-Atoms/Icons/EditIcon";
 import { StartIcon } from "../../00-Atoms/Icons/StartIcon";
 import { TrashIcon } from "../../00-Atoms/Icons/TrashIcon";
 import { Search } from "../../01-Molecules/Search/Search";
-import { ConfirmModal } from "../ConfirmModal/ConfirmModal";
+import { ConfirmModal } from "../ConfirmModal";
 import { useConfirmModal } from "../ConfirmModal/useConfirmModal";
-import { NewInterviewModal } from "../NewInterviewForm/NewInterviewModal";
+import { NewInterviewModal } from "../NewInterviewModal";
 import { useNewInterviewModal } from "../NewInterviewForm/useNewInterviewModal";
+import { useCopyChecklist } from "../../../hooks/useCopyChecklist";
+import { ClipboardIcon } from "../../00-Atoms/Icons/ClipboardIcon";
 
 const $search = atom("");
 const $filtered = computed([$checklistsStore, $search], (list, search) =>
@@ -40,7 +42,9 @@ export const ChecklistList = () => {
     cancelText,
   } = useConfirmModal();
 
-  const handleDelete = (id: string) => {
+  const { onCopy } = useCopyChecklist();
+
+  const onDelete = (id: string) => {
     onConfirmOpen({
       title: "Delete Checklist",
       message: "Are you sure you want to delete this checklist?",
@@ -100,12 +104,26 @@ export const ChecklistList = () => {
               <div className="flex gap-1">
                 <button
                   id={`start-interview-btn-${checklist.id}`}
-                  title="Start interview"
-                  aria-label="Start interview"
+                  title="Start Interview"
+                  aria-label="Start Interview"
                   className="btn btn-square btn-ghost"
                   onClick={() => onStartClick(checklist)}
                 >
                   <StartIcon
+                    className="fill-current"
+                    width={12}
+                    aria-hidden="true"
+                    role="presentation"
+                  />
+                </button>
+                <button
+                  id={`copy-checklist-btn-${checklist.id}`}
+                  title="Copy Checklist"
+                  aria-label="Copy Checklist"
+                  className="btn btn-square btn-ghost"
+                  onClick={() => onCopy(checklist)}
+                >
+                  <ClipboardIcon
                     className="fill-current"
                     width={12}
                     aria-hidden="true"
@@ -129,7 +147,7 @@ export const ChecklistList = () => {
                 <button
                   id={`delete-checklist-btn-${checklist.id}`}
                   className="btn btn-square btn-ghost"
-                  onClick={() => handleDelete(checklist.id)}
+                  onClick={() => onDelete(checklist.id)}
                   title="Delete Checklist"
                   aria-label="Delete Checklist"
                 >

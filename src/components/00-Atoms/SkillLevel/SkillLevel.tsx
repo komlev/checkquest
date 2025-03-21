@@ -1,4 +1,5 @@
 import { DetailedHTMLProps, FC, HTMLAttributes } from "react";
+import { getSkillLevel } from "../../../utils/checklist";
 
 type Props = DetailedHTMLProps<
   HTMLAttributes<HTMLSpanElement>,
@@ -8,23 +9,7 @@ type Props = DetailedHTMLProps<
   maxPoints: number;
 };
 
-export const SkillLevel: FC<Props> = ({
-  score: value,
-  maxPoints: maxValue,
-  ...props
-}) => {
-  const level =
-    value === 0
-      ? "None"
-      : value < maxValue * 0.2
-      ? "Trainee"
-      : value < maxValue * 0.4
-      ? "Junior"
-      : value < maxValue * 0.7
-      ? "Middle"
-      : value < maxValue * 0.9
-      ? "Senior"
-      : "Expert";
-
+export const SkillLevel: FC<Props> = ({ score, maxPoints, ...props }) => {
+  const level = getSkillLevel(score, maxPoints);
   return <span {...props}>{level}</span>;
 };

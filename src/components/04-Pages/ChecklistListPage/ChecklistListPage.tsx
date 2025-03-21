@@ -9,12 +9,12 @@ import { Heading1 } from "../../00-Atoms/Typography";
 import { Page } from "../../01-Molecules/Page/Page";
 import { ChecklistList } from "../../02-Organisms/ChecklistList/ChecklistList";
 import { EmptyHero } from "../../02-Organisms/EmptyHero/EmptyHero";
-import { ImportChecklistModal } from "../../02-Organisms/ImportChecklistModal/ImportChecklistModal";
+import { ImportChecklistModal } from "../../02-Organisms/ImportChecklistModal";
 
 export const ChecklistListPage: FC = () => {
   const checklists = useStore($checklistsStore);
   const [showImportModal, setShowImportModal] = useState(false);
-  const handleImport = () => {
+  const onImport = () => {
     setShowImportModal(true);
   };
 
@@ -26,7 +26,7 @@ export const ChecklistListPage: FC = () => {
           <button
             id="add-checklist-btn"
             className="btn btn-sm btn-square"
-            onClick={handleImport}
+            onClick={onImport}
             title="Import Checklist"
             aria-label="Import Checklist"
           >

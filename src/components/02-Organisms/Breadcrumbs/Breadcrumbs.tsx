@@ -2,12 +2,17 @@ import { Link, useLocation } from "wouter";
 import {
   CHECKLIST_LIST,
   INTERVIEW_LIST,
-  ROOT,
   getChecklistPage,
   getInterviewPage,
 } from "../../../routes";
+import { FC } from "react";
+import clsx from "clsx";
 
-export const Breadcrumbs = () => {
+type Props = {
+  className?: string;
+};
+
+export const Breadcrumbs: FC<Props> = (props) => {
   const [route] = useLocation();
   const isChecklist = route.startsWith(CHECKLIST_LIST);
   const isInterviews = route.startsWith(INTERVIEW_LIST);
@@ -20,23 +25,20 @@ export const Breadcrumbs = () => {
     .match(/\/(.+?)(\/|$)/i)?.[1];
 
   return (
-    <div className="breadcrumbs text-sm p-1">
+    <div
+      className={clsx("breadcrumbs text-sm p-1 font-medium", props.className)}
+    >
       <ul>
-        <li>
-          <Link className="focusable" to={ROOT}>
-            Home
-          </Link>
-        </li>
         {isChecklist && (
           <li>
-            <Link className="focusable" to={CHECKLIST_LIST}>
+            <Link className="focusable underline" to={CHECKLIST_LIST}>
               Checklists
             </Link>
           </li>
         )}
         {isInterviews && (
           <li>
-            <Link className="focusable" to={INTERVIEW_LIST}>
+            <Link className="focusable underline" to={INTERVIEW_LIST}>
               Interviews
             </Link>
           </li>
@@ -44,12 +46,12 @@ export const Breadcrumbs = () => {
         {id && !isNew && (
           <li>
             {isChecklist && (
-              <Link className="focusable" to={getChecklistPage(id)}>
+              <Link className="focusable underline" to={getChecklistPage(id)}>
                 List
               </Link>
             )}
             {isInterviews && (
-              <Link className="focusable" to={getInterviewPage(id)}>
+              <Link className="focusable underline" to={getInterviewPage(id)}>
                 Interview
               </Link>
             )}

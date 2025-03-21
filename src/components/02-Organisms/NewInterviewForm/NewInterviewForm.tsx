@@ -79,6 +79,7 @@ export const NewInterviewForm: FC<Props> = ({
         <div className="card-actions justify-end flex sm:flex-row flex-col-reverse">
           <button
             id="cancel-new-interview-btn"
+            type="button"
             onClick={onClose}
             className="btn btn-outline w-full sm:w-auto"
           >

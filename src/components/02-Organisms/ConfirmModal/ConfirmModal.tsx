@@ -12,7 +12,7 @@ interface ConfirmModalProps {
   className?: string;
 }
 
-export const ConfirmModal: FC<ConfirmModalProps> = ({
+const ConfirmModal: FC<ConfirmModalProps> = ({
   isOpen,
   onClose,
   onConfirm,
@@ -22,7 +22,7 @@ export const ConfirmModal: FC<ConfirmModalProps> = ({
   cancelText = "Cancel",
   className = "",
 }) => {
-  const handleConfirm = () => {
+  const onConfirmClick = () => {
     onConfirm();
     onClose();
   };
@@ -37,6 +37,7 @@ export const ConfirmModal: FC<ConfirmModalProps> = ({
         <div className="flex justify-end sm:flex-row flex-col-reverse gap-2 w-full">
           <button
             id="modal-cancel-btn"
+            type="button"
             className="btn btn-outline w-full sm:w-auto"
             onClick={onClose}
           >
@@ -46,7 +47,7 @@ export const ConfirmModal: FC<ConfirmModalProps> = ({
             id="modal-confirm-btn"
             aria-keyshortcuts={isOpen ? "enter" : undefined}
             className="btn btn-primary w-full sm:w-auto"
-            onClick={handleConfirm}
+            onClick={onConfirmClick}
           >
             {confirmText}
           </button>
@@ -59,3 +60,5 @@ export const ConfirmModal: FC<ConfirmModalProps> = ({
     </Modal>
   );
 };
+
+export default ConfirmModal;

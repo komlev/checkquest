@@ -12,13 +12,16 @@ import {
   $interviewsStore,
   deleteInterview,
 } from "../../../stores/interviewsStore";
-import { Interview } from "../../../types";
+import { addNotification } from "../../../stores/notificationsStore";
+import { Checklist, Interview } from "../../../types";
 import { getSectionsPoints } from "../../../utils/checklist";
+import { getInterviewSummary } from "../../../utils/interview";
+import { ClipboardIcon } from "../../00-Atoms/Icons/ClipboardIcon";
 import { TrashIcon } from "../../00-Atoms/Icons/TrashIcon";
 import { Score } from "../../00-Atoms/Score/Score";
 import { SkillLevel } from "../../00-Atoms/SkillLevel/SkillLevel";
 import { Search } from "../../01-Molecules/Search/Search";
-import { ConfirmModal } from "../ConfirmModal/ConfirmModal";
+import { ConfirmModal } from "../ConfirmModal";
 import { useConfirmModal } from "../ConfirmModal/useConfirmModal";
 
 const $search = atom("");
@@ -47,12 +50,26 @@ export const InterviewList: FC = () => {
     cancelText,
   } = useConfirmModal();
 
-  const handleDelete = (interview: Interview) => {
+  const onDelete = (interview: Interview) => {
     onConfirmOpen({
       title: "Delete Interview",
       message: `Are you sure you want to delete "${interview.name}"?`,
       onConfirm: () => deleteInterview(interview.id),
     });
+  };
+
+  const onCopy = async (interview: Interview, checklist?: Checklist) => {
+    const content = getInterviewSummary(interview, checklist);
+    if (content) {
+      try {
+        await navigator.clipboard.writeText(content);
+        addNotification("Copied to clipboard");
+        return;
+      } catch (_err) {
+        //
+      }
+    }
+    addNotification("Export failed", "error");
   };
 
   return (
@@ -71,7 +88,7 @@ export const InterviewList: FC = () => {
         </li>
         {interviews.map((interview) => {
           const checklist = getChecklist(interview.checklistId);
-          const maxPoints = getSectionsPoints(checklist?.sections);
+          const maxPoints = getSectionsPoints(checklist?.sections, "required");
           const date = new Date(interview.createdAt).toLocaleDateString();
           return (
             <li key={interview.id} className="list-row items-center">
@@ -128,20 +145,36 @@ export const InterviewList: FC = () => {
                   />
                 </div>
               </div>
-              <button
-                id={`delete-interview-btn-${interview.id}`}
-                className="btn btn-square btn-ghost"
-                onClick={() => handleDelete(interview)}
-                aria-label="Delete Interview"
-                title="Delete Interview"
-              >
-                <TrashIcon
-                  className="fill-current text-error"
-                  width={16}
-                  aria-hidden="true"
-                  role="presentation"
-                />
-              </button>
+              <div className="flex gap-1">
+                <button
+                  id={`delete-interview-btn-${interview.id}`}
+                  className="btn btn-square btn-ghost"
+                  onClick={() => onCopy(interview, checklist)}
+                  aria-label="Export Interview Summary"
+                  title="Export Interview Summary"
+                >
+                  <ClipboardIcon
+                    className="fill-current"
+                    width={15}
+                    aria-hidden="true"
+                    role="presentation"
+                  />
+                </button>
+                <button
+                  id={`delete-interview-btn-${interview.id}`}
+                  className="btn btn-square btn-ghost"
+                  onClick={() => onDelete(interview)}
+                  aria-label="Delete Interview"
+                  title="Delete Interview"
+                >
+                  <TrashIcon
+                    className="fill-current text-error"
+                    width={16}
+                    aria-hidden="true"
+                    role="presentation"
+                  />
+                </button>
+              </div>
             </li>
           );
         })}
