@@ -66,7 +66,8 @@ export const SectionInput: FC<Props> = ({
                 (sectionIndex === selectedSection ||
                   (selectedSection === -1 &&
                     sectionIndex === sectionsLength - 1)) &&
-                section.questions.length === 0
+                section.questions.length === 0 &&
+                el
               ) {
                 lastInput.current = el;
               }
@@ -113,7 +114,9 @@ export const SectionInput: FC<Props> = ({
               addQuestion={addQuestion}
               updateQuestion={updateQuestion}
               removeQuestion={removeQuestion}
-              inputRef={lastInput}
+              lastInput={
+                sectionIndex === selectedSection ? lastInput : undefined
+              }
             />
           ))}
           <div className="text-center mt-4">

@@ -9,7 +9,7 @@ type Props = {
   question: Question;
   sectionIndex: number;
   questionIndex: number;
-  inputRef: RefObject<HTMLInputElement | null>;
+  lastInput?: RefObject<HTMLInputElement | null>;
   addQuestion: (sectionIndex: number) => void;
   updateQuestion: (
     sectionIndex: number,
@@ -26,7 +26,7 @@ export const QuetionInput: FC<Props> = ({
   question,
   sectionIndex,
   questionIndex,
-  inputRef,
+  lastInput,
   addQuestion,
   updateQuestion,
   removeQuestion,
@@ -70,8 +70,12 @@ export const QuetionInput: FC<Props> = ({
             )
           }
           ref={(el) => {
-            if (questionIndex === section.questions.length - 1 && inputRef) {
-              inputRef.current = el;
+            if (
+              questionIndex === section.questions.length - 1 &&
+              lastInput &&
+              el
+            ) {
+              lastInput.current = el;
             }
           }}
         />
