@@ -21,7 +21,7 @@ export const useChecklistFormPage = () => {
 
   // Add a ref to track the latest question input
   const lastInput = useRef<HTMLInputElement | null>(null);
-  const [selectedSection, setSelectedSection] = useState(-1);
+  const selectedSection = useRef(-1);
 
   // Load existing checklist data if in edit mode
   useLayoutEffect(() => {
@@ -36,7 +36,7 @@ export const useChecklistFormPage = () => {
   }, [isEditMode, params?.id]);
 
   const focusOnLastInput = (sectionIndex: number) => {
-    setSelectedSection(sectionIndex);
+    selectedSection.current = sectionIndex;
     setTimeout(() => {
       if (lastInput.current) {
         lastInput.current.focus();
@@ -168,7 +168,7 @@ export const useChecklistFormPage = () => {
     errors,
     name,
     description,
-    selectedSection,
+    selectedSection: selectedSection.current,
     handleSubmit,
     addSection,
     updateSection,
