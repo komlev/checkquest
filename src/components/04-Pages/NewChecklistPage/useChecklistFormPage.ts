@@ -40,6 +40,7 @@ export const useChecklistFormPage = () => {
     setTimeout(() => {
       if (lastInput.current) {
         lastInput.current.focus();
+        selectedSection.current = -2;
       }
     }, 0);
   };
