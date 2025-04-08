@@ -1,18 +1,7 @@
-import { useEffect, useState } from "react";
-
-const getIsDarkTheme = () => {
-  try {
-    return localStorage.getItem("isdark") === "true";
-  } catch (_err) {
-    return !!window?.matchMedia("(prefers-color-scheme: dark)").matches;
-  }
-};
+import { useTheme } from "./useTheme";
 
 export const ThemeSwitcher = () => {
-  const [isdark, setIsdark] = useState(getIsDarkTheme());
-  useEffect(() => {
-    localStorage.setItem("isdark", JSON.stringify(isdark));
-  }, [isdark]);
+  const { isdark, setIsdark } = useTheme();
 
   return (
     <label

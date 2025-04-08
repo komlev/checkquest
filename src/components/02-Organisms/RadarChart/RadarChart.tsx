@@ -25,6 +25,7 @@ Chart.register(
 
 import { FC, useEffect, useRef, useState } from "react";
 import { Section } from "../../../types";
+import { useTheme } from "../../00-Atoms/ThemeSwitcher/useTheme";
 
 type Props = {
   sections: Section[];
@@ -90,7 +91,15 @@ const RadarChart: FC<Props> = ({ sections }) => {
         responsive: true,
         maintainAspectRatio: false,
         animation: { duration: 300 },
-        scales: { r: { min: 0, max: 100, ticks: { stepSize: 25 } } },
+        scales: {
+          r: {
+            min: 0,
+            max: 100,
+            ticks: { stepSize: 25 },
+            angleLines: { color: "#EEE" },
+            grid: { color: "#EEE" },
+          },
+        },
         elements: { line: { borderWidth: 2 } },
       },
     });
