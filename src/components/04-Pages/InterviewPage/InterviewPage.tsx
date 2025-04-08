@@ -1,4 +1,4 @@
-import { FC } from "react";
+import { FC, Suspense } from "react";
 import { Link } from "wouter";
 import { INTERVIEW_LIST } from "../../../routes";
 import { TrashIcon } from "../../00-Atoms/Icons/TrashIcon";
@@ -10,6 +10,7 @@ import { Caption, Heading1, Subtitle } from "../../00-Atoms/Typography";
 import { Page } from "../../01-Molecules/Page/Page";
 import { ConfirmModal } from "../../02-Organisms/ConfirmModal";
 import { InterviewSectionCard } from "../../02-Organisms/InterviewSectionCard/InterviewSectionCard";
+import { RadarChart } from "../../02-Organisms/RadarChart";
 import { NotFoundPage } from "../NotFoundPage/NotFoundPage";
 import { useInterviewPage } from "./useInterviewPage";
 
@@ -160,6 +161,11 @@ export const InterviewPage: FC = () => {
               >
                 Complete
               </Link>
+              <div className="mt-2">
+                <Suspense>
+                  <RadarChart sections={sections} />
+                </Suspense>
+              </div>
             </div>
           </div>
         </section>
