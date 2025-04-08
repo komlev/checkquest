@@ -1,3 +1,3 @@
 import { lazy } from "react";
 
-export const NewInterviewModal = lazy(() => import("./RadarChart"));
+export const RadarChart = lazy(() => import("./RadarChart"));
