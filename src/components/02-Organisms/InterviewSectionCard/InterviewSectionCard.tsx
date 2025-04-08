@@ -1,9 +1,9 @@
+import clsx from "clsx";
 import { FC, useMemo } from "react";
 import { Section } from "../../../types";
 import { getQuestionLabel } from "../../../utils/checklist";
 import { Line } from "../../00-Atoms/Line/Line";
 import { Heading2, Subtitle } from "../../00-Atoms/Typography";
-import clsx from "clsx";
 
 interface InterviewSectionCardProps {
   section: Section;
@@ -40,7 +40,7 @@ export const InterviewSectionCard: FC<InterviewSectionCardProps> = ({
   };
 
   return (
-    <div className="mb-8 card shadow-md">
+    <div className="mb-8 card shadow-md bg-base-100">
       <div className="card-body">
         <div className="flex justify-between items-start gap-2">
           <Heading2

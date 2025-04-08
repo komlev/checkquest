@@ -12,6 +12,7 @@ import { ConfirmModal } from "../../02-Organisms/ConfirmModal";
 import { InterviewSectionCard } from "../../02-Organisms/InterviewSectionCard/InterviewSectionCard";
 import { NotFoundPage } from "../NotFoundPage/NotFoundPage";
 import { useInterviewPage } from "./useInterviewPage";
+import RadarChart from "../../02-Organisms/RadarChart/RadarChart";
 
 export const InterviewPage: FC = () => {
   const {
@@ -160,6 +161,9 @@ export const InterviewPage: FC = () => {
               >
                 Complete
               </Link>
+              <div className="mt-2">
+                <RadarChart sections={sections} />
+              </div>
             </div>
           </div>
         </section>
