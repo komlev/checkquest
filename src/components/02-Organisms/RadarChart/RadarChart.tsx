@@ -25,7 +25,6 @@ Chart.register(
 
 import { FC, useEffect, useRef, useState } from "react";
 import { Section } from "../../../types";
-import { useTheme } from "../../00-Atoms/ThemeSwitcher/useTheme";
 
 type Props = {
   sections: Section[];
