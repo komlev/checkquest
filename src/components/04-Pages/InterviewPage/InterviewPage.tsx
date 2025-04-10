@@ -69,7 +69,7 @@ export const InterviewPage: FC = () => {
           <h2 id="interview-sections-heading" className="sr-only">
             Interview Sections
           </h2>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
             {sections.length === 0 ? (
               <Subtitle className="text-center">Checklist is empty</Subtitle>
             ) : (
