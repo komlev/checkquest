@@ -1,5 +1,9 @@
 import { Checklist, Interview, Section } from "../types";
-import { getSectionsPoints, getSkillLevel } from "./checklist";
+import {
+  getSectionPoints,
+  getSectionsPoints,
+  getSkillLevel,
+} from "./checklist";
 
 export const getInterviewAnsweredQuestions = (sections: Section[] = []) =>
   sections.reduce(
@@ -12,13 +16,25 @@ type EXPORT_TYPE = "TEXT";
 
 const getTextSummary = (interview: Interview, checklist?: Checklist) => {
   const date = new Date(interview.updatedAt);
+  const extraPoints = interview?.sections?.reduce(
+    (acc, s) =>
+      acc +
+      s?.questions?.reduce(
+        (acc, q) => acc + (q.extra && q.checked ? q.score : 0),
+        0
+      ),
+    0
+  );
   const maxPoints = getSectionsPoints(checklist?.sections, "required");
+  console.log(extraPoints, maxPoints);
   const checklistName = checklist?.name ? ` (${checklist.name})` : "";
   const strings = [
     `${interview.name}${checklistName} on ${date.toLocaleDateString()}`,
     `# Summary: ${getSkillLevel(interview.score, maxPoints)} - ${
       interview.score
-    } out of ${maxPoints}`,
+    } out of ${maxPoints} ${
+      extraPoints > 0 ? `+ (${extraPoints} extra points)` : ""
+    }`,
     "---",
     interview.summary,
     "## Questions",
