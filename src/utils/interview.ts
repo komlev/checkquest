@@ -1,9 +1,5 @@
 import { Checklist, Interview, Section } from "../types";
-import {
-  getSectionPoints,
-  getSectionsPoints,
-  getSkillLevel,
-} from "./checklist";
+import { getSectionsPoints, getSkillLevel } from "./checklist";
 
 export const getInterviewAnsweredQuestions = (sections: Section[] = []) =>
   sections.reduce(
