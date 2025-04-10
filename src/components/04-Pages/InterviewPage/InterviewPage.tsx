@@ -103,7 +103,7 @@ export const InterviewPage: FC = () => {
                 </label>
                 <textarea
                   id="interview-summary"
-                  className="textarea textarea-bordered h-48"
+                  className="textarea textarea-bordered h-48 w-full"
                   placeholder="Notes, summary, etc."
                   value={summary}
                   onChange={handleSummaryChange}
