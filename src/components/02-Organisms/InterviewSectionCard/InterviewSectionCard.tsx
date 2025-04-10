@@ -43,12 +43,22 @@ export const InterviewSectionCard: FC<InterviewSectionCardProps> = ({
     <div className="card shadow-md bg-base-100">
       <div className="card-body">
         <div className="flex justify-between items-start gap-2">
-          <Heading2
-            id={`section-name-${sectionIndex}`}
-            className="text-xl font-bold mb-4"
-          >
-            {getQuestionLabel(sectionIndex, undefined, section.title)}
-          </Heading2>
+          <div className="mb-4 flex flex-col">
+            <Heading2
+              id={`section-name-${sectionIndex}`}
+              className="text-xl font-bold"
+            >
+              {getQuestionLabel(sectionIndex, undefined, section.title)}
+            </Heading2>
+            <div>
+              {totalCount > 0 && (
+                <span className="text-sm text-gray-500">
+                  {checkedCount}/{totalCount}
+                  {extraCount > 0 && ` (${extraCount} extra)`}
+                </span>
+              )}
+            </div>
+          </div>
           <div className="flex flex-col items-end gap-2">
             <input
               id={`full-section-checkbox-${sectionIndex}`}
@@ -59,14 +69,6 @@ export const InterviewSectionCard: FC<InterviewSectionCardProps> = ({
               onChange={(e) => handleSectionCheckboxChange(e.target.checked)}
               disabled={totalCount === 0}
             />
-            <div>
-              {totalCount > 0 && (
-                <span className="text-sm text-gray-500">
-                  {checkedCount}/{totalCount}
-                  {extraCount > 0 && ` (${extraCount} extra)`}
-                </span>
-              )}
-            </div>
           </div>
         </div>
         <Line className="mt-0 mb-2" />
@@ -80,7 +82,7 @@ export const InterviewSectionCard: FC<InterviewSectionCardProps> = ({
               <li
                 key={question.id}
                 className={clsx(
-                  "flex justify-between items-center rounded-lg p-3 bg-base-200 shadow-sm cursor-pointer hover:shadow-md font-medium",
+                  "flex justify-between items-center rounded-lg p-3 bg-base-200 shadow-sm cursor-pointer hover:shadow-md font-medium gap-2",
                   question.extra && "border-l-4 border-accent"
                 )}
                 onClick={() =>
@@ -104,20 +106,22 @@ export const InterviewSectionCard: FC<InterviewSectionCardProps> = ({
                     // This prevents double-toggling when clicking directly on the checkbox
                     onClick={(e) => e.stopPropagation()}
                   />
-                  <span>
+                  <span className="flex items-center gap-2">
                     {getQuestionLabel(
                       sectionIndex,
                       questionIndex,
                       question.text
                     )}
-                    {question.extra && (
-                      <span className="badge badge-xs badge-accent ml-2">
-                        Extra
-                      </span>
-                    )}
                   </span>
                 </div>
-                <span>{question.score} pts</span>
+                <div className="flex items-center gap-1">
+                  {question.extra && (
+                    <span className="badge badge-xs badge-accent">Extra</span>
+                  )}
+                  <span className="whitespace-nowrap">
+                    {question.score} pts
+                  </span>
+                </div>
               </li>
             ))}
           </ul>
