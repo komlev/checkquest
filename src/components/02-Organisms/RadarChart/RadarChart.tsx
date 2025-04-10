@@ -102,7 +102,7 @@ const RadarChart: FC<Props> = ({ sections }) => {
         elements: { line: { borderWidth: 2 } },
       },
     });
-  }, []);
+  }, [labels, values]);
 
   useEffect(() => {
     if (chart.current) {

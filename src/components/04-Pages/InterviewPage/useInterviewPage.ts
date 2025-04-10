@@ -1,5 +1,6 @@
 import { useStore } from "@nanostores/react";
-import { useCallback, useEffect, useMemo, useState } from "react";
+import { debounce } from "es-toolkit";
+import { useEffect, useMemo, useState } from "react";
 import { useLocation, useParams } from "wouter";
 import { INTERVIEW_LIST } from "../../../routes";
 import { $checklistsStore } from "../../../stores/checklistStore";
@@ -62,26 +63,18 @@ export const useInterviewPage = () => {
     }
   }, [interview]);
 
-  // eslint-disable-next-line
-  const debouncedSaveSummary = useCallback(
-    (() => {
-      let timeoutId: ReturnType<typeof setTimeout> | null = null;
-      return (newSummary: string) => {
-        if (timeoutId) {
-          clearTimeout(timeoutId);
+  const debouncedSaveSummary = useMemo(
+    () =>
+      debounce((newSummary: string) => {
+        if (interview) {
+          const updatedInterview = {
+            ...interview,
+            summary: newSummary,
+            updatedAt: new Date().toISOString(),
+          };
+          updateInterview(updatedInterview);
         }
-        timeoutId = setTimeout(() => {
-          if (interview) {
-            const updatedInterview = {
-              ...interview,
-              summary: newSummary,
-              updatedAt: new Date().toISOString(),
-            };
-            updateInterview(updatedInterview);
-          }
-        }, 400);
-      };
-    })(),
+      }, 400),
     [interview]
   );
 
@@ -154,9 +147,9 @@ export const useInterviewPage = () => {
     extraScore,
     totalScore: score + extraScore,
     totalPossibleScore,
+    confirmModal,
     handleSummaryChange,
     handleCheckQuestion,
     handleDelete,
-    confirmModal,
   };
 };
