@@ -155,7 +155,7 @@ export const InterviewList: FC = () => {
                 >
                   <ClipboardIcon
                     className="fill-current"
-                    width={15}
+                    width={12}
                     aria-hidden="true"
                     role="presentation"
                   />
