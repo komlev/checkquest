@@ -1,17 +1,13 @@
-import { FC, Suspense } from "react";
-import { Link } from "wouter";
-import { INTERVIEW_LIST } from "../../../routes";
+import { FC, useMemo } from "react";
 import { TrashIcon } from "../../00-Atoms/Icons/TrashIcon";
 import { Line } from "../../00-Atoms/Line/Line";
-import { Score } from "../../00-Atoms/Score/Score";
-import { SkillLevel } from "../../00-Atoms/SkillLevel/SkillLevel";
 import { Toolstrip } from "../../00-Atoms/Tooltstrip/Toolstip";
-import { Caption, Heading1, Subtitle } from "../../00-Atoms/Typography";
+import { Caption, Heading1 } from "../../00-Atoms/Typography";
 import { Page } from "../../01-Molecules/Page/Page";
 import { ConfirmModal } from "../../02-Organisms/ConfirmModal";
-import { InterviewSectionCard } from "../../02-Organisms/InterviewSectionCard/InterviewSectionCard";
-import { RadarChart } from "../../02-Organisms/RadarChart";
 import { NotFoundPage } from "../NotFoundPage/NotFoundPage";
+import { InterviewSidepanel } from "./InterviewSidepanel";
+import { SectionsList } from "./SectionsList";
 import { useInterviewPage } from "./useInterviewPage";
 
 export const InterviewPage: FC = () => {
@@ -30,11 +26,17 @@ export const InterviewPage: FC = () => {
     handleDelete: onDelete,
   } = useInterviewPage();
 
-  if (!interview) {
+  const date = useMemo(
+    () =>
+      interview?.createdAt
+        ? new Date(interview.createdAt).toLocaleDateString()
+        : "",
+    [interview?.createdAt]
+  );
+
+  if (!interview || !checklist) {
     return <NotFoundPage />;
   }
-
-  const date = new Date(interview.createdAt).toLocaleDateString();
 
   return (
     <Page className="flex flex-col gap-2">
@@ -70,104 +72,26 @@ export const InterviewPage: FC = () => {
             Interview Sections
           </h2>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
-            {sections.length === 0 ? (
-              <Subtitle className="text-center">Checklist is empty</Subtitle>
-            ) : (
-              <>
-                {sections.map((section, sectionIndex) => (
-                  <InterviewSectionCard
-                    key={section.id}
-                    section={section}
-                    sectionIndex={sectionIndex}
-                    onCheckQuestion={(questionIndex, checked) =>
-                      handleCheckQuestion(sectionIndex, questionIndex, checked)
-                    }
-                  />
-                ))}
-              </>
-            )}
+            <SectionsList
+              sections={sections}
+              onCheckQuestion={handleCheckQuestion}
+            />
           </div>
         </section>
         <section
           className="interview-summary"
           aria-labelledby="interview-summary-heading"
         >
-          <div className="card bg-base-100 shadow-xl sticky top-4">
-            <div className="card-body">
-              <h2 id="interview-summary-heading" className="card-title">
-                Summary
-              </h2>
-              <div className="form-control w-full">
-                <label htmlFor="interview-summary" className="sr-only">
-                  Interview summary
-                </label>
-                <textarea
-                  id="interview-summary"
-                  className="textarea textarea-bordered h-48"
-                  placeholder="Notes, summary, etc."
-                  value={summary}
-                  onChange={handleSummaryChange}
-                  aria-label="Interview summary"
-                ></textarea>
-              </div>
-              <Line>{checklist?.name}</Line>
-              <div
-                className="stats"
-                role="group"
-                aria-label="Interview statistics"
-              >
-                <div className="stat py-0 pl-0 pr-2">
-                  <div className="stat-title">Score</div>
-                  <Score
-                    className="stat-value text-warning"
-                    value={totalScore}
-                    maxValue={totalPossibleScore}
-                  />
-                  <div className="stat-desc">
-                    {score} + {extraScore} extra = {totalScore} points
-                  </div>
-                </div>
-                <div className="stat py-0 pr-0 pl-2">
-                  <div className="stat-title">Estimated level</div>
-                  <div className="stat-desc">
-                    <SkillLevel
-                      className="stat-value text-secondary"
-                      score={totalScore}
-                      maxPoints={totalPossibleScore}
-                    />
-                  </div>
-                </div>
-              </div>
-              <div className="mt-4">
-                <div className="flex justify-between mb-1">
-                  <span id="progress-label">Progress</span>
-                  <Score
-                    value={totalScore}
-                    maxValue={totalPossibleScore}
-                    asPercentage
-                  />
-                </div>
-                <progress
-                  className="progress progress-secondary w-full"
-                  value={totalScore}
-                  max={totalPossibleScore}
-                  aria-labelledby="progress-label"
-                ></progress>
-              </div>
-              <Link
-                id="complete-interview"
-                to={INTERVIEW_LIST}
-                className="btn btn-primary"
-              >
-                Complete
-              </Link>
-              <div className="mt-2">
-                <Suspense>
-                  <RadarChart sections={sections} />
-                </Suspense>
-              </div>
-            </div>
-          </div>
+          <InterviewSidepanel
+            summary={summary}
+            handleSummaryChange={handleSummaryChange}
+            checklist={checklist}
+            sections={sections}
+            score={score}
+            extraScore={extraScore}
+            totalScore={totalScore}
+            totalPossibleScore={totalPossibleScore}
+          />
         </section>
       </div>
       <ConfirmModal
