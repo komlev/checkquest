@@ -26,7 +26,6 @@ const getTextSummary = (interview: Interview, checklist?: Checklist) => {
     0
   );
   const maxPoints = getSectionsPoints(checklist?.sections, "required");
-  console.log(extraPoints, maxPoints);
   const checklistName = checklist?.name ? ` (${checklist.name})` : "";
   const strings = [
     `${interview.name}${checklistName} on ${date.toLocaleDateString()}`,
