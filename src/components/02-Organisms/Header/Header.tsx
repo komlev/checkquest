@@ -13,7 +13,7 @@ export const Header = () => (
       <div className="flex gap-3 items-center">
         <Link
           to={ROOT}
-          className="font-black text-2xl flex gap-2 items-center w-fit rounded-sm focusable"
+          className="font-black text-2xl flex gap-2 items-center w-fit rounded-sm focusable-neutral"
           aria-label="CheckQuest Home"
         >
           <CheckIcon
