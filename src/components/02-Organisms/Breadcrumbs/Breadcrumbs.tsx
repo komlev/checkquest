@@ -31,14 +31,14 @@ export const Breadcrumbs: FC<Props> = (props) => {
       <ul>
         {isChecklist && (
           <li>
-            <Link className="focusable underline" to={CHECKLIST_LIST}>
+            <Link className="focusable-neutral underline" to={CHECKLIST_LIST}>
               Checklists
             </Link>
           </li>
         )}
         {isInterviews && (
           <li>
-            <Link className="focusable underline" to={INTERVIEW_LIST}>
+            <Link className="focusable-neutral underline" to={INTERVIEW_LIST}>
               Interviews
             </Link>
           </li>
@@ -46,12 +46,18 @@ export const Breadcrumbs: FC<Props> = (props) => {
         {id && !isNew && (
           <li>
             {isChecklist && (
-              <Link className="focusable underline" to={getChecklistPage(id)}>
+              <Link
+                className="focusable-neutral underline"
+                to={getChecklistPage(id)}
+              >
                 List
               </Link>
             )}
             {isInterviews && (
-              <Link className="focusable underline" to={getInterviewPage(id)}>
+              <Link
+                className="focusable-neutral underline"
+                to={getInterviewPage(id)}
+              >
                 Interview
               </Link>
             )}
