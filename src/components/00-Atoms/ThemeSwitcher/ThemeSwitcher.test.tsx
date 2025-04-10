@@ -1,6 +1,6 @@
 import "@testing-library/jest-dom";
 import { fireEvent, render, screen } from "@testing-library/react";
-import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
+import { afterEach, beforeEach, describe, expect, it, Mock, vi } from "vitest";
 import { ThemeSwitcher } from "./ThemeSwitcher";
 import { useTheme } from "./useTheme";
 
@@ -8,7 +8,7 @@ import { useTheme } from "./useTheme";
 vi.mock("./useTheme", () => ({ useTheme: vi.fn() }));
 
 describe("ThemeSwitcher", () => {
-  const mockUseTheme = useTheme as vi.Mock;
+  const mockUseTheme = useTheme as Mock;
 
   beforeEach(() => {
     mockUseTheme.mockReturnValue({
