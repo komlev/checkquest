@@ -1,4 +1,4 @@
-import { FC } from "react";
+import { FC, memo } from "react";
 import { Section } from "../../../types";
 import {
   getSectionsPoints,
@@ -10,7 +10,7 @@ type Props = {
   sections: Section[];
 };
 
-export const ChecklistScore: FC<Props> = ({ sections }) => (
+export const ChecklistScore: FC<Props> = memo(({ sections }) => (
   <div>
     <div className="stat p-0">
       <div className="stat-value text-secondary">
@@ -26,4 +26,4 @@ export const ChecklistScore: FC<Props> = ({ sections }) => (
       </div>
     </div>
   </div>
-);
+));
