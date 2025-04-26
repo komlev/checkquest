@@ -1,6 +1,6 @@
 import { useStore } from "@nanostores/react";
 import { debounce } from "es-toolkit";
-import { useEffect, useMemo, useState } from "react";
+import { useCallback, useEffect, useMemo, useState } from "react";
 import { useLocation, useParams } from "wouter";
 import { INTERVIEW_LIST } from "../../../routes";
 import { $checklistsStore } from "../../../stores/checklistStore";
@@ -79,53 +79,55 @@ export const useInterviewPage = () => {
   );
 
   // Handle summary change with debounce
-  const handleSummaryChange = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
-    const newSummary = e.target.value;
-    setSummary(newSummary);
-    debouncedSaveSummary(newSummary);
-  };
+  const handleSummaryChange = useCallback(
+    (e: React.ChangeEvent<HTMLTextAreaElement>) => {
+      const newSummary = e.target.value;
+      setSummary(newSummary);
+      debouncedSaveSummary(newSummary);
+    },
+    [debouncedSaveSummary]
+  );
 
-  const handleCheckQuestion = (
-    sectionIndex: number,
-    questionIndex: number,
-    checked: boolean
-  ) => {
-    if (!interview) {
-      return;
-    }
-    const newSections = [...sections];
-    newSections[sectionIndex].questions[questionIndex].checked = checked;
-    setSections(newSections);
+  const handleCheckQuestion = useCallback(
+    (sectionIndex: number, questionIndex: number, checked: boolean) => {
+      if (!interview) {
+        return;
+      }
+      const newSections = [...sections];
+      newSections[sectionIndex].questions[questionIndex].checked = checked;
+      setSections(newSections);
 
-    // Recalculate score
-    let newScore = 0;
-    let newExtraScore = 0;
+      // Recalculate score
+      let newScore = 0;
+      let newExtraScore = 0;
 
-    newSections.forEach((section) => {
-      section.questions.forEach((question) => {
-        if (question.checked) {
-          if (!question.extra) {
-            newScore += question.score;
-          } else {
-            newExtraScore += question.score;
+      newSections.forEach((section) => {
+        section.questions.forEach((question) => {
+          if (question.checked) {
+            if (!question.extra) {
+              newScore += question.score;
+            } else {
+              newExtraScore += question.score;
+            }
           }
-        }
+        });
       });
-    });
 
-    setScore(newScore);
-    setExtraScore(newExtraScore);
+      setScore(newScore);
+      setExtraScore(newExtraScore);
 
-    // Update the interview in the store
-    const updatedInterview = {
-      ...interview,
-      sections: newSections,
-      score: newScore + newExtraScore, // Total score includes extra points
-      updatedAt: new Date().toISOString(),
-    };
+      // Update the interview in the store
+      const updatedInterview = {
+        ...interview,
+        sections: newSections,
+        score: newScore + newExtraScore, // Total score includes extra points
+        updatedAt: new Date().toISOString(),
+      };
 
-    updateInterview(updatedInterview);
-  };
+      updateInterview(updatedInterview);
+    },
+    [interview, sections]
+  );
 
   const handleDelete = () => {
     confirmModal.onOpen({

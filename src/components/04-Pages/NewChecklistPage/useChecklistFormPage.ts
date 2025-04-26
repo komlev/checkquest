@@ -1,4 +1,4 @@
-import { useLayoutEffect, useRef, useState } from "react";
+import { useCallback, useLayoutEffect, useRef, useState } from "react";
 import { useLocation, useParams } from "wouter";
 import { getChecklistPage } from "../../../routes";
 import {
@@ -45,7 +45,7 @@ export const useChecklistFormPage = () => {
     }, 0);
   };
 
-  const addSection = () => {
+  const addSection = useCallback(() => {
     const newSection: Section = {
       id: getId(),
       title: "",
@@ -54,53 +54,68 @@ export const useChecklistFormPage = () => {
     const sectionIndex = sections.length;
     setSections([...sections, newSection]);
     focusOnLastInput(sectionIndex);
-  };
+  }, [sections]);
 
-  const updateSection = (index: number, title: string) => {
-    const updatedSections = [...sections];
-    updatedSections[index].title = title;
-    setSections(updatedSections);
-  };
+  const updateSection = useCallback(
+    (index: number, title: string) => {
+      const updatedSections = [...sections];
+      updatedSections[index].title = title;
+      setSections(updatedSections);
+    },
+    [sections]
+  );
 
-  const removeSection = (index: number) => {
-    const updatedSections = [...sections];
-    updatedSections.splice(index, 1);
-    setSections(updatedSections);
-  };
+  const removeSection = useCallback(
+    (index: number) => {
+      const updatedSections = [...sections];
+      updatedSections.splice(index, 1);
+      setSections(updatedSections);
+    },
+    [sections]
+  );
 
-  const addQuestion = (sectionIndex: number) => {
-    const updatedSections = [...sections];
-    const newQuestion: Question = {
-      id: getId(),
-      text: "",
-      score: 1,
-      extra: false,
-    };
-    updatedSections[sectionIndex].questions.push(newQuestion);
-    setSections(updatedSections);
-    focusOnLastInput(sectionIndex);
-  };
+  const addQuestion = useCallback(
+    (sectionIndex: number) => {
+      const updatedSections = [...sections];
+      const newQuestion: Question = {
+        id: getId(),
+        text: "",
+        score: 1,
+        extra: false,
+      };
+      updatedSections[sectionIndex].questions.push(newQuestion);
+      setSections(updatedSections);
+      focusOnLastInput(sectionIndex);
+    },
+    [sections]
+  );
 
-  const updateQuestion = (
-    sectionIndex: number,
-    questionIndex: number,
-    text: string,
-    score: number,
-    extra?: boolean
-  ) => {
-    const updatedSections = [...sections];
-    updatedSections[sectionIndex].questions[questionIndex].text = text;
-    updatedSections[sectionIndex].questions[questionIndex].score = score;
-    updatedSections[sectionIndex].questions[questionIndex].extra =
-      extra ?? false;
-    setSections(updatedSections);
-  };
+  const updateQuestion = useCallback(
+    (
+      sectionIndex: number,
+      questionIndex: number,
+      text: string,
+      score: number,
+      extra?: boolean
+    ) => {
+      const updatedSections = [...sections];
+      updatedSections[sectionIndex].questions[questionIndex].text = text;
+      updatedSections[sectionIndex].questions[questionIndex].score = score;
+      updatedSections[sectionIndex].questions[questionIndex].extra =
+        extra ?? false;
+      setSections(updatedSections);
+    },
+    [sections]
+  );
 
-  const removeQuestion = (sectionIndex: number, questionIndex: number) => {
-    const updatedSections = [...sections];
-    updatedSections[sectionIndex].questions.splice(questionIndex, 1);
-    setSections(updatedSections);
-  };
+  const removeQuestion = useCallback(
+    (sectionIndex: number, questionIndex: number) => {
+      const updatedSections = [...sections];
+      updatedSections[sectionIndex].questions.splice(questionIndex, 1);
+      setSections(updatedSections);
+    },
+    [sections]
+  );
 
   const validateForm = () => {
     const newErrors: { name?: string } = {};

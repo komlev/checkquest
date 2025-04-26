@@ -3,6 +3,7 @@ import {
   DetailedHTMLProps,
   FC,
   FieldsetHTMLAttributes,
+  memo,
   ReactNode,
 } from "react";
 
@@ -16,33 +17,28 @@ type Props = DetailedHTMLProps<
   error?: string;
 };
 
-export const FormControl: FC<Props> = ({
-  id,
-  label,
-  error,
-  required,
-  labelClassname,
-  ...props
-}) => (
-  <fieldset
-    {...props}
-    className={clsx("fieldset", props.className)}
-    aria-invalid={!!error}
-  >
-    <legend className={clsx("fieldset-legend text-start", labelClassname)}>
-      {label}
-    </legend>
-    {props.children}
-    <label
-      htmlFor={id}
-      className={clsx(
-        "label text-error transition-opacity",
-        !error && "opacity-0"
-      )}
-      aria-live="polite"
-      role={error ? "alert" : undefined}
+export const FormControl: FC<Props> = memo(
+  ({ id, label, error, required, labelClassname, ...props }) => (
+    <fieldset
+      {...props}
+      className={clsx("fieldset", props.className)}
+      aria-invalid={!!error}
     >
-      {error || "-"}
-    </label>
-  </fieldset>
+      <legend className={clsx("fieldset-legend text-start", labelClassname)}>
+        {label}
+      </legend>
+      {props.children}
+      <label
+        htmlFor={id}
+        className={clsx(
+          "label text-error transition-opacity",
+          !error && "opacity-0"
+        )}
+        aria-live="polite"
+        role={error ? "alert" : undefined}
+      >
+        {error || "-"}
+      </label>
+    </fieldset>
+  )
 );
