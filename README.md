@@ -59,6 +59,9 @@ All data is stored locally in the browser.
 
 Contributions are welcome! Please feel free to submit a Pull Request.
 
+## Icons
+Icons are from [FontAwesome](https://fontawesome.com/)
+
 ## License
 
 This project is licensed under the MIT License - see the LICENSE file for details.

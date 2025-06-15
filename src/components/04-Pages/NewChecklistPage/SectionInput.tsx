@@ -16,8 +16,10 @@ type Props = {
     sectionIndex: number,
     questionIndex: number,
     text: string,
-    score: number
+    score: number,
+    extra?: boolean
   ) => void;
+  reorderQuestion: (sectionIndex: number, fromIndex: number, toIndex: number) => void;
   sectionsLength: number;
   lastInput: RefObject<HTMLInputElement | null>;
   selectedSection: number;
@@ -36,6 +38,7 @@ export const SectionInput: FC<Props> = memo(
     removeSection,
     removeQuestion,
     updateQuestion,
+    reorderQuestion,
   }) => (
     <div
       key={section.id}
@@ -115,6 +118,7 @@ export const SectionInput: FC<Props> = memo(
                 addQuestion={addQuestion}
                 updateQuestion={updateQuestion}
                 removeQuestion={removeQuestion}
+                reorderQuestion={reorderQuestion}
                 lastInput={
                   sectionIndex === selectedSection ? lastInput : undefined
                 }
