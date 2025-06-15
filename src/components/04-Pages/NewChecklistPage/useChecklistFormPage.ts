@@ -117,6 +117,18 @@ export const useChecklistFormPage = () => {
     [sections]
   );
 
+  const reorderQuestion = useCallback(
+    (sectionIndex: number, fromIndex: number, toIndex: number) => {
+      const updatedSections = [...sections];
+      const questions = [...updatedSections[sectionIndex].questions];
+      const [moved] = questions.splice(fromIndex, 1);
+      questions.splice(toIndex, 0, moved);
+      updatedSections[sectionIndex].questions = questions;
+      setSections(updatedSections);
+    },
+    [sections]
+  );
+
   const validateForm = () => {
     const newErrors: { name?: string } = {};
 
@@ -192,6 +204,7 @@ export const useChecklistFormPage = () => {
     updateQuestion,
     removeSection,
     removeQuestion,
+    reorderQuestion,
     setName,
     setDescription,
     setLocation,

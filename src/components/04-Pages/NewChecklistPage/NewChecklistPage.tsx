@@ -24,6 +24,7 @@ export const NewChecklistPage: FC = () => {
     updateQuestion,
     removeQuestion,
     removeSection,
+    reorderQuestion,
     setDescription,
     setLocation,
     setName,
@@ -66,6 +67,7 @@ export const NewChecklistPage: FC = () => {
                       addQuestion={addQuestion}
                       removeQuestion={removeQuestion}
                       updateQuestion={updateQuestion}
+                      reorderQuestion={reorderQuestion}
                       section={section}
                       removeSection={removeSection}
                       updateSection={updateSection}
