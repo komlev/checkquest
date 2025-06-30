@@ -23,9 +23,9 @@ export const Dashboard: FC = () => {
     <Page className="flex flex-col">
       <div className="flex md:flex-row flex-col items-center md:items-start gap-2">
         <div className="flex flex-col gap-2 md:w-1/2 items-center md:items-start md:mt-20">
-          <h2 className="text-5xl font-black text-center md:text-start">
+          <h1 className="text-5xl font-black text-center md:text-start">
             CheckQuest!
-          </h2>
+          </h1>
           <div className="text-3xl font-bold text-center md:text-start">
             Interviewer Checklists Manager
           </div>
