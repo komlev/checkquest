@@ -42,11 +42,11 @@ export const getSkillLevel = (score: number, maxPoints: number) =>
   score === 0
     ? "None"
     : score < maxPoints * 0.2
-    ? "Trainee"
-    : score < maxPoints * 0.4
-    ? "Junior"
-    : score < maxPoints * 0.7
-    ? "Middle"
-    : score < maxPoints * 0.9
-    ? "Senior"
-    : "Expert";
+      ? "Trainee"
+      : score < maxPoints * 0.4
+        ? "Junior"
+        : score < maxPoints * 0.7
+          ? "Middle"
+          : score < maxPoints * 0.9
+            ? "Senior"
+            : "Expert";

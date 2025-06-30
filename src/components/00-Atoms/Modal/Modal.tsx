@@ -54,7 +54,7 @@ const Modal: FC<ModalProps> = ({
           <button
             type="button"
             id="modal-close-btn"
-            className="btn btn-xs btn-ghost absolute right-2 top-2"
+            className="btn btn-xs btn-ghost absolute top-2 right-2"
             onClick={onClose}
             aria-label="Close modal"
           >

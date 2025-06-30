@@ -34,7 +34,7 @@ const ConfirmModal: FC<ConfirmModalProps> = ({
       title={title}
       className={className}
       footer={
-        <div className="flex justify-end sm:flex-row flex-col-reverse gap-2 w-full">
+        <div className="flex w-full flex-col-reverse justify-end gap-2 sm:flex-row">
           <button
             id="modal-cancel-btn"
             type="button"

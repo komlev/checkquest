@@ -75,12 +75,12 @@ export const QuetionInput: FC<Props> = ({
     <div
       key={question.id}
       className={clsx(
-        "flex gap-2 bg-base-200 shadow-xs p-2 rounded-lg border transition-all",
+        "bg-base-200 flex gap-2 rounded-lg border p-2 shadow-xs transition-all",
         {
           "border-warning/50": !question.extra,
           "border-accent/50": question.extra,
           "opacity-50": isDragging,
-          "outline-2 outline-secondary/50": dragOverIndex === questionIndex,
+          "outline-secondary/50 outline-2": dragOverIndex === questionIndex,
         }
       )}
       draggable
@@ -90,10 +90,10 @@ export const QuetionInput: FC<Props> = ({
       onDragLeave={handleDragLeave}
       onDrop={handleDrop}
     >
-      <div className="flex items-center cursor-grab active:cursor-grabbing">
-        <DragIcon className="w-4 h-4 fill-current text-base-content/50" />
+      <div className="flex cursor-grab items-center active:cursor-grabbing">
+        <DragIcon className="text-base-content/50 h-4 w-4 fill-current" />
       </div>
-      <div className="flex-1 flex flex-col gap-1">
+      <div className="flex flex-1 flex-col gap-1">
         <div className="flex gap-2">
           <FormControl
             className="w-full"
@@ -153,9 +153,9 @@ export const QuetionInput: FC<Props> = ({
             />
           </FormControl>
         </div>
-        <div className="flex justify-between items-center -mt-6">
+        <div className="-mt-6 flex items-center justify-between">
           <div className="form-control">
-            <label className="label cursor-pointer flex items-center">
+            <label className="label flex cursor-pointer items-center">
               <input
                 type="checkbox"
                 className={clsx("checkbox checkbox-xs rounded-sm", {
@@ -178,7 +178,7 @@ export const QuetionInput: FC<Props> = ({
           </div>
           <button
             type="button"
-            className="btn btn-xs relative z-10 btn-warning"
+            className="btn btn-xs btn-warning relative z-10"
             onClick={() => removeQuestion(sectionIndex, questionIndex)}
           >
             Remove Question

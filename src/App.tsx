@@ -35,7 +35,7 @@ export const App: FC = () => {
 
   return (
     <Router hook={useHashLocation}>
-      <div className="min-h-screen flex flex-col text-base-content">
+      <div className="text-base-content flex min-h-screen flex-col">
         <Header />
         <Notifications />
         <main className="flex-grow px-2">

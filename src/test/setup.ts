@@ -17,4 +17,4 @@ expect.extend({
 // Cleanup after each test
 afterEach(() => {
   cleanup();
-}); 
+});

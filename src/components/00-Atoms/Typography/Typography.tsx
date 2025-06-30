@@ -14,7 +14,7 @@ type TextProps = DetailedHTMLProps<
 export const Heading1: FC<HeadingProps> = ({ children, ...props }) => (
   <h1
     {...props}
-    className={clsx("text-4xl font-bold text-base-content", props.className)}
+    className={clsx("text-base-content text-4xl font-bold", props.className)}
   >
     {children}
   </h1>
@@ -23,7 +23,7 @@ export const Heading1: FC<HeadingProps> = ({ children, ...props }) => (
 export const Heading2: FC<HeadingProps> = ({ children, ...props }) => (
   <h2
     {...props}
-    className={clsx("text-3xl font-bold text-base-content", props.className)}
+    className={clsx("text-base-content text-3xl font-bold", props.className)}
   >
     {children}
   </h2>
@@ -32,7 +32,7 @@ export const Heading2: FC<HeadingProps> = ({ children, ...props }) => (
 export const Heading3: FC<HeadingProps> = ({ children, ...props }) => (
   <h3
     {...props}
-    className={clsx("text-2xl font-bold text-base-content", props.className)}
+    className={clsx("text-base-content text-2xl font-bold", props.className)}
   >
     {children}
   </h3>
@@ -41,22 +41,22 @@ export const Heading3: FC<HeadingProps> = ({ children, ...props }) => (
 export const Heading4: FC<HeadingProps> = ({ children, ...props }) => (
   <h4
     {...props}
-    className={clsx("text-xl font-bold text-base-content", props.className)}
+    className={clsx("text-base-content text-xl font-bold", props.className)}
   >
     {children}
   </h4>
 );
 
 export const Subtitle: FC<HeadingProps> = ({ children, className = "" }) => (
-  <div className={clsx("text-lg font-medium text-base-content/80", className)}>
+  <div className={clsx("text-base-content/80 text-lg font-medium", className)}>
     {children}
   </div>
 );
 
 export const Body: FC<TextProps> = ({ children, className = "" }) => (
-  <p className={clsx("text-base text-base-content", className)}>{children}</p>
+  <p className={clsx("text-base-content text-base", className)}>{children}</p>
 );
 
 export const Caption: FC<TextProps> = ({ children, className = "" }) => (
-  <p className={clsx("text-sm text-base-content/70", className)}>{children}</p>
+  <p className={clsx("text-base-content/70 text-sm", className)}>{children}</p>
 );

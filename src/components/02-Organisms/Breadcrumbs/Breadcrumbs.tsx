@@ -26,7 +26,7 @@ export const Breadcrumbs: FC<Props> = (props) => {
 
   return (
     <div
-      className={clsx("breadcrumbs text-sm p-1 font-medium", props.className)}
+      className={clsx("breadcrumbs p-1 text-sm font-medium", props.className)}
     >
       <ul>
         {isChecklist && (

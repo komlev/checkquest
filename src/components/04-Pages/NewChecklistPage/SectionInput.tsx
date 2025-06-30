@@ -19,7 +19,11 @@ type Props = {
     score: number,
     extra?: boolean
   ) => void;
-  reorderQuestion: (sectionIndex: number, fromIndex: number, toIndex: number) => void;
+  reorderQuestion: (
+    sectionIndex: number,
+    fromIndex: number,
+    toIndex: number
+  ) => void;
   sectionsLength: number;
   lastInput: RefObject<HTMLInputElement | null>;
   selectedSection: number;
@@ -42,10 +46,10 @@ export const SectionInput: FC<Props> = memo(
   }) => (
     <div
       key={section.id}
-      className="border border-primary/50 card card-sm bg-base-100 shadow-sm hover:shadow-md transition-all"
+      className="border-primary/50 card card-sm bg-base-100 border shadow-sm transition-all hover:shadow-md"
     >
       <div className="card-body">
-        <div className="flex justify-between items-start">
+        <div className="flex items-start justify-between">
           <FormControl
             label={getQuestionLabel(sectionIndex, undefined, "Section Name")}
             className="w-1/2"
@@ -124,7 +128,7 @@ export const SectionInput: FC<Props> = memo(
                 }
               />
             ))}
-            <div className="text-center mt-4">
+            <div className="mt-4 text-center">
               <button
                 type="button"
                 className="btn btn-sm btn-warning"

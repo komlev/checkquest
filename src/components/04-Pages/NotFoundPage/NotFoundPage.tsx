@@ -44,7 +44,7 @@ export const NotFoundPage = () => {
           Go back home
         </Link>
       )}
-      <ChecklistImage className="w-full h-96" />
+      <ChecklistImage className="h-96 w-full" />
     </Page>
   );
 };

@@ -76,7 +76,7 @@ export const NewInterviewForm: FC<Props> = ({
             </select>
           </FormControl>
         </div>
-        <div className="card-actions justify-end flex sm:flex-row flex-col-reverse">
+        <div className="card-actions flex flex-col-reverse justify-end sm:flex-row">
           <button
             id="cancel-new-interview-btn"
             type="button"
