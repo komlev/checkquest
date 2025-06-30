@@ -15,14 +15,14 @@ export const SectionCard: FC<SectionCardProps> = ({
   section,
   sectionIndex,
 }) => (
-  <div className="card card-border border-base-300 bg-base-100 shadow-sm hover:shadow-md transition-all">
+  <div className="card card-border border-base-300 bg-base-100 shadow-sm transition-all hover:shadow-md">
     <div className="card-body">
-      <div className="flex justify-between items-start">
+      <div className="flex items-start justify-between">
         <div>
-          <span className="m-0 font-black text-2xl leading-none">
+          <span className="m-0 text-2xl leading-none font-black">
             {section.title}
           </span>
-          <div className="text-xs text-base-content/50">
+          <div className="text-base-content/50 text-xs">
             {section.questions.length} questions
           </div>
         </div>
@@ -32,21 +32,21 @@ export const SectionCard: FC<SectionCardProps> = ({
       </div>
       <Line className="my-0" />
       {section.questions.length === 0 ? (
-        <Caption className="text-center py-2">
+        <Caption className="py-2 text-center">
           No questions in this section
         </Caption>
       ) : (
-        <ul className="space-y-2 overflow-y-auto pr-2 scrollbar-thin scrollbar-thumb-base-300">
+        <ul className="scrollbar-thin scrollbar-thumb-base-300 space-y-2 overflow-y-auto pr-2">
           {section.questions.map((question, questionIndex) => (
             <li
               key={question.id}
               className={clsx(
-                "flex justify-between items-center rounded-lg p-3 bg-base-200 shadow-sm cursor-pointer hover:shadow-md font-medium gap-1",
-                question.extra ? "border-l-4 border-accent" : "pl-4"
+                "bg-base-200 flex cursor-pointer items-center justify-between gap-1 rounded-lg p-3 font-medium shadow-sm hover:shadow-md",
+                question.extra ? "border-accent border-l-4" : "pl-4"
               )}
             >
-              <div className="flex gap-2 items-center">
-                <span className="font-medium text-sm">
+              <div className="flex items-center gap-2">
+                <span className="text-sm font-medium">
                   {getQuestionLabel(sectionIndex, questionIndex)}
                 </span>
                 <span className="text-sm">{question.text}</span>

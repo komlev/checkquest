@@ -7,7 +7,7 @@ export const Toolstrip: FC<Props> = (props) => (
   <div
     {...props}
     className={clsx(
-      "flex flex-col md:flex-row justify-between items-start md:items-start gap-2",
+      "flex flex-col items-start justify-between gap-2 md:flex-row md:items-start",
       props.className
     )}
   >

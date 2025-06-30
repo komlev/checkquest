@@ -28,7 +28,7 @@ export const InterviewSidepanel: FC<Props> = ({
   sections,
   totalPossibleScore,
 }) => (
-  <div className="card bg-base-100 shadow-xl sticky top-4">
+  <div className="card bg-base-100 sticky top-4 shadow-xl">
     <div className="card-body">
       <h2 id="interview-summary-heading" className="card-title">
         Summary
@@ -48,7 +48,7 @@ export const InterviewSidepanel: FC<Props> = ({
       </div>
       <Line>{checklist?.name}</Line>
       <div className="stats" role="group" aria-label="Interview statistics">
-        <div className="stat py-0 pl-0 pr-2">
+        <div className="stat py-0 pr-2 pl-0">
           <div className="stat-title">Score</div>
           <Score
             className="stat-value text-warning"
@@ -71,7 +71,7 @@ export const InterviewSidepanel: FC<Props> = ({
         </div>
       </div>
       <div className="mt-4">
-        <div className="flex justify-between mb-1">
+        <div className="mb-1 flex justify-between">
           <span id="progress-label">Progress</span>
           <Score
             value={totalScore}

@@ -32,7 +32,7 @@ export class ErrorBoundaryPage extends Component<Props, State> {
           <Page className="flex flex-col items-center gap-2">
             <Heading1 className="mt-4">Page Error</Heading1>
             <Subtitle>There was an error on a page</Subtitle>
-            <div className="card-actions justify-end mt-4">
+            <div className="card-actions mt-4 justify-end">
               <button
                 className="btn btn-primary"
                 onClick={() => window.location.reload()}

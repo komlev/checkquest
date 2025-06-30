@@ -3,10 +3,10 @@ import { ThemeSwitcher } from "../../00-Atoms/ThemeSwitcher/ThemeSwitcher";
 
 export const Footer = () => (
   <footer
-    className="footer footer-center py-4 bg-neutral z-10"
+    className="footer footer-center bg-neutral z-10 py-4"
     role="contentinfo"
   >
-    <div className="flex font-medium text-neutral-content">
+    <div className="text-neutral-content flex font-medium">
       CheckQuest by{" "}
       <a
         className="link focusable focusable-neutral"

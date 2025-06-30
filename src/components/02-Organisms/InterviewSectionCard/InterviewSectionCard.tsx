@@ -40,9 +40,9 @@ export const InterviewSectionCard: FC<InterviewSectionCardProps> = ({
   };
 
   return (
-    <div className="card shadow-md bg-base-100">
+    <div className="card bg-base-100 shadow-md">
       <div className="card-body">
-        <div className="flex justify-between items-start gap-2">
+        <div className="flex items-start justify-between gap-2">
           <div className="mb-4 flex flex-col">
             <Heading2
               id={`section-name-${sectionIndex}`}
@@ -82,14 +82,14 @@ export const InterviewSectionCard: FC<InterviewSectionCardProps> = ({
               <li
                 key={question.id}
                 className={clsx(
-                  "flex justify-between items-center rounded-lg p-3 bg-base-200 shadow-sm cursor-pointer hover:shadow-md font-medium gap-2",
-                  question.extra && "border-l-4 border-accent"
+                  "bg-base-200 flex cursor-pointer items-center justify-between gap-2 rounded-lg p-3 font-medium shadow-sm hover:shadow-md",
+                  question.extra && "border-accent border-l-4"
                 )}
                 onClick={() =>
                   onCheckQuestion(questionIndex, !question.checked)
                 }
               >
-                <div className="flex gap-3 items-center">
+                <div className="flex items-center gap-3">
                   <input
                     id={`question-checkbox-${sectionIndex}-${questionIndex}`}
                     aria-label={question.text}

@@ -69,7 +69,7 @@ export const ChecklistList = () => {
       />
       <>
         <ul className="list bg-base-100 rounded-box shadow-md">
-          <li className="p-4 pb-2 text-xs opacity-60 tracking-wide">
+          <li className="p-4 pb-2 text-xs tracking-wide opacity-60">
             {checklists.length
               ? "Available checklists"
               : "No checklists available"}
@@ -80,7 +80,7 @@ export const ChecklistList = () => {
                 <div
                   aria-hidden="true"
                   role="presentation"
-                  className="text-4xl font-black uppercase text-warning"
+                  className="text-warning text-4xl font-black uppercase"
                 >
                   {checklist.name?.[0]}
                 </div>
@@ -94,7 +94,7 @@ export const ChecklistList = () => {
                     {checklist.name}
                   </Link>
                 </div>
-                <div className="text-xs uppercase font-semibold opacity-60 flex gap-1">
+                <div className="flex gap-1 text-xs font-semibold uppercase opacity-60">
                   {checklist.description && <div>{checklist.description}</div>}
                   <div>
                     {getSectionsQuestionCount(checklist.sections)} questions
@@ -152,7 +152,7 @@ export const ChecklistList = () => {
                   aria-label="Delete Checklist"
                 >
                   <TrashIcon
-                    className="fill-current text-error"
+                    className="text-error fill-current"
                     width={16}
                     aria-hidden="true"
                     role="presentation"

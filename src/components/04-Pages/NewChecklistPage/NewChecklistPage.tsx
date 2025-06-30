@@ -43,7 +43,7 @@ export const NewChecklistPage: FC = () => {
       </Toolstrip>
       <Line />
       <form onSubmit={handleSubmit}>
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+        <div className="grid grid-cols-1 gap-6 md:grid-cols-3">
           <div className="md:col-span-2">
             {sectionsLength === 0 ? (
               <div className="flex flex-col items-center gap-2">
@@ -90,7 +90,7 @@ export const NewChecklistPage: FC = () => {
               </div>
             )}
           </div>
-          <div className="card card-sm shadow-lg h-fit sticky top-2 bg-base-100">
+          <div className="card card-sm bg-base-100 sticky top-2 h-fit shadow-lg">
             <div className="card-body flex flex-col gap-2">
               <FormControl id="name" label="Checklist name" error={errors.name}>
                 <input
@@ -116,7 +116,7 @@ export const NewChecklistPage: FC = () => {
                 <div className="fieldset-label">Optional</div>
               </FormControl>
               <ChecklistScore sections={sections} />
-              <div className="card-actions justify-end flex md:flex-row flex-col items-center gap-2">
+              <div className="card-actions flex flex-col items-center justify-end gap-2 md:flex-row">
                 <button
                   id="submit-btn"
                   type="submit"

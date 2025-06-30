@@ -83,7 +83,7 @@ export const InterviewList: FC = () => {
         }}
       />
       <ul className="list bg-base-100 rounded-box shadow-md">
-        <li className="p-4 pb-2 text-xs opacity-60 tracking-wide">
+        <li className="p-4 pb-2 text-xs tracking-wide opacity-60">
           {interviews.length ? "Finished interviews" : "No finished interviews"}
         </li>
         {interviews.map((interview) => {
@@ -93,12 +93,12 @@ export const InterviewList: FC = () => {
           return (
             <li key={interview.id} className="list-row items-center">
               <Score
-                className="text-4xl font-thin text-warning tabular-nums"
+                className="text-warning text-4xl font-thin tabular-nums"
                 value={interview.score}
                 maxValue={maxPoints}
               />
               <div className="flex flex-col-reverse">
-                <div className="text-base-content/70 text-xs font-medium flex gap-2">
+                <div className="text-base-content/70 flex gap-2 text-xs font-medium">
                   <time dateTime={date}>{date}</time>
                   <Score
                     value={interview.score}
@@ -107,7 +107,7 @@ export const InterviewList: FC = () => {
                     aria-label="Interview Score"
                   />
                 </div>
-                <div className="list-col-grow flex md:flex-row flex-col text-xl md:gap-1 md:items-center">
+                <div className="list-col-grow flex flex-col text-xl md:flex-row md:items-center md:gap-1">
                   <Link
                     to={getInterviewPage(interview.id)}
                     className="link link-hover"
@@ -168,7 +168,7 @@ export const InterviewList: FC = () => {
                   title="Delete Interview"
                 >
                   <TrashIcon
-                    className="fill-current text-error"
+                    className="text-error fill-current"
                     width={16}
                     aria-hidden="true"
                     role="presentation"

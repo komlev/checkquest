@@ -22,7 +22,7 @@ export const ThemeSwitcher = () => {
       {/* sun icon */}
       <svg
         data-testid="sun-icon"
-        className="swap-off h-6 w-6 text-neutral-content fill-current"
+        className="swap-off text-neutral-content h-6 w-6 fill-current"
         xmlns="http://www.w3.org/2000/svg"
         viewBox="0 0 24 24"
         aria-hidden="true"
@@ -35,7 +35,7 @@ export const ThemeSwitcher = () => {
       {/* moon icon */}
       <svg
         data-testid="moon-icon"
-        className="swap-on h-6 w-6 text-neutral-content fill-current"
+        className="swap-on text-neutral-content h-6 w-6 fill-current"
         xmlns="http://www.w3.org/2000/svg"
         viewBox="0 0 24 24"
         aria-hidden="true"

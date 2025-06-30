@@ -63,7 +63,7 @@ export const InterviewPage: FC = () => {
         </button>
       </Toolstrip>
       <Line className="mt-0" />
-      <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
+      <div className="grid grid-cols-1 gap-6 lg:grid-cols-3">
         <section
           className="lg:col-span-2"
           aria-labelledby="interview-sections-heading"
@@ -71,7 +71,7 @@ export const InterviewPage: FC = () => {
           <h2 id="interview-sections-heading" className="sr-only">
             Interview Sections
           </h2>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
+          <div className="grid grid-cols-1 gap-5 md:grid-cols-2">
             <SectionsList
               sections={sections}
               onCheckQuestion={handleCheckQuestion}

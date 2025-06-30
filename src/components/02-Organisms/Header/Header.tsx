@@ -6,14 +6,14 @@ import { Breadcrumbs } from "../Breadcrumbs/Breadcrumbs";
 
 export const Header = () => (
   <header
-    className="navbar bg-neutral py-2 items-center flex-col flex justify-center"
+    className="navbar bg-neutral flex flex-col items-center justify-center py-2"
     role="banner"
   >
-    <Container className="flex justify-between items-center text-neutral-content">
-      <div className="flex gap-3 items-center">
+    <Container className="text-neutral-content flex items-center justify-between">
+      <div className="flex items-center gap-3">
         <Link
           to={ROOT}
-          className="font-black text-2xl flex gap-2 items-center w-fit rounded-sm focusable-neutral"
+          className="focusable-neutral flex w-fit items-center gap-2 rounded-sm text-2xl font-black"
           aria-label="CheckQuest Home"
         >
           <CheckIcon
@@ -22,7 +22,7 @@ export const Header = () => (
             aria-hidden="true"
             role="presentation"
           />
-          <span className="hidden md:block text-warning">
+          <span className="text-warning hidden md:block">
             <span className="text-accent">Check</span>Quest
           </span>
         </Link>

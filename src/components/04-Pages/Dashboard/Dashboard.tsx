@@ -21,12 +21,12 @@ export const Dashboard: FC = () => {
 
   return (
     <Page className="flex flex-col">
-      <div className="flex md:flex-row flex-col items-center md:items-start gap-2">
-        <div className="flex flex-col gap-2 md:w-1/2 items-center md:items-start md:mt-20">
-          <h1 className="text-5xl font-black text-center md:text-start">
+      <div className="flex flex-col items-center gap-2 md:flex-row md:items-start">
+        <div className="flex flex-col items-center gap-2 md:mt-20 md:w-1/2 md:items-start">
+          <h1 className="text-center text-5xl font-black md:text-start">
             CheckQuest!
           </h1>
-          <div className="text-3xl font-bold text-center md:text-start">
+          <div className="text-center text-3xl font-bold md:text-start">
             Interviewer Checklists Manager
           </div>
           <p className="text-base-content/60 mt-4 text-center md:text-start">
@@ -35,7 +35,7 @@ export const Dashboard: FC = () => {
             question or evaluation point is missed. Maintain consistency across
             interviews, and make data-driven decisions with ease.
           </p>
-          <div className="flex gap-2 mt-3">
+          <div className="mt-3 flex gap-2">
             <Link
               id="add-checklist-btn"
               href={CHECKLIST_NEW}

@@ -64,7 +64,7 @@ export const ChecklistPage: FC = () => {
         <div className="flex flex-col gap-1">
           <Heading1>{checklist.name}</Heading1>
           {checklist.description && <Caption>{checklist.description}</Caption>}
-          <div className="flex gap-2 mt-2">
+          <div className="mt-2 flex gap-2">
             <span className="badge badge-sm badge-warning">
               {checklist.sections.length} sections
             </span>
@@ -81,7 +81,7 @@ export const ChecklistPage: FC = () => {
             )}
           </div>
         </div>
-        <div className="flex gap-2 justify-between w-full md:w-auto">
+        <div className="flex w-full justify-between gap-2 md:w-auto">
           <button
             id="add-interview-btn"
             onClick={onOpen}
