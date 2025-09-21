@@ -1,0 +1,309 @@
+{
+  "id": "react",
+  "version": "1.0.0",
+  "tags": ["react", "frontend"],
+  "author": "Community",
+  "name": "React",
+  "description": "React developer checklist",
+  "createdAt": "2025-09-21T13:02:32.480Z",
+  "updatedAt": "2025-09-21T13:02:32.480Z",
+  "sections": [
+    {
+      "id": "general",
+      "title": "General",
+      "questions": [
+        { "id": "jsx", "text": "JSX", "score": 1, "extra": false },
+        {
+          "id": "virtualDom",
+          "text": "Virtual DOM",
+          "score": 1,
+          "extra": false
+        },
+        {
+          "id": "oneWayDataFlow",
+          "text": "One-way data flow",
+          "score": 1,
+          "extra": false
+        },
+        {
+          "id": "keysInLists",
+          "text": "Keys in lists",
+          "score": 1,
+          "extra": false
+        }
+      ]
+    },
+    {
+      "id": "hooks",
+      "title": "Hooks",
+      "questions": [
+        { "id": "useState", "text": "useState", "score": 1, "extra": false },
+        {
+          "id": "useReducer",
+          "text": "useReducer",
+          "score": 1,
+          "extra": false
+        },
+        { "id": "useEffect", "text": "useEffect", "score": 1, "extra": false },
+        {
+          "id": "useLayoutEffect",
+          "text": "useLayoutEffect",
+          "score": 2,
+          "extra": true
+        },
+        { "id": "useMemo", "text": "useMemo", "score": 2, "extra": false },
+        {
+          "id": "useCallback",
+          "text": "useCallback",
+          "score": 2,
+          "extra": false
+        },
+        {
+          "id": "useContext",
+          "text": "useContext",
+          "score": 1,
+          "extra": false
+        },
+        { "id": "useRef", "text": "useRef", "score": 1, "extra": false },
+        {
+          "id": "useSyncExternalStore",
+          "text": "useSyncExternalStore",
+          "score": 3,
+          "extra": true
+        },
+        {
+          "id": "useTransition",
+          "text": "useTransition",
+          "score": 3,
+          "extra": true
+        },
+        { "id": "useId", "text": "useId", "score": 1, "extra": true }
+      ]
+    },
+    {
+      "id": "stateManagement",
+      "title": "State Management",
+      "questions": [
+        { "id": "context", "text": "Context", "score": 1, "extra": false },
+        { "id": "redux", "text": "Redux, RTK", "score": 2, "extra": false },
+        {
+          "id": "otherStateManagers",
+          "text": "Other State Managers (mobx, zustand, nanostores, etc.)",
+          "score": 2,
+          "extra": true
+        },
+        {
+          "id": "syncClients",
+          "text": "Sync Clients (Apollo, Tanstack Query, etc.)",
+          "score": 3,
+          "extra": true
+        }
+      ]
+    },
+    {
+      "id": "patternsMechanisms",
+      "title": "Patterns and Mechanisms",
+      "questions": [
+        { "id": "hoc", "text": "HOC", "score": 1, "extra": false },
+        {
+          "id": "renderProps",
+          "text": "Render Props",
+          "score": 2,
+          "extra": false
+        },
+        {
+          "id": "memo",
+          "text": "React.memo and memoization strategy",
+          "score": 2,
+          "extra": false
+        },
+        { "id": "portal", "text": "Portal", "score": 1, "extra": false },
+        {
+          "id": "errorBoundaries",
+          "text": "Error Boundaries",
+          "score": 2,
+          "extra": false
+        }
+      ]
+    },
+    {
+      "id": "styling",
+      "title": "Styling & UI",
+      "questions": [
+        { "id": "globalCss", "text": "Global CSS", "score": 1, "extra": false },
+        {
+          "id": "cssModules",
+          "text": "CSS-modules",
+          "score": 2,
+          "extra": false
+        },
+        { "id": "cssInJs", "text": "CSS-in-JS", "score": 2, "extra": false },
+        {
+          "id": "utilityLibraries",
+          "text": "Utility Libraries (tailwind, reset, etc.)",
+          "score": 2,
+          "extra": false
+        },
+        {
+          "id": "componentLibraries",
+          "text": "Component Libraries",
+          "score": 1,
+          "extra": false
+        },
+        {
+          "id": "responsiveness",
+          "text": "Responsiveness / Adaptiveness",
+          "score": 1,
+          "extra": false
+        },
+        {
+          "id": "a11y",
+          "text": "A11y (ARIA patterns & semantics)",
+          "score": 3,
+          "extra": false
+        },
+        {
+          "id": "cssPreprocessorts",
+          "text": "Sass/Less",
+          "score": 1,
+          "extra": true
+        }
+      ]
+    },
+    {
+      "id": "performance",
+      "title": "Performance",
+      "questions": [
+        {
+          "id": "networkTab",
+          "text": "Network Tab",
+          "score": 1,
+          "extra": false
+        },
+        {
+          "id": "performanceTab",
+          "text": "Performance Tab",
+          "score": 2,
+          "extra": false
+        },
+        {
+          "id": "virtualization",
+          "text": "Virtualization",
+          "score": 3,
+          "extra": false
+        },
+        {
+          "id": "minification",
+          "text": "Minification",
+          "score": 1,
+          "extra": false
+        },
+        {
+          "id": "dynamicImports",
+          "text": "Dynamic Imports",
+          "score": 2,
+          "extra": false
+        },
+        {
+          "id": "lighthouse",
+          "text": "Lighthouse",
+          "score": 3,
+          "extra": false
+        },
+        {
+          "id": "webWorkers",
+          "text": "Web Workers",
+          "score": 3,
+          "extra": true
+        },
+        {
+          "id": "imageOptimization",
+          "text": "Image optimization",
+          "score": 2,
+          "extra": true
+        },
+        {
+          "id": "react",
+          "text": "Reset Styles",
+          "score": 1,
+          "extra": true
+        }
+      ]
+    },
+    {
+      "id": "codeQuality",
+      "title": "Code Quality",
+      "questions": [
+        {
+          "id": "linters",
+          "text": "Linters / Code Formatters",
+          "score": 1,
+          "extra": false
+        },
+        {
+          "id": "unitTesting",
+          "text": "Unit Testing",
+          "score": 2,
+          "extra": false
+        },
+        {
+          "id": "typescript",
+          "text": "Typescript",
+          "score": 1,
+          "extra": false
+        },
+        {
+          "id": "projectSetup",
+          "text": "Project Setup",
+          "score": 3,
+          "extra": false
+        },
+        {
+          "id": "storybook",
+          "text": "Storybook (visual testing)",
+          "score": 2,
+          "extra": true
+        },
+        { "id": "e2e", "text": "E2E Testing", "score": 3, "extra": true },
+        {
+          "id": "codeGeneration",
+          "text": "Code Generation / Scaffolding",
+          "score": 3,
+          "extra": true
+        },
+        { "id": "ai", "text": "AI", "score": 2, "extra": true },
+        {
+          "id": "cicd",
+          "text": "CI/CD integration",
+          "score": 2,
+          "extra": false
+        },
+        {
+          "id": "coreReviews",
+          "text": "Code Reviews",
+          "score": 1,
+          "extra": false
+        }
+      ]
+    },
+    {
+      "id": "ssr",
+      "title": "SSR & Hydration",
+      "questions": [
+        { "id": "ssr", "text": "SSR/SSG basics", "score": 2, "extra": true },
+        {
+          "id": "next",
+          "text": "Next.js",
+          "score": 2,
+          "extra": true
+        },
+        {
+          "id": "otherFrameworks",
+          "text": "Other frameworks (Astro, Tanstack, Gatsby)",
+          "score": 2,
+          "extra": true
+        }
+      ]
+    }
+  ]
+}
