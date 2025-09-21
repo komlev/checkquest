@@ -8,6 +8,8 @@ export const CHECKLIST_EDIT = "/lists/:id/edit";
 export const INTERVIEW_LIST = "/interviews";
 export const INTERVIEW_NEW = "/interviews/new";
 export const INTERVIEW_PAGE = "/interviews/:id";
+export const TEMPLATES_LIST = "/templates";
+export const TEMPLATE_PAGE = "/templates/:slug";
 
 export const CHECKLIST_PARAM = "checklistId";
 
@@ -22,3 +24,6 @@ export const getInterviewPage = (id: string) =>
 
 export const getNewInterviewPage = (checklistId?: string) =>
   INTERVIEW_NEW + stringify({ [CHECKLIST_PARAM]: checklistId }, true);
+
+export const getTemplatePage = (slug: string) =>
+  TEMPLATE_PAGE.replace(":slug", slug);

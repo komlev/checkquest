@@ -1,7 +1,7 @@
 import { useStore } from "@nanostores/react";
 import { FC } from "react";
 import { Link } from "wouter";
-import { CHECKLIST_NEW } from "../../../routes";
+import { CHECKLIST_NEW, TEMPLATES_LIST } from "../../../routes";
 import { $checklistsStore } from "../../../stores/checklistStore";
 import { $interviewsStore } from "../../../stores/interviewsStore";
 import { Page } from "../../01-Molecules/Page/Page";
@@ -43,7 +43,7 @@ export const Dashboard: FC = () => {
             >
               Create a Checklist
             </Link>
-            {!isNoChecklists && (
+            {(!isNoChecklists && (
               <>
                 <span className="text-base-content/60 mt-0.5">or</span>
                 <button
@@ -53,6 +53,17 @@ export const Dashboard: FC = () => {
                 >
                   Create an Interview
                 </button>
+              </>
+            )) || (
+              <>
+                <span className="text-base-content/60 mt-0.5">or</span>
+                <Link
+                  id="copy-template-btn"
+                  href={TEMPLATES_LIST}
+                  className="btn btn-sm btn-accent"
+                >
+                  Copy template
+                </Link>
               </>
             )}
           </div>

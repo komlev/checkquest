@@ -1,5 +1,10 @@
 import { Link } from "wouter";
-import { CHECKLIST_LIST, INTERVIEW_LIST, ROOT } from "../../../routes";
+import {
+  CHECKLIST_LIST,
+  INTERVIEW_LIST,
+  ROOT,
+  TEMPLATES_LIST,
+} from "../../../routes";
 import { Container } from "../../00-Atoms/Container/Container";
 import { CheckIcon } from "../../00-Atoms/Icons/CheckIcon";
 import { Breadcrumbs } from "../Breadcrumbs/Breadcrumbs";
@@ -46,6 +51,15 @@ export const Header = () => (
               className="btn btn-sm btn-warning btn-outline"
             >
               Checklists
+            </Link>
+          </li>
+          <li>
+            <Link
+              id="templates-link"
+              to={TEMPLATES_LIST}
+              className="btn btn-sm btn-outline"
+            >
+              Templates
             </Link>
           </li>
         </ul>
