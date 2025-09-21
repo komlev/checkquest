@@ -15,6 +15,8 @@ import { InterviewPage } from "./components/04-Pages/InterviewPage/InterviewPage
 import { NewChecklistPage } from "./components/04-Pages/NewChecklistPage/NewChecklistPage";
 import { NewInterviewPage } from "./components/04-Pages/NewInterviewPage/NewInterviewPage";
 import { NotFoundPage } from "./components/04-Pages/NotFoundPage/NotFoundPage";
+import { TemplatesListPage } from "./components/04-Pages/TemplatesListPage/TemplatesListPage";
+import { TemplateViewPage } from "./components/04-Pages/TemplateViewPage/TemplateViewPage";
 import {
   CHECKLIST_EDIT,
   CHECKLIST_LIST,
@@ -24,6 +26,8 @@ import {
   INTERVIEW_NEW,
   INTERVIEW_PAGE,
   ROOT,
+  TEMPLATES_LIST,
+  TEMPLATE_PAGE,
 } from "./routes";
 
 export const App: FC = () => {
@@ -49,6 +53,8 @@ export const App: FC = () => {
               <Route path={INTERVIEW_LIST} component={InterviewListPage} />
               <Route path={INTERVIEW_NEW} component={NewInterviewPage} />
               <Route path={INTERVIEW_PAGE} component={InterviewPage} />
+              <Route path={TEMPLATES_LIST} component={TemplatesListPage} />
+              <Route path={TEMPLATE_PAGE} component={TemplateViewPage} />
               <Route component={NotFoundPage} />
             </Switch>
           </ErrorBoundaryPage>
