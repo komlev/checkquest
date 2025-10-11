@@ -8,6 +8,7 @@ import {
 import { Container } from "../../00-Atoms/Container/Container";
 import { CheckIcon } from "../../00-Atoms/Icons/CheckIcon";
 import { Breadcrumbs } from "../Breadcrumbs/Breadcrumbs";
+import { BookIcon } from "../../00-Atoms/Icons/BookIcon";
 
 export const Header = () => (
   <header
@@ -57,9 +58,16 @@ export const Header = () => (
             <Link
               id="templates-link"
               to={TEMPLATES_LIST}
-              className="btn btn-sm btn-outline"
+              className="btn btn-sm btn-info btn-outline"
+              aria-label="Templates"
             >
-              Templates
+              <span className="hidden md:inline">Templates</span>
+              <BookIcon
+                className="fill-current md:hidden"
+                width={16}
+                aria-hidden="true"
+                role="presentation"
+              />
             </Link>
           </li>
         </ul>

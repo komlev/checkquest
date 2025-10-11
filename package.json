@@ -1,7 +1,7 @@
 {
   "name": "checkquest",
   "private": true,
-  "version": "0.0.0",
+  "version": "1.0.0",
   "type": "module",
   "scripts": {
     "predev": "node scripts/generate-templates.js",
@@ -11,7 +11,8 @@
     "lint": "eslint .",
     "prettier": "prettier .",
     "preview": "vite preview",
-    "test": "vitest"
+    "test": "vitest ./src",
+    "test-e2e": "playwright test"
   },
   "dependencies": {
     "@nanostores/persistent": "^0.10.2",
@@ -29,11 +30,13 @@
   },
   "devDependencies": {
     "@eslint/js": "^9.36.0",
+    "@playwright/test": "^1.56.0",
     "@tailwindcss/typography": "^0.5.18",
     "@tailwindcss/vite": "^4.1.13",
     "@testing-library/jest-dom": "^6.8.0",
     "@testing-library/react": "^16.3.0",
     "@types/chart.js": "^2.9.41",
+    "@types/node": "^24.7.1",
     "@types/react": "^19.1.13",
     "@types/react-dom": "^19.1.9",
     "@vitejs/plugin-react": "^4.7.0",

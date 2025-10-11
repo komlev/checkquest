@@ -1,10 +1,6 @@
 import { FC, useEffect, useState } from "react";
-import { Link, useLocation } from "wouter";
-import { getChecklistPage, getTemplatePage } from "../../../routes";
-import { addChecklist } from "../../../stores/checklistStore";
-import { Checklist } from "../../../types";
-import { getId } from "../../../utils/id";
-import { ClipboardIcon } from "../../00-Atoms/Icons/ClipboardIcon";
+import { Link } from "wouter";
+import { getTemplatePage } from "../../../routes";
 import { SearchIcon } from "../../00-Atoms/Icons/SearchIcon";
 import { Line } from "../../00-Atoms/Line/Line";
 import { Toolstrip } from "../../00-Atoms/Tooltstrip/Toolstip";
@@ -30,7 +26,6 @@ export const TemplatesListPage: FC = () => {
   const [templates, setTemplates] = useState<TemplateMeta[]>([]);
   const [error, setError] = useState<string | null>(null);
   const [search, setSearch] = useState("");
-  const [, setLocation] = useLocation();
 
   useEffect(() => {
     fetch("/templates/index.json")
@@ -42,26 +37,6 @@ export const TemplatesListPage: FC = () => {
   const filtered = templates.filter((t) =>
     t.name.toLowerCase().includes(search.toLowerCase())
   );
-
-  const onCopy = async (t: TemplateMeta) => {
-    try {
-      const res = await fetch(t.path);
-      const data = (await res.json()) as Checklist;
-      const now = new Date().toISOString();
-      const checklist: Checklist = {
-        id: getId(),
-        name: data.name,
-        description: data.description,
-        sections: data.sections,
-        createdAt: now,
-        updatedAt: now,
-      };
-      addChecklist(checklist);
-      setLocation(getChecklistPage(checklist.id));
-    } catch (_e) {
-      // no-op; in a real app we'd show a toast
-    }
-  };
 
   return (
     <Page className="flex flex-col gap-2">
@@ -110,25 +85,11 @@ export const TemplatesListPage: FC = () => {
                 </div>
               </div>
               <div className="flex gap-1">
-                <button
-                  id={`copy-template-btn-${t.slug}`}
-                  title="Copy Template"
-                  aria-label="Copy Template"
-                  className="btn btn-square btn-ghost"
-                  onClick={() => onCopy(t)}
-                >
-                  <ClipboardIcon
-                    className="fill-current"
-                    width={12}
-                    aria-hidden="true"
-                    role="presentation"
-                  />
-                </button>
                 <Link
                   id={`view-template-btn-${t.slug}`}
                   to={getTemplatePage(t.slug)}
                   className="btn btn-square btn-ghost"
-                  title="View Template"
+                  title={`View Template ${t.name}`}
                   aria-label="View Template"
                 >
                   <SearchIcon
