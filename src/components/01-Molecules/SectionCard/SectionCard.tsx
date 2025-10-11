@@ -22,7 +22,7 @@ export const SectionCard: FC<SectionCardProps> = ({
           <span className="m-0 text-2xl leading-none font-black">
             {section.title}
           </span>
-          <div className="text-base-content/50 text-xs">
+          <div className="text-base-content/60 text-xs">
             {section.questions.length} questions
           </div>
         </div>
@@ -36,7 +36,7 @@ export const SectionCard: FC<SectionCardProps> = ({
           No questions in this section
         </Caption>
       ) : (
-        <ul className="scrollbar-thin scrollbar-thumb-base-300 space-y-2 overflow-y-auto pr-2">
+        <ul className="space-y-2 pr-2">
           {section.questions.map((question, questionIndex) => (
             <li
               key={question.id}

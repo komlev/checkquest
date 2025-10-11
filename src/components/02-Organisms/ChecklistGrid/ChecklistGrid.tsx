@@ -1,7 +1,7 @@
 import clsx from "clsx";
 import { FC } from "react";
 import { Section } from "../../../types";
-import { Body, Heading4 } from "../../00-Atoms/Typography/Typography";
+import { Body, Heading2 } from "../../00-Atoms/Typography/Typography";
 import { SectionCard } from "../../01-Molecules/SectionCard/SectionCard";
 
 interface ChecklistGridProps {
@@ -17,9 +17,9 @@ export const ChecklistGrid: FC<ChecklistGridProps> = ({
     return (
       <div className="card bg-base-100 shadow-xl">
         <div className="card-body items-center text-center">
-          <Heading4 className="card-title">
+          <Heading2 className="card-title">
             No sections in this checklist
-          </Heading4>
+          </Heading2>
           <Body className="mb-4">Add sections to get started</Body>
         </div>
       </div>

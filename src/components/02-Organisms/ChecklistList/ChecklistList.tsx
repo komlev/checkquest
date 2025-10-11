@@ -76,15 +76,13 @@ export const ChecklistList = () => {
           </li>
           {checklists.map((checklist) => (
             <li key={checklist.id} className="list-row">
-              <Link className="focusable" to={getChecklistPage(checklist.id)}>
-                <div
-                  aria-hidden="true"
-                  role="presentation"
-                  className="text-warning text-4xl font-black uppercase"
-                >
-                  {checklist.name?.[0]}
-                </div>
-              </Link>
+              <div
+                aria-hidden="true"
+                role="presentation"
+                className="text-warning text-4xl font-black uppercase"
+              >
+                {checklist.name?.[0]}
+              </div>
               <div>
                 <div className="font-medium">
                   <Link

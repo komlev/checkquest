@@ -26,3 +26,10 @@ dist-ssr
 coverage
 public/google*.html
 public/templates/index.json
+
+# Playwright
+/test-results/
+/playwright-report/
+/blob-report/
+/playwright/.cache/
+/playwright/.auth/
