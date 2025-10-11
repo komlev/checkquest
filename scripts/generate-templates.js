@@ -40,7 +40,6 @@ const main = async () => {
       });
     } catch (e) {
       // Skip invalid JSON files but keep going
-      // eslint-disable-next-line no-console
       console.warn(`[templates] Skipping ${file}: ${e.message}`);
     }
   }
@@ -48,14 +47,12 @@ const main = async () => {
   // Sort by name for stable display
   entries.sort((a, b) => a.name.localeCompare(b.name));
   await writeFile(OUT_FILE, JSON.stringify(entries, null, 2) + "\n", "utf8");
-  // eslint-disable-next-line no-console
   console.log(
     `[templates] Wrote index for ${entries.length} templates -> ${OUT_FILE}`
   );
 };
 
 main().catch((err) => {
-  // eslint-disable-next-line no-console
   console.error("[templates] Failed to generate index:", err);
   process.exit(1);
 });
