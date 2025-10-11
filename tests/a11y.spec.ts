@@ -59,11 +59,27 @@ test("a11y", async ({ page }) => {
   await page.getByRole("link", { name: "Complete" }).click();
   await page
     .getByRole("listitem")
-    .filter({ hasText: "/11/20250%Test|React|None" })
+    .filter({ hasText: "Test|React|None" })
     .getByLabel("Delete Interview")
     .click();
   await page.getByRole("button", { name: "Confirm" }).click();
   await page.getByRole("link", { name: "Checklists" }).click();
   await page.getByRole("link", { name: "New Checklist" }).click();
   await page.getByRole("button", { name: "Create Checklist" }).click();
+
+  const newChecklistPage = await new AxeBuilder({ page }).analyze();
+  expect(newChecklistPage.violations).toEqual([]);
+
+  await page.getByPlaceholder("Name").fill("Hello");
+  await page.getByPlaceholder("Description").fill("Hello");
+  await page.getByRole("button", { name: "Create Checklist" }).click();
+
+  const resultChecklistPage = await new AxeBuilder({ page }).analyze();
+  expect(resultChecklistPage.violations).toEqual([]);
+
+  await page.getByRole("button", { name: "Delete Checklist" }).click();
+  await page.getByRole("button", { name: "Confirm" }).click();
+
+  await page.getByRole("button", { name: "Delete Checklist" }).click();
+  await page.getByRole("button", { name: "Confirm" }).click();
 });
