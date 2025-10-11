@@ -1,4 +1,4 @@
-name: Unit Tests
+name: Playwright Tests
 on:
   push:
     branches: [main]
@@ -13,7 +13,16 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: lts/*
+          cache: "pnpm"
       - name: Install dependencies
         run: npm install -g pnpm && pnpm install
-      - name: Run Unit tests
-        run: pnpm test
+      - name: Install Playwright Browsers
+        run: pnpm exec playwright install --with-deps
+      - name: Run Playwright tests
+        run: pnpm exec playwright test
+      - uses: actions/upload-artifact@v4
+        if: ${{ !cancelled() }}
+        with:
+          name: playwright-report
+          path: playwright-report/
+          retention-days: 1
