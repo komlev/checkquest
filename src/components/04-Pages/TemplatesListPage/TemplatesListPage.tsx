@@ -62,15 +62,13 @@ export const TemplatesListPage: FC = () => {
           </li>
           {filtered.map((t) => (
             <li key={t.slug} className="list-row">
-              <Link className="focusable" to={getTemplatePage(t.slug)}>
-                <div
-                  aria-hidden="true"
-                  role="presentation"
-                  className="text-warning text-4xl font-black uppercase"
-                >
-                  {t.name?.[0]}
-                </div>
-              </Link>
+              <div
+                aria-hidden="true"
+                role="presentation"
+                className="text-warning text-4xl font-black uppercase"
+              >
+                {t.name?.[0]}
+              </div>
               <div>
                 <div className="font-medium">
                   <Link className="focusable" to={getTemplatePage(t.slug)}>

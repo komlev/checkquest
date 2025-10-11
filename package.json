@@ -16,6 +16,7 @@
     "test-e2e": "playwright test"
   },
   "dependencies": {
+    "@axe-core/playwright": "^4.10.2",
     "@nanostores/persistent": "^0.10.2",
     "@nanostores/react": "^0.8.4",
     "chart.js": "^4.5.0",
