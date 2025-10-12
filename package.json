@@ -3,7 +3,7 @@
   "private": true,
   "version": "1.0.0",
   "type": "module",
-  "packageManager": "pnpm@10.0.0",
+  "packageManager": "pnpm@10.18.2",
   "scripts": {
     "predev": "node scripts/generate-templates.js",
     "dev": "vite",
