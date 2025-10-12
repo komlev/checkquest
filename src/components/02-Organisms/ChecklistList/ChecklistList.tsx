@@ -9,16 +9,16 @@ import {
 } from "../../../stores/checklistStore";
 import { Checklist } from "../../../types";
 import { getSectionsQuestionCount } from "../../../utils/checklist";
+import { copyChecklist } from "../../../utils/copyChecklist";
+import { ClipboardIcon } from "../../00-Atoms/Icons/ClipboardIcon";
 import { EditIcon } from "../../00-Atoms/Icons/EditIcon";
 import { StartIcon } from "../../00-Atoms/Icons/StartIcon";
 import { TrashIcon } from "../../00-Atoms/Icons/TrashIcon";
 import { Search } from "../../01-Molecules/Search/Search";
 import { ConfirmModal } from "../ConfirmModal";
 import { useConfirmModal } from "../ConfirmModal/useConfirmModal";
-import { NewInterviewModal } from "../NewInterviewModal";
 import { useNewInterviewModal } from "../NewInterviewForm/useNewInterviewModal";
-import { useCopyChecklist } from "../../../hooks/useCopyChecklist";
-import { ClipboardIcon } from "../../00-Atoms/Icons/ClipboardIcon";
+import { NewInterviewModal } from "../NewInterviewModal";
 
 const $search = atom("");
 const $filtered = computed([$checklistsStore, $search], (list, search) =>
@@ -41,8 +41,6 @@ export const ChecklistList = () => {
     confirmText,
     cancelText,
   } = useConfirmModal();
-
-  const { onCopy } = useCopyChecklist();
 
   const onDelete = (id: string) => {
     onConfirmOpen({
@@ -119,7 +117,7 @@ export const ChecklistList = () => {
                   title="Copy Checklist"
                   aria-label="Copy Checklist"
                   className="btn btn-square btn-ghost"
-                  onClick={() => onCopy(checklist)}
+                  onClick={() => copyChecklist(checklist)}
                 >
                   <ClipboardIcon
                     className="fill-current"

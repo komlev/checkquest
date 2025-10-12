@@ -1,12 +1,12 @@
 import { FC } from "react";
 import { Link, useLocation, useParams } from "wouter";
-import { useCopyChecklist } from "../../../hooks/useCopyChecklist";
 import { CHECKLIST_LIST, getEditChecklistPage } from "../../../routes";
 import { deleteChecklist, getChecklist } from "../../../stores/checklistStore";
 import {
   getSectionsPoints,
   getSectionsQuestionCount,
 } from "../../../utils/checklist";
+import { copyChecklist } from "../../../utils/copyChecklist";
 import { ClipboardIcon } from "../../00-Atoms/Icons/ClipboardIcon";
 import { EditIcon } from "../../00-Atoms/Icons/EditIcon";
 import { TrashIcon } from "../../00-Atoms/Icons/TrashIcon";
@@ -36,8 +36,6 @@ export const ChecklistPage: FC = () => {
     confirmText,
     cancelText,
   } = useConfirmModal();
-
-  const { onCopy } = useCopyChecklist();
 
   if (!checklist) {
     return <NotFoundPage />;
@@ -93,7 +91,7 @@ export const ChecklistPage: FC = () => {
             <button
               id="copy-checklist-btn"
               className="btn btn-sm btn-square"
-              onClick={() => onCopy(checklist)}
+              onClick={() => copyChecklist(checklist)}
               title="Export Checklist"
               aria-label="Export Checklist"
             >
