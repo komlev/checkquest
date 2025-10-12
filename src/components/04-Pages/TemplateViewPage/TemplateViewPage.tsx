@@ -66,7 +66,7 @@ export const TemplateViewPage: FC = () => {
               {template.description && (
                 <Caption>{template.description}</Caption>
               )}
-              <div className="mt-2 flex gap-2">
+              <div className="mt-2 flex flex-wrap gap-2">
                 <span className="badge badge-sm badge-warning">
                   {template.sections.length} sections
                 </span>

@@ -91,13 +91,13 @@ export const InterviewList: FC = () => {
           const maxPoints = getSectionsPoints(checklist?.sections, "required");
           const date = new Date(interview.createdAt).toLocaleDateString();
           return (
-            <li key={interview.id} className="list-row items-center">
+            <li key={interview.id} className="list-row flex items-center">
               <Score
                 className="text-warning text-4xl font-thin tabular-nums"
                 value={interview.score}
                 maxValue={maxPoints}
               />
-              <div className="flex flex-col-reverse">
+              <div className="flex grow flex-col-reverse">
                 <div className="text-base-content/70 flex gap-2 text-xs font-medium">
                   <time dateTime={date}>{date}</time>
                   <Score
@@ -145,7 +145,7 @@ export const InterviewList: FC = () => {
                   />
                 </div>
               </div>
-              <div className="flex gap-1">
+              <div className="flex shrink flex-wrap gap-1">
                 <button
                   id={`delete-interview-btn-${interview.id}`}
                   className="btn btn-square btn-ghost"

@@ -8,9 +8,6 @@ importers:
 
   .:
     dependencies:
-      '@axe-core/playwright':
-        specifier: ^4.10.2
-        version: 4.10.2(playwright-core@1.56.0)
       '@nanostores/persistent':
         specifier: ^0.10.2
         version: 0.10.2(nanostores@0.11.4)
@@ -48,6 +45,9 @@ importers:
         specifier: ^3.7.1
         version: 3.7.1(react@19.2.0)
     devDependencies:
+      '@axe-core/playwright':
+        specifier: ^4.10.2
+        version: 4.10.2(playwright-core@1.56.0)
       '@eslint/js':
         specifier: ^9.37.0
         version: 9.37.0
