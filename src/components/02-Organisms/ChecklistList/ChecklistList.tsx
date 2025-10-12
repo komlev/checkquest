@@ -75,7 +75,7 @@ export const ChecklistList = () => {
               : "No checklists available"}
           </li>
           {checklists.map((checklist) => (
-            <li key={checklist.id} className="list-row">
+            <li key={checklist.id} className="list-row flex">
               <div
                 aria-hidden="true"
                 role="presentation"
@@ -83,7 +83,7 @@ export const ChecklistList = () => {
               >
                 {checklist.name?.[0]}
               </div>
-              <div>
+              <div className="grow">
                 <div className="font-medium">
                   <Link
                     className="focusable"
@@ -99,7 +99,7 @@ export const ChecklistList = () => {
                   </div>
                 </div>
               </div>
-              <div className="flex gap-1">
+              <div className="flex shrink flex-wrap gap-1">
                 <button
                   id={`start-interview-btn-${checklist.id}`}
                   title="Start Interview"
