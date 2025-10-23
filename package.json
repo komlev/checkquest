@@ -10,10 +10,13 @@
     "prebuild": "node scripts/generate-templates.js",
     "build": "tsc -b && vite build",
     "lint": "eslint .",
+    "lint:fix": "eslint . --fix",
     "prettier": "prettier .",
+    "prettier:fix": "prettier . --write",
     "preview": "vite preview",
     "test": "vitest ./src",
-    "test-e2e": "playwright test"
+    "test-e2e": "playwright test",
+    "prepare": "husky"
   },
   "dependencies": {
     "@nanostores/persistent": "^0.10.2",
@@ -50,7 +53,9 @@
     "eslint-plugin-react-hooks": "^5.2.0",
     "eslint-plugin-react-refresh": "^0.4.23",
     "globals": "^15.15.0",
+    "husky": "^9.1.7",
     "jsdom": "^26.1.0",
+    "lint-staged": "^16.2.6",
     "prettier": "^3.6.2",
     "prettier-plugin-tailwindcss": "^0.6.14",
     "tailwindcss": "^4.1.14",
