@@ -1,7 +1,7 @@
 {
   "name": "checkquest",
   "private": true,
-  "version": "1.0.0",
+  "version": "0.1.0",
   "type": "module",
   "packageManager": "pnpm@10.18.2",
   "scripts": {
@@ -15,7 +15,7 @@
     "test": "vitest ./src",
     "test-e2e": "playwright test",
     "prepare": "husky",
-    "cm": "cz"
+    "cm": "cz commit"
   },
   "dependencies": {
     "@nanostores/persistent": "^0.10.2",
