@@ -14,9 +14,7 @@ import { ImportChecklistModal } from "../../02-Organisms/ImportChecklistModal";
 export const ChecklistListPage: FC = () => {
   const checklists = useStore($checklistsStore);
   const [showImportModal, setShowImportModal] = useState(false);
-  const onImport = () => {
-    setShowImportModal(true);
-  };
+  const onImport = () => setShowImportModal(true);
 
   return (
     <Page className="flex flex-col">

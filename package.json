@@ -10,13 +10,12 @@
     "prebuild": "node scripts/generate-templates.js",
     "build": "tsc -b && vite build",
     "lint": "eslint .",
-    "lint:fix": "eslint . --fix",
     "prettier": "prettier .",
-    "prettier:fix": "prettier . --write",
     "preview": "vite preview",
     "test": "vitest ./src",
     "test-e2e": "playwright test",
-    "prepare": "husky"
+    "prepare": "husky",
+    "cm": "cz"
   },
   "dependencies": {
     "@nanostores/persistent": "^0.10.2",
@@ -63,5 +62,10 @@
     "typescript-eslint": "^8.46.0",
     "vite": "^6.3.6",
     "vitest": "^3.2.4"
+  },
+  "husky": {
+    "hooks": {
+      "prepare-commit-msg": "exec < /dev/tty && npx cz --hook || true"
+    }
   }
 }
