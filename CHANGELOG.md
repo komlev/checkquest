@@ -1,3 +1,9 @@
+## 1.1.2 (2025-10-24)
+
+### Refactor
+
+- overall quality improvement, add typecheck, add bundle analyzer, fix typo in function name, add pre-push on lint-staged
+
 ## 1.1.1 (2025-10-24)
 
 ### Fix
