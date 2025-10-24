@@ -4,7 +4,7 @@ import { getChecklistPage } from "../../../routes";
 import {
   addChecklist,
   getChecklist,
-  updatechecklist,
+  updateChecklist,
 } from "../../../stores/checklistStore";
 import { Checklist, Question, Section } from "../../../types";
 import { getId } from "../../../utils/id";
@@ -171,7 +171,7 @@ export const useChecklistFormPage = () => {
         createdAt: getChecklist(params.id)?.createdAt || now,
       };
 
-      updatechecklist(updatedChecklist);
+      updateChecklist(updatedChecklist);
       setLocation(getChecklistPage(params.id));
     } else {
       // Create new checklist

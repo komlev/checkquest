@@ -1,7 +1,10 @@
 import { defineConfig } from "vitest/config";
 import tailwindcss from "@tailwindcss/vite";
+import { analyzer } from "vite-bundle-analyzer";
 import react from "@vitejs/plugin-react";
 import pack from "./package.json";
+
+const hasAnalyzer = process.env.ANALYZE;
 
 const htmlPlugin = () => {
   return {
@@ -13,7 +16,16 @@ const htmlPlugin = () => {
 };
 
 export default defineConfig({
-  plugins: [tailwindcss(), react(), htmlPlugin()],
+  plugins: [
+    tailwindcss(),
+    react(),
+    htmlPlugin(),
+    analyzer({
+      analyzerMode: "static",
+      openAnalyzer: true,
+      enabled: !!hasAnalyzer,
+    }),
+  ],
   test: {
     globals: true,
     environment: "jsdom",
