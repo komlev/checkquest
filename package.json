@@ -3,13 +3,18 @@
   "private": true,
   "version": "1.1.1",
   "type": "module",
-  "packageManager": "pnpm@10.18.2",
+  "packageManager": "pnpm@10.19.0",
+  "engines": {
+    "node": ">=20.0.0",
+    "pnpm": ">=9.0.0"
+  },
   "scripts": {
     "predev": "node scripts/generate-templates.js",
     "dev": "vite",
     "prebuild": "node scripts/generate-templates.js",
     "build": "tsc -b && vite build",
     "lint": "eslint .",
+    "typecheck": "tsc -b --noEmit",
     "prettier": "prettier .",
     "preview": "vite preview",
     "test": "vitest ./src",
@@ -61,6 +66,7 @@
     "typescript": "^5.9.3",
     "typescript-eslint": "^8.46.0",
     "vite": "^6.3.6",
+    "vite-bundle-analyzer": "^1.2.3",
     "vitest": "^3.2.4"
   },
   "husky": {

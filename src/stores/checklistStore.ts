@@ -11,7 +11,7 @@ export const addChecklist = (checklist: Checklist) => {
   $checklistsStore.set([...$checklistsStore.get(), checklist]);
 };
 
-export const updatechecklist = (updatedChecklist: Checklist) => {
+export const updateChecklist = (updatedChecklist: Checklist) => {
   const checklists = $checklistsStore.get();
   const index = checklists.findIndex((kb) => kb.id === updatedChecklist.id);
 
