@@ -1,3 +1,9 @@
+## 1.1.3 (2025-11-03)
+
+### Fix
+
+- replace eslint/prettier with biome, replace husky/lint-staged with lefthook
+
 ## 1.1.2 (2025-10-24)
 
 ### Refactor
