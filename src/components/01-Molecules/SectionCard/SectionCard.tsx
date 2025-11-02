@@ -1,9 +1,9 @@
-import { FC } from "react";
-import { Section } from "../../../types";
+import clsx from "clsx";
+import type { FC } from "react";
+import type { Section } from "../../../types";
 import { getQuestionLabel, getSectionPoints } from "../../../utils/checklist";
 import { Line } from "../../00-Atoms/Line/Line";
 import { Caption } from "../../00-Atoms/Typography/Typography";
-import clsx from "clsx";
 
 interface SectionCardProps {
   section: Section;
@@ -42,7 +42,7 @@ export const SectionCard: FC<SectionCardProps> = ({
               key={question.id}
               className={clsx(
                 "bg-base-200 flex cursor-pointer items-center justify-between gap-1 rounded-lg p-3 font-medium shadow-sm hover:shadow-md",
-                question.extra ? "border-accent border-l-4" : "pl-4"
+                question.extra ? "border-accent border-l-4" : "pl-4",
               )}
             >
               <div className="flex items-center gap-2">

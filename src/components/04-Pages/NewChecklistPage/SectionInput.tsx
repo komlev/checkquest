@@ -1,5 +1,5 @@
-import { FC, memo, RefObject } from "react";
-import { Section } from "../../../types";
+import { type FC, memo, type RefObject } from "react";
+import type { Section } from "../../../types";
 import { getQuestionLabel } from "../../../utils/checklist";
 import { FormControl } from "../../00-Atoms/FormControl/FormControl";
 import { TrashIcon } from "../../00-Atoms/Icons/TrashIcon";
@@ -17,12 +17,12 @@ type Props = {
     questionIndex: number,
     text: string,
     score: number,
-    extra?: boolean
+    extra?: boolean,
   ) => void;
   reorderQuestion: (
     sectionIndex: number,
     fromIndex: number,
-    toIndex: number
+    toIndex: number,
   ) => void;
   sectionsLength: number;
   lastInput: RefObject<HTMLInputElement | null>;
@@ -141,5 +141,5 @@ export const SectionInput: FC<Props> = memo(
         )}
       </div>
     </div>
-  )
+  ),
 );

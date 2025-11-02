@@ -1,10 +1,10 @@
-import { describe, it, expect } from "vitest";
-import { Section, Question } from "../types";
+import { describe, expect, it } from "vitest";
+import type { Question, Section } from "../types";
 import {
-  getSectionsQuestionCount,
-  getSectionsPoints,
-  getSectionPoints,
   getQuestionLabel,
+  getSectionPoints,
+  getSectionsPoints,
+  getSectionsQuestionCount,
   getSkillLevel,
 } from "./checklist";
 
@@ -65,7 +65,7 @@ describe("checklist utils", () => {
   describe("getSectionPoints", () => {
     it("should return 0 for empty section", () => {
       expect(
-        getSectionPoints({ id: "empty", title: "Empty", questions: [] })
+        getSectionPoints({ id: "empty", title: "Empty", questions: [] }),
       ).toBe(0);
     });
 
@@ -111,7 +111,7 @@ describe("checklist utils", () => {
 
     it("should return section number, question number, and name", () => {
       expect(getQuestionLabel(0, 1, "Test Question")).toBe(
-        "1.2. Test Question"
+        "1.2. Test Question",
       );
     });
   });

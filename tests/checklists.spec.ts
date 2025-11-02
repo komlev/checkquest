@@ -1,4 +1,4 @@
-import { test, expect } from "@playwright/test";
+import { expect, test } from "@playwright/test";
 
 test("Create checklist", async ({ page }) => {
   await page.goto("http://localhost:5173/");
@@ -44,7 +44,7 @@ test("Create checklist", async ({ page }) => {
   await page.getByPlaceholder("Name").fill("Test checklist");
   await page.getByRole("button", { name: "Create Checklist" }).click();
   await expect(
-    page.getByRole("heading", { name: "Test checklist" })
+    page.getByRole("heading", { name: "Test checklist" }),
   ).toBeVisible();
   await page.getByRole("button", { name: "Delete Checklist" }).click();
   await page.getByRole("button", { name: "Confirm" }).click();

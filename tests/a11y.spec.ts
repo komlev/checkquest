@@ -1,5 +1,5 @@
-import { test, expect } from "@playwright/test";
 import AxeBuilder from "@axe-core/playwright";
+import { expect, test } from "@playwright/test";
 
 test("a11y", async ({ page }) => {
   await page.goto("http://localhost:5173/");
@@ -32,7 +32,7 @@ test("a11y", async ({ page }) => {
   expect(interviewPage.violations).toEqual([]);
 
   await expect(
-    page.getByRole("heading", { name: "Start Interview" })
+    page.getByRole("heading", { name: "Start Interview" }),
   ).toBeVisible();
   await page.locator("#submit-new-interview-btn").click();
 
@@ -45,7 +45,7 @@ test("a11y", async ({ page }) => {
 
   const interviewsPage = await new AxeBuilder({ page }).analyze();
   expect(
-    interviewsPage.violations.filter((i) => i.id !== "color-contrast")
+    interviewsPage.violations.filter((i) => i.id !== "color-contrast"),
   ).toEqual([]);
 
   await page.getByRole("button", { name: "New Interview" }).click();

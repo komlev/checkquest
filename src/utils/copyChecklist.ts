@@ -1,6 +1,6 @@
 import { exportChecklist } from "../stores/checklistStore";
 import { addNotification } from "../stores/notificationsStore";
-import { Checklist } from "../types";
+import type { Checklist } from "../types";
 
 export const copyChecklist = async (checklist: Checklist) => {
   const content = exportChecklist(checklist.id);

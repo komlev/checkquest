@@ -1,5 +1,5 @@
 import clsx from "clsx";
-import { DetailedHTMLProps, FC, HTMLAttributes } from "react";
+import type { DetailedHTMLProps, FC, HTMLAttributes } from "react";
 
 type Props = DetailedHTMLProps<HTMLAttributes<HTMLDivElement>, HTMLDivElement>;
 
@@ -8,7 +8,7 @@ export const Toolstrip: FC<Props> = (props) => (
     {...props}
     className={clsx(
       "flex flex-col items-start justify-between gap-2 md:flex-row md:items-start",
-      props.className
+      props.className,
     )}
   >
     {props.children}

@@ -1,8 +1,8 @@
 import { Link, useLocation, useParams } from "wouter";
 import { CHECKLIST_LIST, INTERVIEW_LIST, ROOT } from "../../../routes";
+import { ChecklistImage } from "../../00-Atoms/ChecklistImage/ChecklistImage";
 import { Heading1, Subtitle } from "../../00-Atoms/Typography";
 import { Page } from "../../01-Molecules/Page/Page";
-import { ChecklistImage } from "../../00-Atoms/ChecklistImage/ChecklistImage";
 
 export const NotFoundPage = () => {
   const [route] = useLocation();

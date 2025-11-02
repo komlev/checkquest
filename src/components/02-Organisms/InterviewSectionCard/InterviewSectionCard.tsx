@@ -1,6 +1,6 @@
 import clsx from "clsx";
-import { FC, useMemo } from "react";
-import { Section } from "../../../types";
+import { type FC, useMemo } from "react";
+import type { Section } from "../../../types";
 import { getQuestionLabel } from "../../../utils/checklist";
 import { Line } from "../../00-Atoms/Line/Line";
 import { Heading2, Subtitle } from "../../00-Atoms/Typography";
@@ -79,11 +79,12 @@ export const InterviewSectionCard: FC<InterviewSectionCardProps> = ({
         ) : (
           <ul className="flex flex-col gap-2">
             {section.questions.map((question, questionIndex) => (
+              // biome-ignore lint/a11y/useKeyWithClickEvents: does not have negative impact on accessibility
               <li
                 key={question.id}
                 className={clsx(
                   "bg-base-200 flex cursor-pointer items-center justify-between gap-2 rounded-lg p-3 font-medium shadow-sm hover:shadow-md",
-                  question.extra && "border-accent border-l-4"
+                  question.extra && "border-accent border-l-4",
                 )}
                 onClick={() =>
                   onCheckQuestion(questionIndex, !question.checked)
@@ -96,7 +97,7 @@ export const InterviewSectionCard: FC<InterviewSectionCardProps> = ({
                     type="checkbox"
                     className={clsx(
                       `checkbox`,
-                      question.extra ? "checkbox-accent" : "checkbox-warning"
+                      question.extra ? "checkbox-accent" : "checkbox-warning",
                     )}
                     checked={question.checked || false}
                     onChange={(e) =>
@@ -110,7 +111,7 @@ export const InterviewSectionCard: FC<InterviewSectionCardProps> = ({
                     {getQuestionLabel(
                       sectionIndex,
                       questionIndex,
-                      question.text
+                      question.text,
                     )}
                   </span>
                 </div>

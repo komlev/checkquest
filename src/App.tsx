@@ -1,5 +1,5 @@
 import { hotkeyKeyUX, startKeyUX } from "keyux";
-import { FC, useEffect } from "react";
+import { type FC, useEffect } from "react";
 import { themeChange } from "theme-change";
 import { Route, Router, Switch } from "wouter";
 import { useHashLocation } from "wouter/use-hash-location";
@@ -26,8 +26,8 @@ import {
   INTERVIEW_NEW,
   INTERVIEW_PAGE,
   ROOT,
-  TEMPLATES_LIST,
   TEMPLATE_PAGE,
+  TEMPLATES_LIST,
 } from "./routes";
 
 export const App: FC = () => {

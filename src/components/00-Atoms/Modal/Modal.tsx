@@ -1,5 +1,5 @@
 import clsx from "clsx";
-import { FC, ReactNode, useEffect, useRef } from "react";
+import { type FC, type ReactNode, useEffect, useRef } from "react";
 import { Heading1 } from "../Typography";
 
 interface ModalProps {
@@ -46,7 +46,6 @@ const Modal: FC<ModalProps> = ({
       className={clsx("modal", className)}
       aria-labelledby={titleId}
       aria-modal="true"
-      role="dialog"
       aria-hidden={!isOpen}
     >
       <div className="modal-box">

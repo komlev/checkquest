@@ -1,5 +1,5 @@
-import { FC, memo } from "react";
-import { Section } from "../../../types";
+import { type FC, memo } from "react";
+import type { Section } from "../../../types";
 import {
   getSectionsPoints,
   getSectionsQuestionCount,

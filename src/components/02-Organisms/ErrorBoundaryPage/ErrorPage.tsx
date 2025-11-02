@@ -1,4 +1,4 @@
-import { FC } from "react";
+import type { FC } from "react";
 import { Heading1, Subtitle } from "../../00-Atoms/Typography";
 import { Page } from "../../01-Molecules/Page/Page";
 
@@ -20,6 +20,7 @@ export const ErrorPage: FC<Props> = ({
       {!hideReload && (
         <div className="card-actions mt-4 justify-end">
           <button
+            type="button"
             className="btn btn-primary"
             onClick={() => window.location.reload()}
           >

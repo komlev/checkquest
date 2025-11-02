@@ -1,4 +1,4 @@
-import { FC, useEffect, useState } from "react";
+import { type FC, useEffect, useState } from "react";
 import { useLocation } from "wouter";
 import { getChecklistPage } from "../../../routes";
 import { importChecklist } from "../../../stores/checklistStore";
@@ -35,7 +35,7 @@ const ImportChecklistModal: FC<Props> = ({ isOpen, onClose }) => {
   return (
     <Modal
       footer={
-        <button className="btn btn-primary" onClick={onImport}>
+        <button type="button" className="btn btn-primary" onClick={onImport}>
           Import
         </button>
       }

@@ -1,6 +1,6 @@
 import clsx from "clsx";
-import { FC } from "react";
-import { Checklist, Interview } from "../../../types";
+import type { FC } from "react";
+import type { Checklist, Interview } from "../../../types";
 import { FormControl } from "../../00-Atoms/FormControl/FormControl";
 import { useInterviewForm } from "./useInterviewForm";
 
@@ -22,7 +22,7 @@ export const NewInterviewForm: FC<Props> = ({
   const { handleSubmit, errors, value, $state, checklists } = useInterviewForm(
     onCreate,
     onChecklist,
-    checklistParam
+    checklistParam,
   );
 
   return (
@@ -30,7 +30,7 @@ export const NewInterviewForm: FC<Props> = ({
       <div className="flex flex-col gap-2">
         <div
           className={clsx("grid grid-cols-1 gap-2", {
-            ["sm:grid-cols-2"]: isPage,
+            "sm:grid-cols-2": isPage,
           })}
         >
           <FormControl id="name" label="Interview Name" error={errors.name}>
@@ -59,7 +59,7 @@ export const NewInterviewForm: FC<Props> = ({
               aria-required="true"
               className={clsx(
                 "select select-bordered w-full",
-                errors.checklist && "select-error"
+                errors.checklist && "select-error",
               )}
               value={value.checklist}
               onChange={(e) => {

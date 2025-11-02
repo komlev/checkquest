@@ -1,4 +1,4 @@
-import { FC } from "react";
+import type { FC } from "react";
 
 type Props = React.DetailedHTMLProps<
   React.ImgHTMLAttributes<HTMLImageElement>,
@@ -6,5 +6,5 @@ type Props = React.DetailedHTMLProps<
 >;
 
 export const ChecklistImage: FC<Props> = (props) => (
-  <img {...props} src="/landing.svg" alt="Checklist image" />
+  <img {...props} src="/landing.svg" alt="Checklist" />
 );

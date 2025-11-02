@@ -9,7 +9,7 @@ import {
   deleteInterview,
   updateInterview,
 } from "../../../stores/interviewsStore";
-import { Section } from "../../../types";
+import type { Section } from "../../../types";
 import { useConfirmModal } from "../../02-Organisms/ConfirmModal/useConfirmModal";
 
 export const useInterviewPage = () => {
@@ -21,7 +21,7 @@ export const useInterviewPage = () => {
 
   const interview = useMemo(
     () => interviews.find((i) => i.id === id),
-    [interviews, id]
+    [interviews, id],
   );
   const checklist = interview
     ? checklists.find((c) => c.id === interview.checklistId)
@@ -75,7 +75,7 @@ export const useInterviewPage = () => {
           updateInterview(updatedInterview);
         }
       }, 400),
-    [interview]
+    [interview],
   );
 
   // Handle summary change with debounce
@@ -85,7 +85,7 @@ export const useInterviewPage = () => {
       setSummary(newSummary);
       debouncedSaveSummary(newSummary);
     },
-    [debouncedSaveSummary]
+    [debouncedSaveSummary],
   );
 
   const handleCheckQuestion = useCallback(
@@ -126,7 +126,7 @@ export const useInterviewPage = () => {
 
       updateInterview(updatedInterview);
     },
-    [interview, sections]
+    [interview, sections],
   );
 
   const handleDelete = () => {

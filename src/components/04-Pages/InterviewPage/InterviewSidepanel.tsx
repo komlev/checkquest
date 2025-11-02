@@ -1,7 +1,7 @@
-import { FC, Suspense } from "react";
+import { type FC, Suspense } from "react";
 import { Link } from "wouter";
 import { INTERVIEW_LIST } from "../../../routes";
-import { Checklist, Section } from "../../../types";
+import type { Checklist, Section } from "../../../types";
 import { Line } from "../../00-Atoms/Line/Line";
 import { Score } from "../../00-Atoms/Score/Score";
 import { SkillLevel } from "../../00-Atoms/SkillLevel/SkillLevel";
@@ -47,7 +47,7 @@ export const InterviewSidepanel: FC<Props> = ({
         ></textarea>
       </div>
       <Line>{checklist?.name}</Line>
-      <div className="stats" role="group" aria-label="Interview statistics">
+      <fieldset className="stats" aria-label="Interview statistics">
         <div className="stat py-0 pr-2 pl-0">
           <div className="stat-title">Score</div>
           <Score
@@ -69,7 +69,7 @@ export const InterviewSidepanel: FC<Props> = ({
             />
           </div>
         </div>
-      </div>
+      </fieldset>
       <div className="mt-4">
         <div className="mb-1 flex justify-between">
           <span id="progress-label">Progress</span>

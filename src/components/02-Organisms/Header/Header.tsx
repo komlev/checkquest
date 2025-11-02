@@ -6,15 +6,12 @@ import {
   TEMPLATES_LIST,
 } from "../../../routes";
 import { Container } from "../../00-Atoms/Container/Container";
+import { BookIcon } from "../../00-Atoms/Icons/BookIcon";
 import { CheckIcon } from "../../00-Atoms/Icons/CheckIcon";
 import { Breadcrumbs } from "../Breadcrumbs/Breadcrumbs";
-import { BookIcon } from "../../00-Atoms/Icons/BookIcon";
 
 export const Header = () => (
-  <header
-    className="navbar bg-neutral flex flex-col items-center justify-center py-2"
-    role="banner"
-  >
+  <header className="navbar bg-neutral flex flex-col items-center justify-center py-2">
     <Container className="text-neutral-content flex items-center justify-between">
       <div className="flex items-center gap-3">
         <Link

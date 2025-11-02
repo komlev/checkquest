@@ -20,11 +20,11 @@ Chart.register(
   LineElement,
   Tooltip,
   Legend,
-  Filler
+  Filler,
 );
 
-import { FC, useEffect, useRef, useState } from "react";
-import { Section } from "../../../types";
+import { type FC, useEffect, useRef, useState } from "react";
+import type { Section } from "../../../types";
 
 type Props = {
   sections: Section[];
@@ -52,7 +52,7 @@ const RadarChart: FC<Props> = ({ sections }) => {
         }
       });
       radarValues.push(
-        Math.min((selectedScore / (sectionScore || 1)) * 100, 100)
+        Math.min((selectedScore / (sectionScore || 1)) * 100, 100),
       );
     });
 

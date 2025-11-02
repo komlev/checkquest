@@ -6,7 +6,7 @@ import {
   getChecklist,
   updateChecklist,
 } from "../../../stores/checklistStore";
-import { Checklist, Question, Section } from "../../../types";
+import type { Checklist, Question, Section } from "../../../types";
 import { getId } from "../../../utils/id";
 
 export const useChecklistFormPage = () => {
@@ -35,7 +35,7 @@ export const useChecklistFormPage = () => {
     }
   }, [isEditMode, params?.id]);
 
-  const focusOnLastInput = (sectionIndex: number) => {
+  const focusOnLastInput = useCallback((sectionIndex: number) => {
     selectedSection.current = sectionIndex;
     setTimeout(() => {
       if (lastInput.current) {
@@ -43,7 +43,7 @@ export const useChecklistFormPage = () => {
         selectedSection.current = -2;
       }
     }, 0);
-  };
+  }, []);
 
   const addSection = useCallback(() => {
     const newSection: Section = {
@@ -54,7 +54,7 @@ export const useChecklistFormPage = () => {
     const sectionIndex = sections.length;
     setSections([...sections, newSection]);
     focusOnLastInput(sectionIndex);
-  }, [sections]);
+  }, [sections, focusOnLastInput]);
 
   const updateSection = useCallback(
     (index: number, title: string) => {
@@ -62,7 +62,7 @@ export const useChecklistFormPage = () => {
       updatedSections[index].title = title;
       setSections(updatedSections);
     },
-    [sections]
+    [sections],
   );
 
   const removeSection = useCallback(
@@ -71,7 +71,7 @@ export const useChecklistFormPage = () => {
       updatedSections.splice(index, 1);
       setSections(updatedSections);
     },
-    [sections]
+    [sections],
   );
 
   const addQuestion = useCallback(
@@ -87,7 +87,7 @@ export const useChecklistFormPage = () => {
       setSections(updatedSections);
       focusOnLastInput(sectionIndex);
     },
-    [sections]
+    [sections, focusOnLastInput],
   );
 
   const updateQuestion = useCallback(
@@ -96,7 +96,7 @@ export const useChecklistFormPage = () => {
       questionIndex: number,
       text: string,
       score: number,
-      extra?: boolean
+      extra?: boolean,
     ) => {
       const updatedSections = [...sections];
       updatedSections[sectionIndex].questions[questionIndex].text = text;
@@ -105,7 +105,7 @@ export const useChecklistFormPage = () => {
         extra ?? false;
       setSections(updatedSections);
     },
-    [sections]
+    [sections],
   );
 
   const removeQuestion = useCallback(
@@ -114,7 +114,7 @@ export const useChecklistFormPage = () => {
       updatedSections[sectionIndex].questions.splice(questionIndex, 1);
       setSections(updatedSections);
     },
-    [sections]
+    [sections],
   );
 
   const reorderQuestion = useCallback(
@@ -126,7 +126,7 @@ export const useChecklistFormPage = () => {
       updatedSections[sectionIndex].questions = questions;
       setSections(updatedSections);
     },
-    [sections]
+    [sections],
   );
 
   const validateForm = () => {
@@ -149,7 +149,7 @@ export const useChecklistFormPage = () => {
 
     // Validate sections have titles and questions
     const validSections = sections.filter(
-      (section) => section.title.trim() !== ""
+      (section) => section.title.trim() !== "",
     );
 
     // Filter out questions with empty text

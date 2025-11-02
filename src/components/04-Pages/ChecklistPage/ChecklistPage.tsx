@@ -1,4 +1,4 @@
-import { FC } from "react";
+import type { FC } from "react";
 import { Link, useLocation, useParams } from "wouter";
 import { CHECKLIST_LIST, getEditChecklistPage } from "../../../routes";
 import { deleteChecklist, getChecklist } from "../../../stores/checklistStore";
@@ -82,6 +82,7 @@ export const ChecklistPage: FC = () => {
         <div className="flex w-full justify-between gap-2 md:w-auto">
           <button
             id="add-interview-btn"
+            type="button"
             onClick={onOpen}
             className="btn btn-sm btn-primary"
           >
@@ -90,6 +91,7 @@ export const ChecklistPage: FC = () => {
           <div className="flex gap-2">
             <button
               id="copy-checklist-btn"
+              type="button"
               className="btn btn-sm btn-square"
               onClick={() => copyChecklist(checklist)}
               title="Export Checklist"
@@ -118,6 +120,7 @@ export const ChecklistPage: FC = () => {
             </Link>
             <button
               id="delete-checklist-btn"
+              type="button"
               className="btn btn-error btn-sm btn-outline btn-square"
               onClick={onDelete}
               title="Delete Checklist"

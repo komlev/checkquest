@@ -1,14 +1,14 @@
+import clsx from "clsx";
+import type { FC } from "react";
 import { Link, useLocation } from "wouter";
 import {
   CHECKLIST_LIST,
-  INTERVIEW_LIST,
-  TEMPLATES_LIST,
   getChecklistPage,
   getInterviewPage,
   getTemplatePage,
+  INTERVIEW_LIST,
+  TEMPLATES_LIST,
 } from "../../../routes";
-import { FC } from "react";
-import clsx from "clsx";
 
 type Props = {
   className?: string;
@@ -30,7 +30,7 @@ export const Breadcrumbs: FC<Props> = (props) => {
         : isTemplate
           ? TEMPLATES_LIST
           : INTERVIEW_LIST,
-      ""
+      "",
     )
     .match(/\/(.+?)(\/|$)/i)?.[1];
 
@@ -38,7 +38,7 @@ export const Breadcrumbs: FC<Props> = (props) => {
     <div
       className={clsx(
         "breadcrumbs hidden p-1 text-sm font-medium md:flex",
-        props.className
+        props.className,
       )}
     >
       <ul>

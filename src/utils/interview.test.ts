@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { Checklist, Interview, Section } from "../types";
+import type { Checklist, Interview, Section } from "../types";
 import {
   getInterviewAnsweredQuestions,
   getInterviewSummary,

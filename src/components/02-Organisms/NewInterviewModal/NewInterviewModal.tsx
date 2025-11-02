@@ -1,10 +1,10 @@
-import { FC } from "react";
+import type { FC } from "react";
+import { useLocation } from "wouter";
+import { getInterviewPage } from "../../../routes";
+import { addInterview } from "../../../stores/interviewsStore";
+import type { Interview } from "../../../types";
 import { Modal } from "../../00-Atoms/Modal";
 import { NewInterviewForm } from "../NewInterviewForm/NewInterviewForm";
-import { useLocation } from "wouter";
-import { Interview } from "../../../types";
-import { addInterview } from "../../../stores/interviewsStore";
-import { getInterviewPage } from "../../../routes";
 
 type Props = {
   isOpen: boolean;

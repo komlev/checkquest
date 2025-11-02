@@ -1,5 +1,5 @@
-import { describe, it, expect, vi, beforeEach, afterEach } from "vitest";
-import { renderHook, act } from "@testing-library/react";
+import { act, renderHook } from "@testing-library/react";
+import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
 import { useTheme } from "./useTheme";
 
 describe("useTheme", () => {
@@ -47,7 +47,7 @@ describe("useTheme", () => {
 
     expect(mockLocalStorage.setItem).toHaveBeenCalledWith(
       "isdark",
-      JSON.stringify(true)
+      JSON.stringify(true),
     );
   });
 

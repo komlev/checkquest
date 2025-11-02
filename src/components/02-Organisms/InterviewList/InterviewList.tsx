@@ -1,6 +1,6 @@
 import { useStore } from "@nanostores/react";
 import { atom, computed } from "nanostores";
-import { FC } from "react";
+import type { FC } from "react";
 import { Link } from "wouter";
 import {
   CHECKLIST_LIST,
@@ -13,7 +13,7 @@ import {
   deleteInterview,
 } from "../../../stores/interviewsStore";
 import { addNotification } from "../../../stores/notificationsStore";
-import { Checklist, Interview } from "../../../types";
+import type { Checklist, Interview } from "../../../types";
 import { getSectionsPoints } from "../../../utils/checklist";
 import { getInterviewSummary } from "../../../utils/interview";
 import { ClipboardIcon } from "../../00-Atoms/Icons/ClipboardIcon";
@@ -33,7 +33,7 @@ const $filtered = computed([$interviewsStore, $search], (list, search) =>
       const bDate = new Date(b.updatedAt);
 
       return bDate.getTime() - aDate.getTime();
-    })
+    }),
 );
 
 export const InterviewList: FC = () => {
@@ -148,6 +148,7 @@ export const InterviewList: FC = () => {
               <div className="flex shrink flex-wrap gap-1">
                 <button
                   id={`delete-interview-btn-${interview.id}`}
+                  type="button"
                   className="btn btn-square btn-ghost"
                   onClick={() => onCopy(interview, checklist)}
                   aria-label="Export Interview Summary"
@@ -162,6 +163,7 @@ export const InterviewList: FC = () => {
                 </button>
                 <button
                   id={`delete-interview-btn-${interview.id}`}
+                  type="button"
                   className="btn btn-square btn-ghost"
                   onClick={() => onDelete(interview)}
                   aria-label="Delete Interview"

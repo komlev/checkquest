@@ -1,5 +1,5 @@
 import { persistentAtom } from "@nanostores/persistent";
-import { Interview, Section } from "../types";
+import type { Interview, Section } from "../types";
 import { getId } from "../utils/id";
 
 export const $interviewsStore = persistentAtom<Interview[]>("interviews", [], {
@@ -34,7 +34,7 @@ export const getInterview = (id: string): Interview | undefined => {
 export const createInterview = (
   name: string,
   checklistId: string,
-  sections: Section[]
+  sections: Section[],
 ): Interview => ({
   id: getId(),
   name,

@@ -1,5 +1,5 @@
 import clsx from "clsx";
-import { DetailedHTMLProps, FC, InputHTMLAttributes } from "react";
+import type { DetailedHTMLProps, FC, InputHTMLAttributes } from "react";
 import { SearchIcon } from "../../00-Atoms/Icons/SearchIcon";
 
 type Props = DetailedHTMLProps<
@@ -26,8 +26,6 @@ export const Search: FC<Props> = ({ containerClassname, id, ...props }) => (
       {...props}
       className={clsx("grow", props.className)}
     />
-    <kbd className="kbd kbd-sm" role="presentation" aria-hidden="true">
-      F
-    </kbd>
+    <kbd className="kbd kbd-sm">F</kbd>
   </label>
 );

@@ -1,8 +1,8 @@
-import { FC, useEffect, useMemo, useState } from "react";
+import { type FC, useEffect, useMemo, useState } from "react";
 import { useLocation, useParams } from "wouter";
 import { getChecklistPage } from "../../../routes";
 import { addChecklist } from "../../../stores/checklistStore";
-import { Checklist } from "../../../types";
+import type { Checklist } from "../../../types";
 import { getId } from "../../../utils/id";
 import { Line } from "../../00-Atoms/Line/Line";
 import { Toolstrip } from "../../00-Atoms/Tooltstrip/Toolstip";
@@ -53,7 +53,7 @@ export const TemplateViewPage: FC = () => {
 
   const totalQuestions = template?.sections.reduce(
     (acc, s) => acc + s.questions.length,
-    0
+    0,
   );
 
   return (
@@ -76,7 +76,11 @@ export const TemplateViewPage: FC = () => {
               </div>
             </div>
             <div className="flex w-full justify-end gap-2 md:w-auto">
-              <button className="btn btn-sm btn-primary" onClick={onCopy}>
+              <button
+                type="button"
+                className="btn btn-sm btn-primary"
+                onClick={onCopy}
+              >
                 Copy to My Checklists
               </button>
             </div>

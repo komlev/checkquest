@@ -1,5 +1,5 @@
 import clsx from "clsx";
-import { DetailedHTMLProps, FC, HTMLAttributes } from "react";
+import type { DetailedHTMLProps, FC, HTMLAttributes } from "react";
 
 type Props = DetailedHTMLProps<HTMLAttributes<HTMLDivElement>, HTMLDivElement>;
 

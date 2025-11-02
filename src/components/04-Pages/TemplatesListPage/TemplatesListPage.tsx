@@ -1,4 +1,4 @@
-import { FC, useEffect, useState } from "react";
+import { type FC, useEffect, useState } from "react";
 import { Link } from "wouter";
 import { getTemplatePage } from "../../../routes";
 import { SearchIcon } from "../../00-Atoms/Icons/SearchIcon";
@@ -35,7 +35,7 @@ export const TemplatesListPage: FC = () => {
   }, []);
 
   const filtered = templates.filter((t) =>
-    t.name.toLowerCase().includes(search.toLowerCase())
+    t.name.toLowerCase().includes(search.toLowerCase()),
   );
 
   return (

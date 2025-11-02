@@ -1,5 +1,5 @@
 import clsx from "clsx";
-import { DetailedHTMLProps, FC, HTMLAttributes, ReactNode } from "react";
+import type { DetailedHTMLProps, FC, HTMLAttributes, ReactNode } from "react";
 import { Link } from "wouter";
 import { Heading1, Subtitle } from "../../00-Atoms/Typography";
 
@@ -44,6 +44,7 @@ export const Hero: FC<Props> = ({
               {onClick && (
                 <button
                   id={id}
+                  type="button"
                   onClick={onClick}
                   className="btn btn-primary mt-2"
                 >

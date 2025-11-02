@@ -1,4 +1,4 @@
-import { FC } from "react";
+import type { FC } from "react";
 import { CHECKLIST_LIST } from "../../../routes";
 import { FormControl } from "../../00-Atoms/FormControl/FormControl";
 import { Line } from "../../00-Atoms/Line/Line";

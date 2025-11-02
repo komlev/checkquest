@@ -1,5 +1,5 @@
 import { persistentAtom } from "@nanostores/persistent";
-import { Checklist } from "../types";
+import type { Checklist } from "../types";
 import { getId } from "../utils/id";
 
 export const $checklistsStore = persistentAtom<Checklist[]>("checklists", [], {
