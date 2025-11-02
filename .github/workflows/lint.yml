@@ -18,5 +18,7 @@ jobs:
           cache: "pnpm"
       - name: Install dependencies
         run: pnpm install
-      - name: Install Playwright Browsers
+      - name: Run lint
         run: pnpm lint
+      - name: Run typecheck
+        run: pnpm typecheck
