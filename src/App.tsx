@@ -26,8 +26,8 @@ import {
   INTERVIEW_NEW,
   INTERVIEW_PAGE,
   ROOT,
-  TEMPLATES_LIST,
   TEMPLATE_PAGE,
+  TEMPLATES_LIST,
 } from "./routes";
 
 export const App: FC = () => {

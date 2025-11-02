@@ -3,8 +3,8 @@ import type { FC } from "react";
 import { CHECKLIST_NEW } from "../../../routes";
 import { $checklistsStore } from "../../../stores/checklistStore";
 import { Hero } from "../../01-Molecules/Hero/Hero";
-import { NewInterviewModal } from "../NewInterviewModal";
 import { useNewInterviewModal } from "../NewInterviewForm/useNewInterviewModal";
+import { NewInterviewModal } from "../NewInterviewModal";
 
 export const EmptyHero: FC = () => {
   const checklists = useStore($checklistsStore);

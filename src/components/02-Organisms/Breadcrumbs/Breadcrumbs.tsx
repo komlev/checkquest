@@ -1,14 +1,14 @@
+import clsx from "clsx";
+import type { FC } from "react";
 import { Link, useLocation } from "wouter";
 import {
   CHECKLIST_LIST,
-  INTERVIEW_LIST,
-  TEMPLATES_LIST,
   getChecklistPage,
   getInterviewPage,
   getTemplatePage,
+  INTERVIEW_LIST,
+  TEMPLATES_LIST,
 } from "../../../routes";
-import type { FC } from "react";
-import clsx from "clsx";
 
 type Props = {
   className?: string;

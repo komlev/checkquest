@@ -1,10 +1,10 @@
-import { describe, it, expect } from "vitest";
-import type { Section, Question } from "../types";
+import { describe, expect, it } from "vitest";
+import type { Question, Section } from "../types";
 import {
-  getSectionsQuestionCount,
-  getSectionsPoints,
-  getSectionPoints,
   getQuestionLabel,
+  getSectionPoints,
+  getSectionsPoints,
+  getSectionsQuestionCount,
   getSkillLevel,
 } from "./checklist";
 

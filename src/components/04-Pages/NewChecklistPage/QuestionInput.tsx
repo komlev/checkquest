@@ -1,8 +1,8 @@
+import clsx from "clsx";
 import { type FC, type RefObject, useState } from "react";
 import type { Question, Section } from "../../../types";
-import { FormControl } from "../../00-Atoms/FormControl/FormControl";
-import clsx from "clsx";
 import { getQuestionLabel } from "../../../utils/checklist";
+import { FormControl } from "../../00-Atoms/FormControl/FormControl";
 import { DragIcon } from "../../00-Atoms/Icons/DragIcon";
 
 type Props = {

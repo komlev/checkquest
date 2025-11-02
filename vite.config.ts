@@ -1,7 +1,7 @@
-import { defineConfig } from "vitest/config";
 import tailwindcss from "@tailwindcss/vite";
-import { analyzer } from "vite-bundle-analyzer";
 import react from "@vitejs/plugin-react";
+import { analyzer } from "vite-bundle-analyzer";
+import { defineConfig } from "vitest/config";
 import pack from "./package.json";
 
 const hasAnalyzer = process.env.ANALYZE;

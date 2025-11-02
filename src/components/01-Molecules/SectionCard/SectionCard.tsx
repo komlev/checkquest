@@ -1,9 +1,9 @@
+import clsx from "clsx";
 import type { FC } from "react";
 import type { Section } from "../../../types";
 import { getQuestionLabel, getSectionPoints } from "../../../utils/checklist";
 import { Line } from "../../00-Atoms/Line/Line";
 import { Caption } from "../../00-Atoms/Typography/Typography";
-import clsx from "clsx";
 
 interface SectionCardProps {
   section: Section;

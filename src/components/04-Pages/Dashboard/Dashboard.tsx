@@ -4,12 +4,12 @@ import { Link } from "wouter";
 import { CHECKLIST_NEW, TEMPLATES_LIST } from "../../../routes";
 import { $checklistsStore } from "../../../stores/checklistStore";
 import { $interviewsStore } from "../../../stores/interviewsStore";
+import { ChecklistImage } from "../../00-Atoms/ChecklistImage/ChecklistImage";
+import { Heading2 } from "../../00-Atoms/Typography";
 import { Page } from "../../01-Molecules/Page/Page";
 import { InterviewList } from "../../02-Organisms/InterviewList/InterviewList";
 import { useNewInterviewModal } from "../../02-Organisms/NewInterviewForm/useNewInterviewModal";
 import { NewInterviewModal } from "../../02-Organisms/NewInterviewModal";
-import { Heading2 } from "../../00-Atoms/Typography";
-import { ChecklistImage } from "../../00-Atoms/ChecklistImage/ChecklistImage";
 
 export const Dashboard: FC = () => {
   const interviews = useStore($interviewsStore);

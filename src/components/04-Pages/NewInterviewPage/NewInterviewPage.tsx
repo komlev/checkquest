@@ -2,8 +2,8 @@ import type { FC } from "react";
 import { useLocation, useSearchParams } from "wouter";
 import {
   CHECKLIST_PARAM,
-  INTERVIEW_LIST,
   getInterviewPage,
+  INTERVIEW_LIST,
 } from "../../../routes";
 import { addInterview } from "../../../stores/interviewsStore";
 import type { Interview } from "../../../types";
