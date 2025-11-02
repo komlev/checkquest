@@ -2,10 +2,7 @@ import { GithubIcon } from "../../00-Atoms/Icons/GithubIcon";
 import { ThemeSwitcher } from "../../00-Atoms/ThemeSwitcher/ThemeSwitcher";
 
 export const Footer = () => (
-  <footer
-    className="footer footer-center bg-neutral z-10 py-4"
-    role="contentinfo"
-  >
+  <footer className="footer footer-center bg-neutral z-10 py-4">
     <div className="text-neutral-content flex font-medium">
       CheckQuest by{" "}
       <a
@@ -23,6 +20,7 @@ export const Footer = () => (
         href="https://github.com/komlev/checkquest"
         title="Github link"
         aria-label="Github link"
+        rel="noopener"
       >
         <GithubIcon />
       </a>

@@ -1,4 +1,4 @@
-import { Section } from "../types";
+import type { Section } from "../types";
 
 type COUNT = "all" | "required" | "extra";
 
@@ -7,7 +7,7 @@ export const getSectionsQuestionCount = (sections: Section[] = []) =>
 
 export const getSectionsPoints = (
   sections: Section[] = [],
-  type: COUNT = "all"
+  type: COUNT = "all",
 ) => sections.reduce((acc, s) => getSectionPoints(s, type) + acc, 0);
 
 export const getSectionPoints = (section: Section, type: COUNT = "all") =>
@@ -24,7 +24,7 @@ export const getSectionPoints = (section: Section, type: COUNT = "all") =>
 export const getQuestionLabel = (
   sectionIndex: number,
   questionIndex?: number,
-  questionName?: string
+  questionName?: string,
 ) => {
   let result = `${sectionIndex + 1}`;
   if (questionIndex !== undefined) {

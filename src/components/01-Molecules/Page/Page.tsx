@@ -1,5 +1,5 @@
 import clsx from "clsx";
-import { DetailedHTMLProps, FC, HTMLAttributes, ReactNode } from "react";
+import type { DetailedHTMLProps, FC, HTMLAttributes, ReactNode } from "react";
 import { Container } from "../../00-Atoms/Container/Container";
 
 type Props = DetailedHTMLProps<

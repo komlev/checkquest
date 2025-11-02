@@ -3,7 +3,7 @@ import { computed, deepMap } from "nanostores";
 import { useEffect } from "react";
 import { $checklistsStore } from "../../../stores/checklistStore";
 import { createInterview } from "../../../stores/interviewsStore";
-import { Checklist, Interview, Section } from "../../../types";
+import type { Checklist, Interview, Section } from "../../../types";
 
 const initialValue = {
   value: { name: "", checklist: "" },
@@ -12,13 +12,13 @@ const initialValue = {
 };
 const $state = deepMap(initialValue);
 const $checklist = computed([$checklistsStore, $state], (list, state) =>
-  list.find((c) => c.id === state.value.checklist)
+  list.find((c) => c.id === state.value.checklist),
 );
 
 export const useInterviewForm = (
   onCreate: (interview: Interview) => void,
   onChecklist?: (checklist?: Checklist) => void,
-  checklistParam?: string | null
+  checklistParam?: string | null,
 ) => {
   const checklists = useStore($checklistsStore);
   const checklist = useStore($checklist);
@@ -56,9 +56,9 @@ export const useInterviewForm = (
     return !hasErrors;
   };
 
+  // biome-ignore lint/correctness/useExhaustiveDependencies: it is more clear that way
   useEffect(() => {
     validateForm();
-    // eslint-disable-next-line
   }, [value.name, value.checklist, tocuhed.name, tocuhed.checklist]);
 
   const handleSubmit = (e: React.FormEvent) => {
@@ -78,7 +78,7 @@ export const useInterviewForm = (
     const interview = createInterview(
       value.name,
       checklist.id,
-      interviewSections
+      interviewSections,
     );
     onCreate(interview);
   };

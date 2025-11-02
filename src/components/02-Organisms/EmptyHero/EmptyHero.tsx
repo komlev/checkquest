@@ -1,5 +1,5 @@
 import { useStore } from "@nanostores/react";
-import { FC } from "react";
+import type { FC } from "react";
 import { CHECKLIST_NEW } from "../../../routes";
 import { $checklistsStore } from "../../../stores/checklistStore";
 import { Hero } from "../../01-Molecules/Hero/Hero";
@@ -20,7 +20,7 @@ export const EmptyHero: FC = () => {
       location={hasChecklists ? undefined : CHECKLIST_NEW}
       onClick={hasChecklists ? onOpen : undefined}
     >
-      <img className="w-full" src="/landing.svg" alt="Checklist image" />
+      <img className="w-full" src="/landing.svg" alt="Checklist" />
       {hasChecklists
         ? "Start by creating your first interview"
         : "Start by creating or importing checklists"}

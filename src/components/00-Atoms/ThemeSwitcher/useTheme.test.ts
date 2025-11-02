@@ -47,7 +47,7 @@ describe("useTheme", () => {
 
     expect(mockLocalStorage.setItem).toHaveBeenCalledWith(
       "isdark",
-      JSON.stringify(true)
+      JSON.stringify(true),
     );
   });
 

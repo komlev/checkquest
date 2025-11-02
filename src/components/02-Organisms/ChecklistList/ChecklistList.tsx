@@ -7,7 +7,7 @@ import {
   $checklistsStore,
   deleteChecklist,
 } from "../../../stores/checklistStore";
-import { Checklist } from "../../../types";
+import type { Checklist } from "../../../types";
 import { getSectionsQuestionCount } from "../../../utils/checklist";
 import { copyChecklist } from "../../../utils/copyChecklist";
 import { ClipboardIcon } from "../../00-Atoms/Icons/ClipboardIcon";
@@ -22,7 +22,7 @@ import { NewInterviewModal } from "../NewInterviewModal";
 
 const $search = atom("");
 const $filtered = computed([$checklistsStore, $search], (list, search) =>
-  list.filter((c) => c?.name?.toLowerCase().includes(search.toLowerCase()))
+  list.filter((c) => c?.name?.toLowerCase().includes(search.toLowerCase())),
 );
 
 export const ChecklistList = () => {
@@ -65,114 +65,113 @@ export const ChecklistList = () => {
           $search.set(e.target.value);
         }}
       />
-      <>
-        <ul className="list bg-base-100 rounded-box shadow-md">
-          <li className="p-4 pb-2 text-xs tracking-wide opacity-60">
-            {checklists.length
-              ? "Available checklists"
-              : "No checklists available"}
-          </li>
-          {checklists.map((checklist) => (
-            <li key={checklist.id} className="list-row flex">
-              <div
-                aria-hidden="true"
-                role="presentation"
-                className="text-warning text-4xl font-black uppercase"
-              >
-                {checklist.name?.[0]}
-              </div>
-              <div className="grow">
-                <div className="font-medium">
-                  <Link
-                    className="focusable"
-                    to={getChecklistPage(checklist.id)}
-                  >
-                    {checklist.name}
-                  </Link>
-                </div>
-                <div className="flex gap-1 text-xs font-semibold uppercase opacity-60">
-                  {checklist.description && <div>{checklist.description}</div>}
-                  <div>
-                    {getSectionsQuestionCount(checklist.sections)} questions
-                  </div>
-                </div>
-              </div>
-              <div className="flex shrink flex-wrap gap-1">
-                <button
-                  id={`start-interview-btn-${checklist.id}`}
-                  title="Start Interview"
-                  aria-label="Start Interview"
-                  className="btn btn-square btn-ghost"
-                  onClick={() => onStartClick(checklist)}
-                >
-                  <StartIcon
-                    className="fill-current"
-                    width={12}
-                    aria-hidden="true"
-                    role="presentation"
-                  />
-                </button>
-                <button
-                  id={`copy-checklist-btn-${checklist.id}`}
-                  title="Copy Checklist"
-                  aria-label="Copy Checklist"
-                  className="btn btn-square btn-ghost"
-                  onClick={() => copyChecklist(checklist)}
-                >
-                  <ClipboardIcon
-                    className="fill-current"
-                    width={12}
-                    aria-hidden="true"
-                    role="presentation"
-                  />
-                </button>
-                <Link
-                  id={`edit-checklist-btn-${checklist.id}`}
-                  to={getEditChecklistPage(checklist.id)}
-                  className="btn btn-square btn-ghost"
-                  title="Edit Checklist"
-                  aria-label="Edit Checklist"
-                >
-                  <EditIcon
-                    className="fill-current"
-                    width={16}
-                    aria-hidden="true"
-                    role="presentation"
-                  />
+
+      <ul className="list bg-base-100 rounded-box shadow-md">
+        <li className="p-4 pb-2 text-xs tracking-wide opacity-60">
+          {checklists.length
+            ? "Available checklists"
+            : "No checklists available"}
+        </li>
+        {checklists.map((checklist) => (
+          <li key={checklist.id} className="list-row flex">
+            <div
+              aria-hidden="true"
+              role="presentation"
+              className="text-warning text-4xl font-black uppercase"
+            >
+              {checklist.name?.[0]}
+            </div>
+            <div className="grow">
+              <div className="font-medium">
+                <Link className="focusable" to={getChecklistPage(checklist.id)}>
+                  {checklist.name}
                 </Link>
-                <button
-                  id={`delete-checklist-btn-${checklist.id}`}
-                  className="btn btn-square btn-ghost"
-                  onClick={() => onDelete(checklist.id)}
-                  title="Delete Checklist"
-                  aria-label="Delete Checklist"
-                >
-                  <TrashIcon
-                    className="text-error fill-current"
-                    width={16}
-                    aria-hidden="true"
-                    role="presentation"
-                  />
-                </button>
               </div>
-            </li>
-          ))}
-        </ul>
-        <NewInterviewModal
-          isOpen={isOpen}
-          onClose={onClose}
-          checklistParam={checklistParam}
-        />
-        <ConfirmModal
-          isOpen={isConfirmOpen}
-          onClose={onConfirmClose}
-          onConfirm={onConfirm}
-          title={title}
-          message={message}
-          confirmText={confirmText}
-          cancelText={cancelText}
-        />
-      </>
+              <div className="flex gap-1 text-xs font-semibold uppercase opacity-60">
+                {checklist.description && <div>{checklist.description}</div>}
+                <div>
+                  {getSectionsQuestionCount(checklist.sections)} questions
+                </div>
+              </div>
+            </div>
+            <div className="flex shrink flex-wrap gap-1">
+              <button
+                id={`start-interview-btn-${checklist.id}`}
+                type="button"
+                title="Start Interview"
+                aria-label="Start Interview"
+                className="btn btn-square btn-ghost"
+                onClick={() => onStartClick(checklist)}
+              >
+                <StartIcon
+                  className="fill-current"
+                  width={12}
+                  aria-hidden="true"
+                  role="presentation"
+                />
+              </button>
+              <button
+                id={`copy-checklist-btn-${checklist.id}`}
+                type="button"
+                title="Copy Checklist"
+                aria-label="Copy Checklist"
+                className="btn btn-square btn-ghost"
+                onClick={() => copyChecklist(checklist)}
+              >
+                <ClipboardIcon
+                  className="fill-current"
+                  width={12}
+                  aria-hidden="true"
+                  role="presentation"
+                />
+              </button>
+              <Link
+                id={`edit-checklist-btn-${checklist.id}`}
+                to={getEditChecklistPage(checklist.id)}
+                className="btn btn-square btn-ghost"
+                title="Edit Checklist"
+                aria-label="Edit Checklist"
+              >
+                <EditIcon
+                  className="fill-current"
+                  width={16}
+                  aria-hidden="true"
+                  role="presentation"
+                />
+              </Link>
+              <button
+                id={`delete-checklist-btn-${checklist.id}`}
+                type="button"
+                className="btn btn-square btn-ghost"
+                onClick={() => onDelete(checklist.id)}
+                title="Delete Checklist"
+                aria-label="Delete Checklist"
+              >
+                <TrashIcon
+                  className="text-error fill-current"
+                  width={16}
+                  aria-hidden="true"
+                  role="presentation"
+                />
+              </button>
+            </div>
+          </li>
+        ))}
+      </ul>
+      <NewInterviewModal
+        isOpen={isOpen}
+        onClose={onClose}
+        checklistParam={checklistParam}
+      />
+      <ConfirmModal
+        isOpen={isConfirmOpen}
+        onClose={onConfirmClose}
+        onConfirm={onConfirm}
+        title={title}
+        message={message}
+        confirmText={confirmText}
+        cancelText={cancelText}
+      />
     </div>
   );
 };

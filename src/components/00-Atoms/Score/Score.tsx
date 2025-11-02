@@ -1,4 +1,4 @@
-import { DetailedHTMLProps, FC, HTMLAttributes } from "react";
+import type { DetailedHTMLProps, FC, HTMLAttributes } from "react";
 
 type Props = DetailedHTMLProps<
   HTMLAttributes<HTMLSpanElement>,
@@ -20,11 +20,11 @@ export const Score: FC<Props> = ({
 }) => {
   let score = "0";
   if (asPercentage) {
-    score = Math.round(maxValue > 0 ? (value / maxValue) * 100 : 0) + "%";
+    score = `${Math.round(maxValue > 0 ? (value / maxValue) * 100 : 0)}%`;
   } else {
     score = padScore(
       value,
-      maxValue.toString().length - value.toString().length + 1
+      maxValue.toString().length - value.toString().length + 1,
     );
   }
 

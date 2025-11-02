@@ -1,4 +1,4 @@
-import { FC } from "react";
+import type { FC } from "react";
 import { Modal } from "../../00-Atoms/Modal";
 
 interface ConfirmModalProps {
@@ -45,6 +45,7 @@ const ConfirmModal: FC<ConfirmModalProps> = ({
           </button>
           <button
             id="modal-confirm-btn"
+            type="button"
             aria-keyshortcuts={isOpen ? "enter" : undefined}
             className="btn btn-primary w-full sm:w-auto"
             onClick={onConfirmClick}

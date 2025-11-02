@@ -7,7 +7,7 @@ test("Copy template", async ({ page }) => {
   await expect(page.getByText("Hooks")).toBeVisible();
   await page.getByRole("button", { name: "Copy to My Checklists" }).click();
   await expect(
-    page.getByRole("button", { name: "Start Interview" })
+    page.getByRole("button", { name: "Start Interview" }),
   ).toBeVisible();
   await page
     .getByLabel("Main Navigation")

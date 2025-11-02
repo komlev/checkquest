@@ -1,5 +1,5 @@
 import { useStore } from "@nanostores/react";
-import { FC } from "react";
+import type { FC } from "react";
 import { $interviewsStore } from "../../../stores/interviewsStore";
 import { Line } from "../../00-Atoms/Line/Line";
 import { Toolstrip } from "../../00-Atoms/Tooltstrip/Toolstip";
@@ -20,6 +20,7 @@ export const InterviewListPage: FC = () => {
         <Heading1>Interviews</Heading1>
         <button
           id="add-interview-btn"
+          type="button"
           onClick={onOpen}
           className="btn btn-sm btn-primary"
         >

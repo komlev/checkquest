@@ -1,5 +1,5 @@
 import { hotkeyKeyUX, startKeyUX } from "keyux";
-import { FC, useEffect } from "react";
+import { type FC, useEffect } from "react";
 import { themeChange } from "theme-change";
 import { Route, Router, Switch } from "wouter";
 import { useHashLocation } from "wouter/use-hash-location";

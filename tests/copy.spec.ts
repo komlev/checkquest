@@ -11,11 +11,11 @@ test("Copy checklist", async ({ page }) => {
   await page.getByRole("textbox", { name: "Checklist" }).fill(importString);
   await page.getByRole("button", { name: "Import", exact: true }).click();
   await expect(
-    page.getByRole("heading", { name: "TEST CHECKLIST" })
+    page.getByRole("heading", { name: "TEST CHECKLIST" }),
   ).toBeVisible();
   await expect(page.getByText("SECTION 2")).toBeVisible();
   await expect(
-    page.getByRole("button", { name: "Start Interview" })
+    page.getByRole("button", { name: "Start Interview" }),
   ).toBeVisible();
   await page.getByRole("button", { name: "Delete Checklist" }).click();
   await page.getByRole("button", { name: "Confirm" }).click();

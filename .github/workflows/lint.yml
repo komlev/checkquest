@@ -19,4 +19,4 @@ jobs:
       - name: Install dependencies
         run: pnpm install
       - name: Install Playwright Browsers
-        run: pnpm lint && pnpm prettier -c
+        run: pnpm lint

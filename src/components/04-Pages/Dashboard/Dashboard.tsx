@@ -1,5 +1,5 @@
 import { useStore } from "@nanostores/react";
-import { FC } from "react";
+import type { FC } from "react";
 import { Link } from "wouter";
 import { CHECKLIST_NEW, TEMPLATES_LIST } from "../../../routes";
 import { $checklistsStore } from "../../../stores/checklistStore";
@@ -48,6 +48,7 @@ export const Dashboard: FC = () => {
                 <span className="text-base-content/60 mt-0.5">or</span>
                 <button
                   id="add-interview-btn"
+                  type="button"
                   onClick={onOpen}
                   className="btn btn-sm btn-accent"
                 >

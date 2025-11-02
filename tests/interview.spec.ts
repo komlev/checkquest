@@ -21,7 +21,7 @@ test("Create interview", async ({ page }) => {
     .fill("Test interview");
   await page.getByRole("link", { name: "Complete" }).click();
   await expect(
-    page.getByRole("link", { name: "Test interview" })
+    page.getByRole("link", { name: "Test interview" }),
   ).toBeVisible();
   await expect(page.getByText("Trainee")).toBeVisible();
   await page.getByRole("button", { name: "Delete Interview" }).click();

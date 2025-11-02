@@ -1,5 +1,5 @@
-import { FC, RefObject, useState } from "react";
-import { Question, Section } from "../../../types";
+import { type FC, type RefObject, useState } from "react";
+import type { Question, Section } from "../../../types";
 import { FormControl } from "../../00-Atoms/FormControl/FormControl";
 import clsx from "clsx";
 import { getQuestionLabel } from "../../../utils/checklist";
@@ -17,13 +17,13 @@ type Props = {
     questionIndex: number,
     name: string,
     score: number,
-    extra?: boolean
+    extra?: boolean,
   ) => void;
   removeQuestion: (sectionIndex: number, questionIndex: number) => void;
   reorderQuestion: (
     sectionIndex: number,
     fromIndex: number,
-    toIndex: number
+    toIndex: number,
   ) => void;
 };
 
@@ -64,7 +64,7 @@ export const QuetionInput: FC<Props> = ({
 
   const handleDrop = (e: React.DragEvent) => {
     e.preventDefault();
-    const fromIndex = parseInt(e.dataTransfer.getData("text/plain"));
+    const fromIndex = parseInt(e.dataTransfer.getData("text/plain"), 10);
     if (fromIndex !== questionIndex) {
       reorderQuestion(sectionIndex, fromIndex, questionIndex);
     }
@@ -72,6 +72,7 @@ export const QuetionInput: FC<Props> = ({
   };
 
   return (
+    // biome-ignore lint/a11y/noStaticElementInteractions: drag and drop case
     <div
       key={question.id}
       className={clsx(
@@ -81,7 +82,7 @@ export const QuetionInput: FC<Props> = ({
           "border-accent/50": question.extra,
           "opacity-50": isDragging,
           "outline-secondary/50 outline-2": dragOverIndex === questionIndex,
-        }
+        },
       )}
       draggable
       onDragStart={handleDragStart}
@@ -119,7 +120,7 @@ export const QuetionInput: FC<Props> = ({
                   questionIndex,
                   e.target.value,
                   question.score,
-                  question.extra
+                  question.extra,
                 )
               }
               ref={(el) => {
@@ -146,8 +147,8 @@ export const QuetionInput: FC<Props> = ({
                   sectionIndex,
                   questionIndex,
                   question.text,
-                  parseInt(e.target.value) || 1,
-                  question.extra
+                  parseInt(e.target.value, 10) || 1,
+                  question.extra,
                 )
               }
             />
@@ -169,7 +170,7 @@ export const QuetionInput: FC<Props> = ({
                     questionIndex,
                     question.text,
                     question.score,
-                    e.target.checked
+                    e.target.checked,
                   )
                 }
               />

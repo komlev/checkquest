@@ -9,7 +9,7 @@ const OUT_FILE = join(TEMPLATES_DIR, "index.json");
 const main = async () => {
   await mkdir(TEMPLATES_DIR, { recursive: true });
   const files = (await readdir(TEMPLATES_DIR)).filter(
-    (f) => f.endsWith(".json") && f !== "index.json"
+    (f) => f.endsWith(".json") && f !== "index.json",
   );
 
   const entries = [];
@@ -23,7 +23,7 @@ const main = async () => {
       const questionsCount = sections.reduce(
         (acc, s) =>
           acc + (Array.isArray(s?.questions) ? s.questions.length : 0),
-        0
+        0,
       );
       entries.push({
         file,
@@ -46,9 +46,9 @@ const main = async () => {
 
   // Sort by name for stable display
   entries.sort((a, b) => a.name.localeCompare(b.name));
-  await writeFile(OUT_FILE, JSON.stringify(entries, null, 2) + "\n", "utf8");
+  await writeFile(OUT_FILE, `${JSON.stringify(entries, null, 2)}\n`, "utf8");
   console.log(
-    `[templates] Wrote index for ${entries.length} templates -> ${OUT_FILE}`
+    `[templates] Wrote index for ${entries.length} templates -> ${OUT_FILE}`,
   );
 };
 

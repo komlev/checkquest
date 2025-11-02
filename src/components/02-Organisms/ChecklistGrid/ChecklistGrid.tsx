@@ -1,6 +1,6 @@
 import clsx from "clsx";
-import { FC } from "react";
-import { Section } from "../../../types";
+import type { FC } from "react";
+import type { Section } from "../../../types";
 import { Body, Heading2 } from "../../00-Atoms/Typography/Typography";
 import { SectionCard } from "../../01-Molecules/SectionCard/SectionCard";
 
@@ -30,7 +30,7 @@ export const ChecklistGrid: FC<ChecklistGridProps> = ({
     <div
       className={clsx(
         "grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3",
-        className
+        className,
       )}
     >
       {sections.map((section, sectionIndex) => (

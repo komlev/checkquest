@@ -1,4 +1,4 @@
-import { FC, useMemo } from "react";
+import { type FC, useMemo } from "react";
 import { TrashIcon } from "../../00-Atoms/Icons/TrashIcon";
 import { Line } from "../../00-Atoms/Line/Line";
 import { Toolstrip } from "../../00-Atoms/Tooltstrip/Toolstip";
@@ -31,7 +31,7 @@ export const InterviewPage: FC = () => {
       interview?.createdAt
         ? new Date(interview.createdAt).toLocaleDateString()
         : "",
-    [interview?.createdAt]
+    [interview?.createdAt],
   );
 
   if (!interview || !checklist) {
@@ -49,6 +49,7 @@ export const InterviewPage: FC = () => {
         </div>
         <button
           id="delete-interview-btn"
+          type="button"
           className="btn btn-sm btn-error btn-outline btn-square"
           onClick={onDelete}
           title="Delete Interview"

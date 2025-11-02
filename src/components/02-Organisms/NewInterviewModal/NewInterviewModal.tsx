@@ -1,8 +1,8 @@
-import { FC } from "react";
+import type { FC } from "react";
 import { Modal } from "../../00-Atoms/Modal";
 import { NewInterviewForm } from "../NewInterviewForm/NewInterviewForm";
 import { useLocation } from "wouter";
-import { Interview } from "../../../types";
+import type { Interview } from "../../../types";
 import { addInterview } from "../../../stores/interviewsStore";
 import { getInterviewPage } from "../../../routes";
 

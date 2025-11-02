@@ -1,5 +1,5 @@
 import { useStore } from "@nanostores/react";
-import { FC, useState } from "react";
+import { type FC, useState } from "react";
 import { Link } from "wouter";
 import { $checklistsStore } from "../../../stores/checklistStore";
 import { PasteIcon } from "../../00-Atoms/Icons/PasteIcon";
@@ -23,6 +23,7 @@ export const ChecklistListPage: FC = () => {
         <div className="flex gap-2">
           <button
             id="add-checklist-btn"
+            type="button"
             className="btn btn-sm btn-square"
             onClick={onImport}
             title="Import Checklist"

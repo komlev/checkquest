@@ -1,6 +1,14 @@
 import "@testing-library/jest-dom";
 import { fireEvent, render, screen } from "@testing-library/react";
-import { afterEach, beforeEach, describe, expect, it, Mock, vi } from "vitest";
+import {
+  afterEach,
+  beforeEach,
+  describe,
+  expect,
+  it,
+  type Mock,
+  vi,
+} from "vitest";
 import { ThemeSwitcher } from "./ThemeSwitcher";
 import { useTheme } from "./useTheme";
 
@@ -74,7 +82,7 @@ describe("ThemeSwitcher", () => {
     const checkbox = screen.getByRole("checkbox");
     expect(checkbox).toHaveAttribute(
       "aria-label",
-      "Toggle between light and dark theme"
+      "Toggle between light and dark theme",
     );
     expect(checkbox).toHaveAttribute("aria-checked", "false");
   });
