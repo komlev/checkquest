@@ -14,7 +14,7 @@ pre-push:
 commit-msg:
   commands:
     "lint commit message":
-      run: npx cz --hook || true
+      run: pnpm commitlint --edit {1}
 # EXAMPLE USAGE:
 #
 #   Refer for explanation to following link:
