@@ -48,8 +48,10 @@ export const QuetionInput: FC<Props> = ({
 
   const handleDragStart = (e: DragEvent<HTMLDivElement>) => {
     setIsDragging(true);
-    e.dataTransfer?.setData("text/plain", questionIndex.toString());
-    if (e.dataTransfer) e.dataTransfer.effectAllowed = "move";
+    if (e.dataTransfer) {
+      e.dataTransfer.setData("text/plain", questionIndex.toString());
+      e.dataTransfer.effectAllowed = "move";
+    }
   };
 
   const handleDragEnd = () => {
@@ -59,7 +61,9 @@ export const QuetionInput: FC<Props> = ({
 
   const handleDragOver = (e: DragEvent<HTMLDivElement>) => {
     e.preventDefault();
-    if (e.dataTransfer) e.dataTransfer.dropEffect = "move";
+    if (e.dataTransfer) {
+      e.dataTransfer.dropEffect = "move";
+    }
     setDragOverIndex(questionIndex);
   };
 
