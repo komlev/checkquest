@@ -26,7 +26,7 @@
     "@nanostores/react": "^0.8.4",
     "chart.js": "^4.5.1",
     "clsx": "^2.1.1",
-    "es-toolkit": "^1.41.0",
+    "es-toolkit": "^1.42.0",
     "keyux": "^0.11.3",
     "nanoid": "^5.1.6",
     "nanostores": "^0.11.4",
