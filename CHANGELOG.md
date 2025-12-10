@@ -4,18 +4,9 @@
 
 - replatforming application from react to preact
 
-## 1.1.4 (2025-12-10)
-
 ### Fix
 
-- **packages**: upgrading packages versions
 - lint/formatting, pre-commits revamp
-
-## 1.1.3 (2025-11-03)
-
-### Fix
-
-- replace eslint/prettier with biome, replace husky/lint-staged with lefthook
 
 ## 1.1.2 (2025-10-24)
 
