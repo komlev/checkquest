@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState } from "preact/compat";
 
 export const useNewInterviewModal = () => {
   const [isOpen, setIsOpen] = useState(false);

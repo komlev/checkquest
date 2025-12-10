@@ -1,4 +1,4 @@
-import type { FC } from "react";
+import type { FC } from "preact/compat";
 import { Heading1, Subtitle } from "../../00-Atoms/Typography";
 import { Page } from "../../01-Molecules/Page/Page";
 

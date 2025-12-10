@@ -1,5 +1,5 @@
-import { useStore } from "@nanostores/react";
-import { type FC, useState } from "react";
+import { useStore } from "@nanostores/preact";
+import { type FC, Suspense, useState } from "preact/compat";
 import { Link } from "wouter";
 import { $checklistsStore } from "../../../stores/checklistStore";
 import { PasteIcon } from "../../00-Atoms/Icons/PasteIcon";
@@ -47,12 +47,14 @@ export const ChecklistListPage: FC = () => {
       </Toolstrip>
       <Line />
       {checklists.length === 0 ? <EmptyHero /> : <ChecklistList />}
-      <ImportChecklistModal
-        isOpen={showImportModal}
-        onClose={() => {
-          setShowImportModal(false);
-        }}
-      />
+      <Suspense fallback={null}>
+        <ImportChecklistModal
+          isOpen={showImportModal}
+          onClose={() => {
+            setShowImportModal(false);
+          }}
+        />
+      </Suspense>
     </Page>
   );
 };

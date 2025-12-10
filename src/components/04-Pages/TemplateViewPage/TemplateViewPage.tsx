@@ -1,4 +1,4 @@
-import { type FC, useEffect, useMemo, useState } from "react";
+import { type FC, useEffect, useMemo, useState } from "preact/compat";
 import { useLocation, useParams } from "wouter";
 import { getChecklistPage } from "../../../routes";
 import { addChecklist } from "../../../stores/checklistStore";

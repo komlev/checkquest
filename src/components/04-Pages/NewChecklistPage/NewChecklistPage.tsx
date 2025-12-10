@@ -1,4 +1,4 @@
-import type { FC } from "react";
+import type { FC } from "preact/compat";
 import { CHECKLIST_LIST } from "../../../routes";
 import { FormControl } from "../../00-Atoms/FormControl/FormControl";
 import { Line } from "../../00-Atoms/Line/Line";
@@ -101,7 +101,9 @@ export const NewChecklistPage: FC = () => {
                   value={name}
                   required
                   aria-required="true"
-                  onChange={(e) => setName(e.target.value)}
+                  onChange={(e) =>
+                    setName((e.target as HTMLInputElement).value)
+                  }
                 />
               </FormControl>
               <FormControl id="description" label="Checklist description">
@@ -111,7 +113,9 @@ export const NewChecklistPage: FC = () => {
                   placeholder="Description"
                   value={description}
                   maxLength={250}
-                  onChange={(e) => setDescription(e.target.value)}
+                  onChange={(e) =>
+                    setDescription((e.target as HTMLTextAreaElement).value)
+                  }
                 ></textarea>
                 <div className="fieldset-label">Optional</div>
               </FormControl>

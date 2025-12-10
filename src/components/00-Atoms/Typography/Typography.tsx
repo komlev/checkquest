@@ -1,5 +1,5 @@
 import clsx from "clsx";
-import type { DetailedHTMLProps, FC, HTMLAttributes } from "react";
+import type { DetailedHTMLProps, FC, HTMLAttributes } from "preact/compat";
 
 type HeadingProps = DetailedHTMLProps<
   HTMLAttributes<HTMLHeadingElement>,

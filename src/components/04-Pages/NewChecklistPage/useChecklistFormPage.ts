@@ -1,4 +1,4 @@
-import { useCallback, useLayoutEffect, useRef, useState } from "react";
+import { useCallback, useLayoutEffect, useRef, useState } from "preact/compat";
 import { useLocation, useParams } from "wouter";
 import { getChecklistPage } from "../../../routes";
 import {

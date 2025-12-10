@@ -1,4 +1,4 @@
-import type { FC, SVGProps } from "react";
+import type { FC, SVGProps } from "preact/compat";
 
 export const ClipboardIcon: FC<SVGProps<SVGSVGElement>> = (props) => (
   <svg

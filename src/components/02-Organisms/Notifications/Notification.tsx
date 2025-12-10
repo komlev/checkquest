@@ -1,5 +1,5 @@
 import clsx from "clsx";
-import { type FC, useEffect } from "react";
+import { type FC, useEffect } from "preact/compat";
 import {
   type Notification as NotificationType,
   removeNotification,

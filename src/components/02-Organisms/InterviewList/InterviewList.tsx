@@ -1,6 +1,6 @@
-import { useStore } from "@nanostores/react";
+import { useStore } from "@nanostores/preact";
 import { atom, computed } from "nanostores";
-import type { FC } from "react";
+import { type FC, Suspense } from "preact/compat";
 import { Link } from "wouter";
 import {
   CHECKLIST_LIST,
@@ -79,7 +79,7 @@ export const InterviewList: FC = () => {
         containerClassname="w-full md:w-60"
         value={search}
         onChange={(e) => {
-          $search.set(e.target.value);
+          $search.set((e.target as HTMLInputElement).value);
         }}
       />
       <ul className="list bg-base-100 rounded-box shadow-md">
@@ -181,15 +181,17 @@ export const InterviewList: FC = () => {
           );
         })}
       </ul>
-      <ConfirmModal
-        isOpen={isConfirmOpen}
-        onClose={onConfirmClose}
-        onConfirm={onConfirm}
-        title={title}
-        message={message}
-        confirmText={confirmText}
-        cancelText={cancelText}
-      />
+      <Suspense fallback={null}>
+        <ConfirmModal
+          isOpen={isConfirmOpen}
+          onClose={onConfirmClose}
+          onConfirm={onConfirm}
+          title={title}
+          message={message}
+          confirmText={confirmText}
+          cancelText={cancelText}
+        />
+      </Suspense>
     </div>
   );
 };

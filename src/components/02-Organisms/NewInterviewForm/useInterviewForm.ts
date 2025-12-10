@@ -1,6 +1,6 @@
-import { useStore } from "@nanostores/react";
+import { useStore } from "@nanostores/preact";
 import { computed, deepMap } from "nanostores";
-import { useEffect } from "react";
+import { useEffect } from "preact/compat";
 import { $checklistsStore } from "../../../stores/checklistStore";
 import { createInterview } from "../../../stores/interviewsStore";
 import type { Checklist, Interview, Section } from "../../../types";
@@ -56,7 +56,6 @@ export const useInterviewForm = (
     return !hasErrors;
   };
 
-  // biome-ignore lint/correctness/useExhaustiveDependencies: it is more clear that way
   useEffect(() => {
     validateForm();
   }, [value.name, value.checklist, tocuhed.name, tocuhed.checklist]);

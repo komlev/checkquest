@@ -1,5 +1,5 @@
 import clsx from "clsx";
-import { type FC, type ReactNode, useEffect, useRef } from "react";
+import { type FC, type ReactNode, useEffect, useRef } from "preact/compat";
 import { Heading1 } from "../Typography";
 
 interface ModalProps {

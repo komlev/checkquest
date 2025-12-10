@@ -1,6 +1,6 @@
-import { useStore } from "@nanostores/react";
+import { useStore } from "@nanostores/preact";
 import { atom, computed } from "nanostores";
-import { useState } from "react";
+import { Suspense, useState } from "preact/compat";
 import { Link } from "wouter";
 import { getChecklistPage, getEditChecklistPage } from "../../../routes";
 import {
@@ -62,7 +62,7 @@ export const ChecklistList = () => {
         value={search}
         containerClassname="w-full md:w-60"
         onChange={(e) => {
-          $search.set(e.target.value);
+          $search.set((e.target as HTMLInputElement).value);
         }}
       />
 
@@ -158,20 +158,24 @@ export const ChecklistList = () => {
           </li>
         ))}
       </ul>
-      <NewInterviewModal
-        isOpen={isOpen}
-        onClose={onClose}
-        checklistParam={checklistParam}
-      />
-      <ConfirmModal
-        isOpen={isConfirmOpen}
-        onClose={onConfirmClose}
-        onConfirm={onConfirm}
-        title={title}
-        message={message}
-        confirmText={confirmText}
-        cancelText={cancelText}
-      />
+      <Suspense fallback={null}>
+        <NewInterviewModal
+          isOpen={isOpen}
+          onClose={onClose}
+          checklistParam={checklistParam}
+        />
+      </Suspense>
+      <Suspense fallback={null}>
+        <ConfirmModal
+          isOpen={isConfirmOpen}
+          onClose={onConfirmClose}
+          onConfirm={onConfirm}
+          title={title}
+          message={message}
+          confirmText={confirmText}
+          cancelText={cancelText}
+        />
+      </Suspense>
     </div>
   );
 };

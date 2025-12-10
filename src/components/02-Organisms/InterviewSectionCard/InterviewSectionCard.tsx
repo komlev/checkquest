@@ -1,5 +1,5 @@
 import clsx from "clsx";
-import { type FC, useMemo } from "react";
+import { type FC, useMemo } from "preact/compat";
 import type { Section } from "../../../types";
 import { getQuestionLabel } from "../../../utils/checklist";
 import { Line } from "../../00-Atoms/Line/Line";
@@ -66,7 +66,11 @@ export const InterviewSectionCard: FC<InterviewSectionCardProps> = ({
               type="checkbox"
               className="checkbox checkbox-warning"
               checked={allChecked}
-              onChange={(e) => handleSectionCheckboxChange(e.target.checked)}
+              onChange={(e) =>
+                handleSectionCheckboxChange(
+                  (e.target as HTMLInputElement).checked,
+                )
+              }
               disabled={totalCount === 0}
             />
           </div>
@@ -101,7 +105,10 @@ export const InterviewSectionCard: FC<InterviewSectionCardProps> = ({
                     )}
                     checked={question.checked || false}
                     onChange={(e) =>
-                      onCheckQuestion(questionIndex, e.target.checked)
+                      onCheckQuestion(
+                        questionIndex,
+                        (e.target as HTMLInputElement).checked,
+                      )
                     }
                     // Prevent the click event from bubbling up to the li element
                     // This prevents double-toggling when clicking directly on the checkbox

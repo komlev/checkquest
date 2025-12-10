@@ -1,11 +1,6 @@
 import "./index.css";
-import { StrictMode } from "react";
-import { createRoot } from "react-dom/client";
+import { render } from "preact/compat";
 import { App } from "./App";
 
 // biome-ignore lint/style/noNonNullAssertion: root is there
-createRoot(document.getElementById("root")!).render(
-  <StrictMode>
-    <App />
-  </StrictMode>,
-);
+render(<App />, document.getElementById("root")!);

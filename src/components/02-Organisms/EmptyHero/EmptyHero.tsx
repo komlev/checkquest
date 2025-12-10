@@ -1,5 +1,5 @@
-import { useStore } from "@nanostores/react";
-import type { FC } from "react";
+import { useStore } from "@nanostores/preact";
+import { type FC, Suspense } from "preact/compat";
 import { CHECKLIST_NEW } from "../../../routes";
 import { $checklistsStore } from "../../../stores/checklistStore";
 import { Hero } from "../../01-Molecules/Hero/Hero";
@@ -25,7 +25,9 @@ export const EmptyHero: FC = () => {
         ? "Start by creating your first interview"
         : "Start by creating or importing checklists"}
 
-      <NewInterviewModal isOpen={isOpen} onClose={onClose} />
+      <Suspense fallback={null}>
+        <NewInterviewModal isOpen={isOpen} onClose={onClose} />
+      </Suspense>
     </Hero>
   );
 };

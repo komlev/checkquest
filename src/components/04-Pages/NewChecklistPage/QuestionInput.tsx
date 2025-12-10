@@ -1,5 +1,10 @@
 import clsx from "clsx";
-import { type FC, type RefObject, useState } from "react";
+import {
+  type DragEvent,
+  type FC,
+  type RefObject,
+  useState,
+} from "preact/compat";
 import type { Question, Section } from "../../../types";
 import { getQuestionLabel } from "../../../utils/checklist";
 import { FormControl } from "../../00-Atoms/FormControl/FormControl";
@@ -41,10 +46,10 @@ export const QuetionInput: FC<Props> = ({
   const [isDragging, setIsDragging] = useState(false);
   const [dragOverIndex, setDragOverIndex] = useState<number | null>(null);
 
-  const handleDragStart = (e: React.DragEvent) => {
+  const handleDragStart = (e: DragEvent<HTMLDivElement>) => {
     setIsDragging(true);
-    e.dataTransfer.setData("text/plain", questionIndex.toString());
-    e.dataTransfer.effectAllowed = "move";
+    e.dataTransfer?.setData("text/plain", questionIndex.toString());
+    if (e.dataTransfer) e.dataTransfer.effectAllowed = "move";
   };
 
   const handleDragEnd = () => {
@@ -52,9 +57,9 @@ export const QuetionInput: FC<Props> = ({
     setDragOverIndex(null);
   };
 
-  const handleDragOver = (e: React.DragEvent) => {
+  const handleDragOver = (e: DragEvent<HTMLDivElement>) => {
     e.preventDefault();
-    e.dataTransfer.dropEffect = "move";
+    if (e.dataTransfer) e.dataTransfer.dropEffect = "move";
     setDragOverIndex(questionIndex);
   };
 
@@ -62,9 +67,12 @@ export const QuetionInput: FC<Props> = ({
     setDragOverIndex(null);
   };
 
-  const handleDrop = (e: React.DragEvent) => {
+  const handleDrop = (e: DragEvent<HTMLDivElement>) => {
     e.preventDefault();
-    const fromIndex = parseInt(e.dataTransfer.getData("text/plain"), 10);
+    const fromIndex = parseInt(
+      e.dataTransfer?.getData("text/plain") || "0",
+      10,
+    );
     if (fromIndex !== questionIndex) {
       reorderQuestion(sectionIndex, fromIndex, questionIndex);
     }
@@ -118,7 +126,7 @@ export const QuetionInput: FC<Props> = ({
                 updateQuestion(
                   sectionIndex,
                   questionIndex,
-                  e.target.value,
+                  (e.target as HTMLInputElement).value,
                   question.score,
                   question.extra,
                 )
@@ -147,7 +155,7 @@ export const QuetionInput: FC<Props> = ({
                   sectionIndex,
                   questionIndex,
                   question.text,
-                  parseInt(e.target.value, 10) || 1,
+                  parseInt((e.target as HTMLInputElement).value, 10) || 1,
                   question.extra,
                 )
               }
@@ -170,7 +178,7 @@ export const QuetionInput: FC<Props> = ({
                     questionIndex,
                     question.text,
                     question.score,
-                    e.target.checked,
+                    (e.target as HTMLInputElement).checked,
                   )
                 }
               />

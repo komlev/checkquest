@@ -1,4 +1,4 @@
-import { type FC, useEffect, useState } from "react";
+import { type FC, useEffect, useState } from "preact/compat";
 import { useLocation } from "wouter";
 import { getChecklistPage } from "../../../routes";
 import { importChecklist } from "../../../stores/checklistStore";
@@ -49,7 +49,7 @@ const ImportChecklistModal: FC<Props> = ({ isOpen, onClose }) => {
           aria-required="true"
           value={value}
           onChange={(e) => {
-            setValue(e.target.value);
+            setValue((e.target as HTMLTextAreaElement).value);
           }}
           placeholder="Checklist"
           className="textarea textarea-xs w-full"

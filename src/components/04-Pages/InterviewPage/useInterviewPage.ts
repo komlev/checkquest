@@ -1,6 +1,6 @@
-import { useStore } from "@nanostores/react";
+import { useStore } from "@nanostores/preact";
 import { debounce } from "es-toolkit";
-import { useCallback, useEffect, useMemo, useState } from "react";
+import { useCallback, useEffect, useMemo, useState } from "preact/compat";
 import { useLocation, useParams } from "wouter";
 import { INTERVIEW_LIST } from "../../../routes";
 import { $checklistsStore } from "../../../stores/checklistStore";
@@ -81,7 +81,7 @@ export const useInterviewPage = () => {
   // Handle summary change with debounce
   const handleSummaryChange = useCallback(
     (e: React.ChangeEvent<HTMLTextAreaElement>) => {
-      const newSummary = e.target.value;
+      const newSummary = (e.target as HTMLTextAreaElement).value;
       setSummary(newSummary);
       debouncedSaveSummary(newSummary);
     },

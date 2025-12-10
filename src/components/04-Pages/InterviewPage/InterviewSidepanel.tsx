@@ -1,4 +1,4 @@
-import { type FC, Suspense } from "react";
+import { type FC, Suspense } from "preact/compat";
 import { Link } from "wouter";
 import { INTERVIEW_LIST } from "../../../routes";
 import type { Checklist, Section } from "../../../types";
@@ -94,7 +94,7 @@ export const InterviewSidepanel: FC<Props> = ({
         Complete
       </Link>
       <div className="mt-2">
-        <Suspense>
+        <Suspense fallback={<div>Loading chart...</div>}>
           <RadarChart sections={sections} />
         </Suspense>
       </div>

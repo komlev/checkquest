@@ -1,5 +1,5 @@
-import { useStore } from "@nanostores/react";
-import type { FC } from "react";
+import { useStore } from "@nanostores/preact";
+import { type FC, Suspense } from "preact/compat";
 import { Link } from "wouter";
 import { CHECKLIST_NEW, TEMPLATES_LIST } from "../../../routes";
 import { $checklistsStore } from "../../../stores/checklistStore";
@@ -79,7 +79,9 @@ export const Dashboard: FC = () => {
           <InterviewList />
         </>
       )}
-      <NewInterviewModal isOpen={isOpen} onClose={onClose} />
+      <Suspense fallback={null}>
+        <NewInterviewModal isOpen={isOpen} onClose={onClose} />
+      </Suspense>
     </Page>
   );
 };

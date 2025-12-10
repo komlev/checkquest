@@ -1,4 +1,4 @@
-import type { FC } from "react";
+import type { FC } from "preact/compat";
 import { useLocation } from "wouter";
 import { getInterviewPage } from "../../../routes";
 import { addInterview } from "../../../stores/interviewsStore";

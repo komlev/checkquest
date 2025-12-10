@@ -1,5 +1,5 @@
 import { atom } from "nanostores";
-import type { ReactNode } from "react";
+import type { ReactNode } from "preact/compat";
 import { getId } from "../utils/id";
 
 export type TYPE = "success" | "info" | "error";
