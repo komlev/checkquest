@@ -1,4 +1,4 @@
-import type { FC } from "react";
+import { type FC, Suspense } from "preact/compat";
 import { Link, useLocation, useParams } from "wouter";
 import { CHECKLIST_LIST, getEditChecklistPage } from "../../../routes";
 import { deleteChecklist, getChecklist } from "../../../stores/checklistStore";
@@ -138,20 +138,24 @@ export const ChecklistPage: FC = () => {
       </Toolstrip>
       <Line>Questions</Line>
       <ChecklistGrid sections={checklist.sections} />
-      <NewInterviewModal
-        isOpen={isOpen}
-        onClose={onClose}
-        checklistParam={checklist.id}
-      />
-      <ConfirmModal
-        isOpen={isConfirmOpen}
-        onClose={onConfirmClose}
-        onConfirm={onConfirm}
-        title={title}
-        message={message}
-        confirmText={confirmText}
-        cancelText={cancelText}
-      />
+      <Suspense fallback={null}>
+        <NewInterviewModal
+          isOpen={isOpen}
+          onClose={onClose}
+          checklistParam={checklist.id}
+        />
+      </Suspense>
+      <Suspense fallback={null}>
+        <ConfirmModal
+          isOpen={isConfirmOpen}
+          onClose={onConfirmClose}
+          onConfirm={onConfirm}
+          title={title}
+          message={message}
+          confirmText={confirmText}
+          cancelText={cancelText}
+        />
+      </Suspense>
     </Page>
   );
 };

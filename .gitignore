@@ -33,3 +33,4 @@ public/templates/index.json
 /blob-report/
 /playwright/.cache/
 /playwright/.auth/
+./claude/

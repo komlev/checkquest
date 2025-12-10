@@ -1,4 +1,4 @@
-import { type FC, memo } from "react";
+import { type FC, memo } from "preact/compat";
 import type { Section } from "../../../types";
 import { Subtitle } from "../../00-Atoms/Typography";
 import { InterviewSectionCard } from "../../02-Organisms/InterviewSectionCard/InterviewSectionCard";

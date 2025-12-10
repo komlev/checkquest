@@ -1,4 +1,4 @@
-import { type FC, useEffect, useState } from "react";
+import { type FC, useEffect, useState } from "preact/compat";
 import { Link } from "wouter";
 import { getTemplatePage } from "../../../routes";
 import { SearchIcon } from "../../00-Atoms/Icons/SearchIcon";
@@ -54,7 +54,7 @@ export const TemplatesListPage: FC = () => {
           id="templates-search"
           value={search}
           containerClassname="w-full md:w-60"
-          onChange={(e) => setSearch(e.target.value)}
+          onChange={(e) => setSearch((e.target as HTMLInputElement).value)}
         />
         <ul className="list bg-base-100 rounded-box shadow-md">
           <li className="p-4 pb-2 text-xs tracking-wide opacity-60">

@@ -1,4 +1,4 @@
-import { type FC, memo } from "react";
+import { type FC, memo } from "preact/compat";
 import type { Section } from "../../../types";
 import {
   getSectionsPoints,

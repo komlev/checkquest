@@ -1,4 +1,4 @@
-import { type FC, memo, type RefObject } from "react";
+import { type FC, memo, type RefObject } from "preact/compat";
 import type { Section } from "../../../types";
 import { getQuestionLabel } from "../../../utils/checklist";
 import { FormControl } from "../../00-Atoms/FormControl/FormControl";
@@ -61,7 +61,12 @@ export const SectionInput: FC<Props> = memo(
               required
               aria-required="true"
               value={section.title}
-              onChange={(e) => updateSection(sectionIndex, e.target.value)}
+              onChange={(e) =>
+                updateSection(
+                  sectionIndex,
+                  (e.target as HTMLInputElement).value,
+                )
+              }
               onKeyDownCapture={(e) => {
                 if (e.key === "Enter") {
                   e.preventDefault();

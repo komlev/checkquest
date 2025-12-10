@@ -1,5 +1,5 @@
 import clsx from "clsx";
-import type { FC } from "react";
+import type { FC } from "preact/compat";
 import type { Checklist, Interview } from "../../../types";
 import { FormControl } from "../../00-Atoms/FormControl/FormControl";
 import { useInterviewForm } from "./useInterviewForm";
@@ -44,7 +44,10 @@ export const NewInterviewForm: FC<Props> = ({
               value={value.name}
               onChange={(e) => {
                 $state.setKey("tocuhed.name", true);
-                $state.setKey("value.name", e.target.value);
+                $state.setKey(
+                  "value.name",
+                  (e.target as HTMLInputElement).value,
+                );
               }}
             />
           </FormControl>
@@ -64,7 +67,10 @@ export const NewInterviewForm: FC<Props> = ({
               value={value.checklist}
               onChange={(e) => {
                 $state.setKey("tocuhed.checklist", true);
-                $state.setKey("value.checklist", e.target.value);
+                $state.setKey(
+                  "value.checklist",
+                  (e.target as HTMLSelectElement).value,
+                );
               }}
             >
               <option value="">Select a checklist</option>

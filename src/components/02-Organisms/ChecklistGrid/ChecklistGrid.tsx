@@ -1,5 +1,5 @@
 import clsx from "clsx";
-import type { FC } from "react";
+import type { FC } from "preact/compat";
 import type { Section } from "../../../types";
 import { Body, Heading2 } from "../../00-Atoms/Typography/Typography";
 import { SectionCard } from "../../01-Molecules/SectionCard/SectionCard";

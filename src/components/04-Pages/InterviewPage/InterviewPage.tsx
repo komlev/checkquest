@@ -1,4 +1,4 @@
-import { type FC, useMemo } from "react";
+import { type FC, Suspense, useMemo } from "preact/compat";
 import { TrashIcon } from "../../00-Atoms/Icons/TrashIcon";
 import { Line } from "../../00-Atoms/Line/Line";
 import { Toolstrip } from "../../00-Atoms/Tooltstrip/Toolstip";
@@ -95,15 +95,17 @@ export const InterviewPage: FC = () => {
           />
         </section>
       </div>
-      <ConfirmModal
-        isOpen={confirmModal.isOpen}
-        onClose={confirmModal.onClose}
-        onConfirm={confirmModal.onConfirm}
-        title={confirmModal.title}
-        message={confirmModal.message}
-        confirmText={confirmModal.confirmText}
-        cancelText={confirmModal.cancelText}
-      />
+      <Suspense fallback={null}>
+        <ConfirmModal
+          isOpen={confirmModal.isOpen}
+          onClose={confirmModal.onClose}
+          onConfirm={confirmModal.onConfirm}
+          title={confirmModal.title}
+          message={confirmModal.message}
+          confirmText={confirmModal.confirmText}
+          cancelText={confirmModal.cancelText}
+        />
+      </Suspense>
     </Page>
   );
 };

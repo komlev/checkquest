@@ -1,5 +1,5 @@
+import preact from "@preact/preset-vite";
 import tailwindcss from "@tailwindcss/vite";
-import react from "@vitejs/plugin-react";
 import { analyzer } from "vite-bundle-analyzer";
 import { defineConfig } from "vitest/config";
 import pack from "./package.json";
@@ -18,7 +18,7 @@ const htmlPlugin = () => {
 export default defineConfig({
   plugins: [
     tailwindcss(),
-    react(),
+    preact(),
     htmlPlugin(),
     analyzer({
       analyzerMode: "static",

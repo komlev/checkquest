@@ -1,5 +1,5 @@
 import clsx from "clsx";
-import type { DetailedHTMLProps, FC, InputHTMLAttributes } from "react";
+import type { DetailedHTMLProps, FC, InputHTMLAttributes } from "preact/compat";
 import { SearchIcon } from "../../00-Atoms/Icons/SearchIcon";
 
 type Props = DetailedHTMLProps<

@@ -1,5 +1,10 @@
 import clsx from "clsx";
-import type { DetailedHTMLProps, FC, HTMLAttributes, ReactNode } from "react";
+import type {
+  DetailedHTMLProps,
+  FC,
+  HTMLAttributes,
+  ReactNode,
+} from "preact/compat";
 import { Link } from "wouter";
 import { Heading1, Subtitle } from "../../00-Atoms/Typography";
 

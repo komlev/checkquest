@@ -1,4 +1,4 @@
-import type { DetailedHTMLProps, FC, HTMLAttributes } from "react";
+import type { DetailedHTMLProps, FC, HTMLAttributes } from "preact/compat";
 import { getSkillLevel } from "../../../utils/checklist";
 
 type Props = DetailedHTMLProps<

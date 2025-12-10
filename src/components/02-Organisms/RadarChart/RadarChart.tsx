@@ -23,7 +23,7 @@ Chart.register(
   Filler,
 );
 
-import { type FC, useEffect, useRef, useState } from "react";
+import { type FC, useEffect, useRef, useState } from "preact/compat";
 import type { Section } from "../../../types";
 
 type Props = {

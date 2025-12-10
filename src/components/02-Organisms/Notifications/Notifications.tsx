@@ -1,4 +1,4 @@
-import { useStore } from "@nanostores/react";
+import { useStore } from "@nanostores/preact";
 import { $notificationsStore } from "../../../stores/notificationsStore";
 import { Notification } from "./Notification";
 

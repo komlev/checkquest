@@ -1,5 +1,5 @@
-import { useStore } from "@nanostores/react";
-import type { FC } from "react";
+import { useStore } from "@nanostores/preact";
+import { type FC, Suspense } from "preact/compat";
 import { $interviewsStore } from "../../../stores/interviewsStore";
 import { Line } from "../../00-Atoms/Line/Line";
 import { Toolstrip } from "../../00-Atoms/Tooltstrip/Toolstip";
@@ -29,7 +29,9 @@ export const InterviewListPage: FC = () => {
       </Toolstrip>
       <Line />
       {interviews.length === 0 ? <EmptyHero /> : <InterviewList />}
-      <NewInterviewModal isOpen={isOpen} onClose={onClose} />
+      <Suspense fallback={null}>
+        <NewInterviewModal isOpen={isOpen} onClose={onClose} />
+      </Suspense>
     </Page>
   );
 };

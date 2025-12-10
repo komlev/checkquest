@@ -1,11 +1,6 @@
 import clsx from "clsx";
-import {
-  type DetailedHTMLProps,
-  type FC,
-  type FieldsetHTMLAttributes,
-  memo,
-  type ReactNode,
-} from "react";
+import type { DetailedHTMLProps, FieldsetHTMLAttributes } from "preact/compat";
+import { type FC, memo, type ReactNode } from "preact/compat";
 
 type Props = DetailedHTMLProps<
   FieldsetHTMLAttributes<HTMLFieldSetElement>,
