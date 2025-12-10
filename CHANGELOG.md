@@ -1,3 +1,9 @@
+## 1.2.0 (2025-12-11)
+
+### Feat
+
+- replatforming application from react to preact
+
 ## 1.1.4 (2025-12-10)
 
 ### Fix
