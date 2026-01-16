@@ -3,15 +3,6 @@
 ### Fix
 
 - updating packages
-
-## 1.2.0 (2025-12-11)
-
-### Feat
-
-- replatforming application from react to preact
-
-### Fix
-
 - lint/formatting, pre-commits revamp
 
 ## 1.1.2 (2025-10-24)
