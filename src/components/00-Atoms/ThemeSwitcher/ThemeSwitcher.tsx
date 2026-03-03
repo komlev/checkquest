@@ -1,7 +1,14 @@
+import { useLayoutEffect } from "preact/compat";
 import { useTheme } from "./useTheme";
 
 export const ThemeSwitcher = () => {
   const { isdark, setIsdark } = useTheme();
+
+  useLayoutEffect(() => {
+    document
+      ?.querySelector("html")
+      ?.setAttribute("data-theme", isdark ? "dark" : "light");
+  }, [isdark]);
 
   return (
     <label
@@ -13,7 +20,7 @@ export const ThemeSwitcher = () => {
       <input
         type="checkbox"
         className="theme-controller focusable-neutral"
-        value="light"
+        value="dark"
         checked={isdark}
         onChange={() => setIsdark(!isdark)}
         aria-checked={isdark}

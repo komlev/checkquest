@@ -2,7 +2,11 @@ import { useEffect, useState } from "preact/compat";
 
 const getIsDarkTheme = () => {
   try {
-    return localStorage.getItem("isdark") === "true";
+    const stored = localStorage.getItem("isdark");
+    if (stored !== null) {
+      return stored === "true";
+    }
+    return !!window?.matchMedia("(prefers-color-scheme: dark)").matches;
   } catch (_err) {
     return !!window?.matchMedia("(prefers-color-scheme: dark)").matches;
   }
