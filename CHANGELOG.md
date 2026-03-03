@@ -1,3 +1,9 @@
+## 1.2.2 (2026-03-03)
+
+### Fix
+
+- fixing theme switcher for default light mode
+
 ## 1.2.1 (2026-01-16)
 
 ### Fix
