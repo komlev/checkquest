@@ -51,9 +51,9 @@ export const TemplateViewPage: FC = () => {
     return <ErrorPage />;
   }
 
-  const totalQuestions = template?.sections.reduce(
-    (acc, s) => acc + s.questions.length,
-    0,
+  const totalQuestions = useMemo(
+    () => template?.sections.reduce((acc, s) => acc + s.questions.length, 0),
+    [template],
   );
 
   return (

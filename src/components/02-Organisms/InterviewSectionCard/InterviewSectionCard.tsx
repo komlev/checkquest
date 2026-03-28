@@ -9,12 +9,14 @@ interface InterviewSectionCardProps {
   section: Section;
   sectionIndex: number;
   onCheckQuestion: (questionIndex: number, checked: boolean) => void;
+  onCheckSection: (checked: boolean) => void;
 }
 
 export const InterviewSectionCard: FC<InterviewSectionCardProps> = ({
   section,
   sectionIndex,
   onCheckQuestion,
+  onCheckSection,
 }) => {
   // Calculate the number of checked questions and total questions
   const { checkedCount, totalCount, extraCount } = useMemo(() => {
@@ -31,12 +33,8 @@ export const InterviewSectionCard: FC<InterviewSectionCardProps> = ({
   // Check if all questions are checked
   const allChecked = checkedCount === totalCount && totalCount > 0;
 
-  // Handle section checkbox change
   const handleSectionCheckboxChange = (checked: boolean) => {
-    // Update all questions in this section
-    section.questions.forEach((_, index) => {
-      onCheckQuestion(index, checked);
-    });
+    onCheckSection(checked);
   };
 
   return (

@@ -22,7 +22,7 @@ export const NewInterviewPage: FC = () => {
     setLocation(INTERVIEW_LIST);
   };
 
-  const onCrate = (interview: Interview) => {
+  const onCreate = (interview: Interview) => {
     addInterview(interview);
     setLocation(getInterviewPage(interview.id));
   };
@@ -36,7 +36,7 @@ export const NewInterviewPage: FC = () => {
       <NewInterviewForm
         isPage
         onClose={onCancel}
-        onCreate={onCrate}
+        onCreate={onCreate}
         checklistParam={checklistParam}
       />
     </Page>

@@ -32,7 +32,7 @@ type Props = {
   ) => void;
 };
 
-export const QuetionInput: FC<Props> = ({
+export const QuestionInput: FC<Props> = ({
   section,
   question,
   sectionIndex,

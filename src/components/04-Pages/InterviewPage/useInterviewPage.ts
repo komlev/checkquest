@@ -93,8 +93,16 @@ export const useInterviewPage = () => {
       if (!interview) {
         return;
       }
-      const newSections = [...sections];
-      newSections[sectionIndex].questions[questionIndex].checked = checked;
+      const newSections = sections.map((s, si) =>
+        si !== sectionIndex
+          ? s
+          : {
+              ...s,
+              questions: s.questions.map((q, qi) =>
+                qi !== questionIndex ? q : { ...q, checked },
+              ),
+            },
+      );
       setSections(newSections);
 
       // Recalculate score
@@ -129,6 +137,42 @@ export const useInterviewPage = () => {
     [interview, sections],
   );
 
+  const handleCheckSection = useCallback(
+    (sectionIndex: number, checked: boolean) => {
+      if (!interview) return;
+      const newSections = sections.map((s, si) =>
+        si !== sectionIndex
+          ? s
+          : { ...s, questions: s.questions.map((q) => ({ ...q, checked })) },
+      );
+      setSections(newSections);
+
+      let newScore = 0;
+      let newExtraScore = 0;
+      newSections.forEach((section) => {
+        section.questions.forEach((question) => {
+          if (question.checked) {
+            if (!question.extra) {
+              newScore += question.score;
+            } else {
+              newExtraScore += question.score;
+            }
+          }
+        });
+      });
+      setScore(newScore);
+      setExtraScore(newExtraScore);
+
+      updateInterview({
+        ...interview,
+        sections: newSections,
+        score: newScore + newExtraScore,
+        updatedAt: new Date().toISOString(),
+      });
+    },
+    [interview, sections],
+  );
+
   const handleDelete = () => {
     confirmModal.onOpen({
       title: "Delete Interview",
@@ -152,6 +196,7 @@ export const useInterviewPage = () => {
     confirmModal,
     handleSummaryChange,
     handleCheckQuestion,
+    handleCheckSection,
     handleDelete,
   };
 };

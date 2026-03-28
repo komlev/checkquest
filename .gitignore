@@ -34,3 +34,4 @@ public/templates/index.json
 /playwright/.cache/
 /playwright/.auth/
 ./claude/
+.claude/settings.local.json
