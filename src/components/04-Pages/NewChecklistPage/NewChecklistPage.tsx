@@ -48,6 +48,9 @@ export const NewChecklistPage: FC = () => {
             {sectionsLength === 0 ? (
               <div className="flex flex-col items-center gap-2">
                 <div className="text-xl font-medium">No sections added yet</div>
+                {errors.sections && (
+                  <div className="text-error text-sm">{errors.sections}</div>
+                )}
                 <div>
                   <button
                     type="button"

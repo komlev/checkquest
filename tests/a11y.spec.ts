@@ -72,6 +72,8 @@ test("a11y", async ({ page }) => {
 
   await page.getByPlaceholder("Name").fill("Hello");
   await page.getByPlaceholder("Description").fill("Hello");
+  await page.getByRole("button", { name: "Add Section" }).click();
+  await page.getByPlaceholder("Section title").fill("Test Section");
   await page.getByRole("button", { name: "Create Checklist" }).click();
 
   const resultChecklistPage = await new AxeBuilder({ page }).analyze();

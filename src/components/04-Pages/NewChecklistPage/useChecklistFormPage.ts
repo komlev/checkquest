@@ -17,7 +17,9 @@ export const useChecklistFormPage = () => {
   const [name, setName] = useState("");
   const [description, setDescription] = useState("");
   const [sections, setSections] = useState<Section[]>([]);
-  const [errors, setErrors] = useState<{ name?: string }>({});
+  const [errors, setErrors] = useState<{ name?: string; sections?: string }>(
+    {},
+  );
 
   // Add a ref to track the latest question input
   const lastInput = useRef<HTMLInputElement | null>(null);
@@ -30,7 +32,7 @@ export const useChecklistFormPage = () => {
       if (existingChecklist) {
         setName(existingChecklist.name);
         setDescription(existingChecklist.description || "");
-        setSections(existingChecklist.sections);
+        setSections(JSON.parse(JSON.stringify(existingChecklist.sections)));
       }
     }
   }, [isEditMode, params?.id]);
@@ -58,33 +60,33 @@ export const useChecklistFormPage = () => {
 
   const updateSection = useCallback(
     (index: number, title: string) => {
-      const updatedSections = [...sections];
-      updatedSections[index].title = title;
-      setSections(updatedSections);
+      setSections(sections.map((s, i) => (i !== index ? s : { ...s, title })));
     },
     [sections],
   );
 
   const removeSection = useCallback(
     (index: number) => {
-      const updatedSections = [...sections];
-      updatedSections.splice(index, 1);
-      setSections(updatedSections);
+      setSections(sections.filter((_, i) => i !== index));
     },
     [sections],
   );
 
   const addQuestion = useCallback(
     (sectionIndex: number) => {
-      const updatedSections = [...sections];
       const newQuestion: Question = {
         id: getId(),
         text: "",
         score: 1,
         extra: false,
       };
-      updatedSections[sectionIndex].questions.push(newQuestion);
-      setSections(updatedSections);
+      setSections(
+        sections.map((s, i) =>
+          i !== sectionIndex
+            ? s
+            : { ...s, questions: [...s.questions, newQuestion] },
+        ),
+      );
       focusOnLastInput(sectionIndex);
     },
     [sections, focusOnLastInput],
@@ -98,42 +100,64 @@ export const useChecklistFormPage = () => {
       score: number,
       extra?: boolean,
     ) => {
-      const updatedSections = [...sections];
-      updatedSections[sectionIndex].questions[questionIndex].text = text;
-      updatedSections[sectionIndex].questions[questionIndex].score = score;
-      updatedSections[sectionIndex].questions[questionIndex].extra =
-        extra ?? false;
-      setSections(updatedSections);
+      setSections(
+        sections.map((s, si) =>
+          si !== sectionIndex
+            ? s
+            : {
+                ...s,
+                questions: s.questions.map((q, qi) =>
+                  qi !== questionIndex
+                    ? q
+                    : { ...q, text, score, extra: extra ?? false },
+                ),
+              },
+        ),
+      );
     },
     [sections],
   );
 
   const removeQuestion = useCallback(
     (sectionIndex: number, questionIndex: number) => {
-      const updatedSections = [...sections];
-      updatedSections[sectionIndex].questions.splice(questionIndex, 1);
-      setSections(updatedSections);
+      setSections(
+        sections.map((s, si) =>
+          si !== sectionIndex
+            ? s
+            : {
+                ...s,
+                questions: s.questions.filter((_, qi) => qi !== questionIndex),
+              },
+        ),
+      );
     },
     [sections],
   );
 
   const reorderQuestion = useCallback(
     (sectionIndex: number, fromIndex: number, toIndex: number) => {
-      const updatedSections = [...sections];
-      const questions = [...updatedSections[sectionIndex].questions];
-      const [moved] = questions.splice(fromIndex, 1);
-      questions.splice(toIndex, 0, moved);
-      updatedSections[sectionIndex].questions = questions;
-      setSections(updatedSections);
+      setSections(
+        sections.map((s, si) => {
+          if (si !== sectionIndex) return s;
+          const questions = [...s.questions];
+          const [moved] = questions.splice(fromIndex, 1);
+          questions.splice(toIndex, 0, moved);
+          return { ...s, questions };
+        }),
+      );
     },
     [sections],
   );
 
   const validateForm = () => {
-    const newErrors: { name?: string } = {};
+    const newErrors: { name?: string; sections?: string } = {};
 
     if (!name.trim()) {
       newErrors.name = "Name is required";
+    }
+
+    if (sections.length === 0) {
+      newErrors.sections = "Add at least one section";
     }
 
     setErrors(newErrors);

@@ -43,7 +43,7 @@ export const NewInterviewForm: FC<Props> = ({
               placeholder="Name"
               value={value.name}
               onChange={(e) => {
-                $state.setKey("tocuhed.name", true);
+                $state.setKey("touched.name", true);
                 $state.setKey(
                   "value.name",
                   (e.target as HTMLInputElement).value,
@@ -66,7 +66,7 @@ export const NewInterviewForm: FC<Props> = ({
               )}
               value={value.checklist}
               onChange={(e) => {
-                $state.setKey("tocuhed.checklist", true);
+                $state.setKey("touched.checklist", true);
                 $state.setKey(
                   "value.checklist",
                   (e.target as HTMLSelectElement).value,

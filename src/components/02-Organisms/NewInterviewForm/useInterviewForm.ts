@@ -8,7 +8,7 @@ import type { Checklist, Interview, Section } from "../../../types";
 const initialValue = {
   value: { name: "", checklist: "" },
   errors: { name: "", checklist: "" },
-  tocuhed: { name: false, checklist: false },
+  touched: { name: false, checklist: false },
 };
 const $state = deepMap(initialValue);
 const $checklist = computed([$checklistsStore, $state], (list, state) =>
@@ -22,7 +22,7 @@ export const useInterviewForm = (
 ) => {
   const checklists = useStore($checklistsStore);
   const checklist = useStore($checklist);
-  const { value, errors, tocuhed } = useStore($state);
+  const { value, errors, touched } = useStore($state);
 
   useEffect(() => {
     $state.set(initialValue);
@@ -40,14 +40,14 @@ export const useInterviewForm = (
 
   const validateForm = (force?: boolean) => {
     let hasErrors = false;
-    if (!value.name.trim() && (tocuhed.name || force)) {
+    if (!value.name.trim() && (touched.name || force)) {
       hasErrors = true;
       $state.setKey("errors.name", "Name is required");
     } else {
       $state.setKey("errors.name", "");
     }
 
-    if (!checklist && (tocuhed.checklist || force)) {
+    if (!checklist && (touched.checklist || force)) {
       hasErrors = true;
       $state.setKey("errors.checklist", "Please select a checklist");
     } else {
@@ -58,7 +58,7 @@ export const useInterviewForm = (
 
   useEffect(() => {
     validateForm();
-  }, [value.name, value.checklist, tocuhed.name, tocuhed.checklist]);
+  }, [value.name, value.checklist, touched.name, touched.checklist]);
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();

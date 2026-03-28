@@ -23,6 +23,7 @@ export const InterviewPage: FC = () => {
     confirmModal,
     handleSummaryChange,
     handleCheckQuestion,
+    handleCheckSection,
     handleDelete: onDelete,
   } = useInterviewPage();
 
@@ -76,6 +77,7 @@ export const InterviewPage: FC = () => {
             <SectionsList
               sections={sections}
               onCheckQuestion={handleCheckQuestion}
+              onCheckSection={handleCheckSection}
             />
           </div>
         </section>

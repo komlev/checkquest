@@ -4,7 +4,7 @@ import { getQuestionLabel } from "../../../utils/checklist";
 import { FormControl } from "../../00-Atoms/FormControl/FormControl";
 import { TrashIcon } from "../../00-Atoms/Icons/TrashIcon";
 import { Line } from "../../00-Atoms/Line/Line";
-import { QuetionInput } from "./QuestionInput";
+import { QuestionInput } from "./QuestionInput";
 
 type Props = {
   section: Section;
@@ -118,7 +118,7 @@ export const SectionInput: FC<Props> = memo(
         ) : (
           <div className="flex flex-col gap-2">
             {section.questions.map((question, questionIndex) => (
-              <QuetionInput
+              <QuestionInput
                 key={question.id}
                 section={section}
                 question={question}

@@ -88,7 +88,7 @@ export const TemplatesListPage: FC = () => {
                   to={getTemplatePage(t.slug)}
                   className="btn btn-square btn-ghost"
                   title={`View Template ${t.name}`}
-                  aria-label="View Template"
+                  aria-label={`View Template ${t.name}`}
                 >
                   <SearchIcon
                     className="fill-current"

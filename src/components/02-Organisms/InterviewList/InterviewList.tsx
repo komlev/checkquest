@@ -147,7 +147,7 @@ export const InterviewList: FC = () => {
               </div>
               <div className="flex shrink flex-wrap gap-1">
                 <button
-                  id={`delete-interview-btn-${interview.id}`}
+                  id={`copy-interview-btn-${interview.id}`}
                   type="button"
                   className="btn btn-square btn-ghost"
                   onClick={() => onCopy(interview, checklist)}

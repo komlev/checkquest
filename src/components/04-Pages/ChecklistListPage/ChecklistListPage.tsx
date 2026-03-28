@@ -22,7 +22,7 @@ export const ChecklistListPage: FC = () => {
         <Heading1>Checklists</Heading1>
         <div className="flex gap-2">
           <button
-            id="add-checklist-btn"
+            id="import-checklist-btn"
             type="button"
             className="btn btn-sm btn-square"
             onClick={onImport}
@@ -37,7 +37,7 @@ export const ChecklistListPage: FC = () => {
             />
           </button>
           <Link
-            id="add-checklist-btn"
+            id="new-checklist-btn"
             to="/lists/new"
             className="btn btn-sm btn-primary"
           >

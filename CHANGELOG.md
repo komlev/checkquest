@@ -1,3 +1,9 @@
+## 1.3.0 (2026-03-28)
+
+### Feat
+
+- fixing low effor issues, improveing e2e tests
+
 ## 1.2.2 (2026-03-03)
 
 ### Fix
